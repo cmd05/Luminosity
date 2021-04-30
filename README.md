@@ -8,7 +8,7 @@ The Complete Modern Blogging Platform
   **Changes**
   - Added js-dev folder (unminified)
   - Check if image exists in [Image_helper](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L7)
-  - Renamed View folders and files
+  - Renamed View folders and files to lowercase
   - get_headers works with 2nd argument boolean [here](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L21).
     - However [documentation](https://www.php.net/manual/en/function.get-headers.php) mentions otherwise 🤷‍♂️
   - Renamed app/ to application/ as Heroku's root folder is app/
@@ -95,7 +95,10 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
     Your directory should look like: ```C:\(xampp or any other stack)\htdocs\Luminosity```
   - Check ``public/.htaccess`` so that project directories match
   - Create Database in MySQL and load ``SQL/dump.sql``
-  - Setup app configs in ``Config/ConfigDefault.php``. Next rename to ``Config.php`` 
+  - Setup app configs in ``Config.php`` or ``ConfigDefault.php``.
+    - If you are using Environment variables setup environment variables corresponding to Config.php and you are good to go.
+    - Otherwise delete Config.php, fill configs in ConfigDefault.php and rename the file to Config.php
+      [You can setup DB Parameters either manually or use [parse_url()](https://www.php.net/manual/en/function.parse-url.php) function with your DB URL]
     - Refer to [IP Quality Score](https://www.ipqualityscore.com) and [Cloudinary](https://cloudinary.com/) to setup APIs
     - Be sure to fill all configs carefully to prevent unexpected errors.
  
