@@ -96,9 +96,9 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
   - Check ``public/.htaccess`` so that project directories match
   - Create Database in MySQL and load ``SQL/dump.sql``
   - Setup app configs in ``Config.php`` or ``ConfigDefault.php``.
-    - If you are using Environment variables setup environment variables corresponding to Config.php and you are good to go.
-    - Otherwise delete Config.php, fill configs in ConfigDefault.php and rename the file to Config.php
-      [You can setup DB Parameters either manually or use [parse_url()](https://www.php.net/manual/en/function.parse-url.php) function with your DB URL]
+    - If you are using Environment variables setup environment variables corresponding to ``Config.php`` and you are good to go.
+    - Otherwise delete ``Config.php`` => Fill configs in ``ConfigDefault.php`` => Rename the file to ``Config.php`` <br>
+    - You can setup DB Parameters either manually or use [parse_url()](https://www.php.net/manual/en/function.parse-url.php) function with your DB URL
     - Refer to [IP Quality Score](https://www.ipqualityscore.com) and [Cloudinary](https://cloudinary.com/) to setup APIs
     - Be sure to fill all configs carefully to prevent unexpected errors.
  
