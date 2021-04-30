@@ -2,6 +2,18 @@
 
 The Complete Modern Blogging Platform
 
+## Public Branch
+  This branch is currently hosted.
+  
+  **Changes**
+  - Added js-dev folder (unminified)
+  - Check if image exists in [Image_helper](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L7)
+  - Renamed View folders and files
+  - get_headers works with 2nd argument boolean [here](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L7).
+    - However [documentation](https://www.php.net/manual/en/function.get-headers.php) mentions otherwise 🤷‍♂️
+  - Renamed app/ to application/ as Heroku's root folder is app/
+  - Include mb-string and exif extensions
+
 ## Features
 
 Features:
@@ -43,7 +55,7 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
 
 ## Project Structure
   
-``app/``
+``application/``
   Contains Backend and Application Logic
   - Config - Contains Config Files for project
   - Libraries - Contains Basic Libraries extended by classes and units.
