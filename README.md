@@ -9,7 +9,7 @@ The Complete Modern Blogging Platform
   - Added js-dev folder (unminified)
   - Check if image exists in [Image_helper](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L7)
   - Renamed View folders and files
-  - get_headers works with 2nd argument boolean [here](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L7).
+  - get_headers works with 2nd argument boolean [here](https://github.com/cmd3BOT/Luminosity/blob/Public/application/Helpers/Image_helper.php#L21).
     - However [documentation](https://www.php.net/manual/en/function.get-headers.php) mentions otherwise 🤷‍♂️
   - Renamed app/ to application/ as Heroku's root folder is app/
   - Include mb-string and exif extensions
