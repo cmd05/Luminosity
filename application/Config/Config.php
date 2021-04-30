@@ -1,70 +1,71 @@
 <?php
-
 /**
- * Config using environment variables. 
+ * Default configurations for setting up application
  * 
- * If your hosting does not support env:
- * - Delete this file
- * - Fill up configs in ConfigDefault.php
- * - Rename ConfigDefault.php to Config.php
+ * Running instance of the application first requires complete configuration file.
+ * All constants are global
+ * It is reccomended to carefully check all credentials and details to prevent unexpected **errors**.
  * 
- * Bootstrap.php includes only file named ``Config.php``
+ * @author cmd3BOT
  */
 
-$dbopts = parse_url(getenv('CLEARDB_DATABASE_URL'));
-
-define("DB_HOST", $dbopts["host"]);
-define("DB_USER", $dbopts["user"]);
-define("DB_PASS", $dbopts["pass"]);
-define("DB_NAME", ltrim($dbopts["path"],'/'));
+ 
+/**
+ * Database credentials and parameters
+ * Create a database in MySQL called luminosity and load dump.sql
+ */
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "luminosity");
 define('DB_TIMESTAMP_FMT', 'Y-m-d H:i:s');
 
-define("SERVER_TIMEZONE", $_ENV['SERVER_TIMEZONE']);
-
-// App root
-define('APPROOT', dirname(__DIR__));
-
-// URL ROOT
-define('URLROOT', $_ENV['URLROOT']);
-
-// Site Name
-define('SITENAME', $_ENV['SITENAME']);
-
-// App Version
-define('APP_VERSION', $_ENV['APP_VERSION']);
-
-// Unique Session Name
+/**
+ * Site Settings
+ */
+define("SERVER_TIMEZONE", 'Asia/Kolkata');
+define('APPROOT', dirname(dirname(__FILE__)));
+define('URLROOT', "http://localhost/luminosity");
+define('SITENAME', 'Luminosity');
+define('APP_VERSION', '1.0.0');
 define('SESSION_NAME', SITENAME);
 
-// Website Logo Path
+/**
+ * Website Image Directories
+ */
 define("LOGO_PATH", URLROOT."/assets/logo.png");
-
-// Uploads Path
-define('UPLOAD_PATH', dirname(dirname(__DIR__)).'/public/uploads/');
-// Directory of profile images
+define('UPLOAD_PATH', dirname(dirname(dirname(__FILE__))).'/public/uploads/');
 define('PROFILE_IMG_DIR', URLROOT.'/uploads');
-// Default profile image
 define("DEFAULT_PROFILE_NAME", 'default-profile.png');
 define("DEFAULT_PROFILE_PATH", PROFILE_IMG_DIR."/".DEFAULT_PROFILE_NAME);
 
-// Mail Server
-$mailParams = [
-    "SMTP_HOST", "SMTP_USERNAME", "SMTP_MAIL", "SMTP_PASSWORD"
-];
+/**
+ * Settings to setup mail server
+ * 
+ * Avoid incorrect credentials or settings to decrease potential errors
+ * Some mailing hosts may require access from lesser known sources.
+ * Default port is 587
+ */
+define("SMTP_HOST", '');
+define("SMTP_USERNAME", '');
+define("SMTP_MAIL", '');
+define("SMTP_PASSWORD", '');
+define("SMTP_PORT", 587);
 
-foreach ($mailParams as $var) define($var, $_ENV[$var]);
 
-define("SMTP_PORT", (int) $_ENV['SMTP_PORT']);
-
-// Email CHECK API www.ipqualityscore.com/api/json/email/API_TOKEN
-define('EMAIL_API_TOKEN', $_ENV['EMAIL_API_TOKEN']);
+/**
+ * Email validation API
+ */
+define('EMAIL_API_TOKEN', '');
 define('EMAIL_API', 'https://www.ipqualityscore.com/api/json/email/'.EMAIL_API_TOKEN.'/');
 
-// Image upload to cloudinary
-define('IMG_CLOUD_NAME', $_ENV['IMG_CLOUD_NAME']);
-define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/'.IMG_CLOUD_NAME.'/image/upload');
-define('IMG_API_SECRET', $_ENV['IMG_API_SECRET']);
-define('IMG_API_KEY', $_ENV["IMG_API_KEY"]);
-define('IMG_API_PRESET', $_ENV['IMG_API_PRESET']);
+/**
+ * Setup remote location for bulk image storage
+ */
+define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/demo/image/upload');
+define('IMG_CLOUD_NAME', '');
+define('IMG_API_SECRET', '');
+define('IMG_API_KEY', '');
+define('IMG_API_PRESET', 'docs_upload_example_us_preset');
 define('IMG_VALIDATE_URL', 'https://res.cloudinary.com/'.IMG_CLOUD_NAME.'/image/upload');
 define("IMG_404_PATH", URLROOT.'/assets/img-not-found.png');
