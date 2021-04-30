@@ -33,9 +33,12 @@ Luminosity Local development branch.
       define("SMTP_PASSWORD", 'gmail_psw');
       define("SMTP_PORT", 587);
       ```
+      [Testing on localhost requires [access from less secure apps](https://myaccount.google.com/lesssecureapps)] <br>
+      [More options: [Sendgrid](http://sendgrid.com/), [Mailjet](https://www.mailjet.com/feature/smtp-relay/)]
     - Refer to [IP Quality Score](https://www.ipqualityscore.com/documentation/email-validation/overview) for email validation API token
     - Cloudinary configs work in default mode. You can optionally create your own [cloud](https://cloudinary.com/users/register/free)
     - Be sure to fill all configs carefully to prevent unexpected errors.
 
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
+  
