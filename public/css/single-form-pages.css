@@ -1,0 +1,17 @@
+body {
+    background: #f5f5f5;
+}
+
+#nav-items-3 {
+    display: inline;
+}
+
+#page-form {
+    width: 350px;
+    margin: auto;
+    background: red;
+    padding: 20px;
+    padding-bottom: 10px;
+    border: 1px #e6e3e3 solid;
+    background: white;
+}

@@ -1,0 +1,38 @@
+
+>>> All data added to database must be constants. Hence use ids only
+
+All URL Calls: kebab-case
+Server Redirects: kebab-case
+Ajax and Form Calls: kebab-case
+
+File Structure:
+    app:
+        - All app folders containing logic are PascalCase
+        - All app logic files are PascalCase
+        - Helpers are trailed with _helper for clarity
+        - View folder must be kebab-case as it closely resembles public folder
+        - vendor folder to remain as is to decrease error possibilites
+
+        Config: PascalCase
+        Controllers: PascalCase
+        Docs: PascalCase
+        Helpers: PascalCase (*_helper.php)
+        Libraries: PascalCase
+        Models: PascalCase *Model.php
+        Views: kebab-case
+
+    public:
+        all to remain kebab-case
+
+
+POST request (Ajax and Forms) : snake_case
+
+Class Names: PascalCase
+Method Names: camelCase
+Variables: camelCase
+Constants: SCREAMING_SNAKE_CASE
+
+SQL: snake_case
+
+Javascript Variables: camelCase
+HTML CSS Selectors: kebab-case

@@ -1,0 +1,36 @@
+.profile-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    padding: 0;
+    display: inline-block;
+}
+
+.preview-img {
+    height: auto;
+    width: auto;
+    max-height: 500px;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.article-content {
+    word-wrap: break-word;
+}
+
+.follow-list-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    display: inline-block;
+}
