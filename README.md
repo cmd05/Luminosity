@@ -102,5 +102,7 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
     - Refer to [IP Quality Score](https://www.ipqualityscore.com) and [Cloudinary](https://cloudinary.com/) to setup APIs
     - Be sure to fill all configs carefully to prevent unexpected errors.
  
+If you've issues in setting up Public branch locally try cloning ``Initial`` branch.
+
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
