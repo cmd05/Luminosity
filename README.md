@@ -91,18 +91,26 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
  
  Follow the given steps to test Luminosity locally:
   - Clone project in htdocs directory using: <br>
-    ```git clone git@github.com:cmd3BOT/Luminosity.git``` <br>
+    ```git clone --single-branch --branch Local git@github.com:cmd3BOT/Luminosity.git``` <br>
     Your directory should look like: ```C:\(xampp or any other stack)\htdocs\Luminosity```
-  - Check ``public/.htaccess`` so that project directories match
-  - Create Database in MySQL and load ``SQL/dump.sql``
-  - Setup app configs in ``Config.php`` or ``ConfigDefault.php``.
-    - If you are using Environment variables setup environment variables corresponding to ``Config.php`` and you are good to go.
-    - Otherwise delete ``Config.php`` => Fill configs in ``ConfigDefault.php`` => Rename the file to ``Config.php`` <br>
-    - You can setup DB Parameters either manually or use [parse_url()](https://www.php.net/manual/en/function.parse-url.php) function with your DB URL
-    - Refer to [IP Quality Score](https://www.ipqualityscore.com) and [Cloudinary](https://cloudinary.com/) to setup APIs
+  - Check that Project Directory Paths:
+    - [``public/.htaccess``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/.htaccess#L4) 
+    - [``js/script.js``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/js/script.js#L1)
+    - [``Config/Config.php``](https://github.com/cmd3BOT/Luminosity/blob/Local/application/Config/Config.php#L28)
+  - Create Database ``luminosity`` in MySQL and load ``SQL/dump.sql``
+  - Setup app configs in ``Config.php``.
+    - You must setup your SMTP mail details
+      To setup using Gmail:
+      ```php
+      define("SMTP_HOST", 'smtp.gmail.com');
+      define("SMTP_USERNAME", 'youremail@gmail.com');
+      define("SMTP_MAIL", 'youremail@gmail.com');
+      define("SMTP_PASSWORD", 'gmail_psw');
+      define("SMTP_PORT", 587);
+      ```
+    - Refer to [IP Quality Score](https://www.ipqualityscore.com/documentation/email-validation/overview) for email validation API token
+    - Cloudinary configs work in default mode. You may create your own [cloud](https://cloudinary.com/users/register/free)
     - Be sure to fill all configs carefully to prevent unexpected errors.
- 
-If you've issues in setting up Public branch locally try cloning ``Initial`` branch.
 
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
