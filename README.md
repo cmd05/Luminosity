@@ -18,7 +18,7 @@ Luminosity Local development branch.
   - Clone project in htdocs directory using: <br>
     ```git clone --single-branch --branch Local git@github.com:cmd3BOT/Luminosity.git``` <br>
     Your directory should look like: ```C:\(xampp or any other stack)\htdocs\Luminosity```
-  - Check that Project Directory Paths:
+  - Check that Project Directory Paths match:
     - [``public/.htaccess``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/.htaccess#L4) 
     - [``js/script.js``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/js/script.js#L1)
     - [``Config/Config.php``](https://github.com/cmd3BOT/Luminosity/blob/Local/application/Config/Config.php#L28)
