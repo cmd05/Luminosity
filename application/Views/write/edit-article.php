@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="toast align-items-center text-white bg-dark border-0 center-toast" role="alert" aria-live="assertive" aria-atomic="true" id='img-toast'>
+    <div class="toast align-items-center text-white bg-dark border-0 center-toast" role="alert" aria-live="assertive" aria-atomic="true" id='img-toast' data-bs-autohide="false">
         <div class="d-flex">
             <div class="toast-body container">
                 Uploading Image   <i class="fas fa-circle-notch fa-spin"></i>                        
@@ -71,6 +71,7 @@
     </div>
     <br><br><br>
     <?=View::formToken($data['article_id'], "article_id")?>
+    <?=View::formToken(IMG_VALIDATE_URL, "img_valid_url")?>
 </main>
 
 <script src="<?=URLROOT?>/js/edit-article.js" type="module"></script>

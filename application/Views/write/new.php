@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="toast align-items-center text-white bg-dark border-0 center-toast" role="alert" aria-live="assertive" aria-atomic="true" id='img-toast'>
+    <div class="toast align-items-center text-white bg-dark border-0 center-toast" role="alert" aria-live="assertive" aria-atomic="true" id='img-toast' data-bs-autohide="false">
         <div class="d-flex">
             <div class="toast-body container">
                 Uploading Image   <i class="fas fa-circle-notch fa-spin"></i>                        
@@ -62,6 +62,7 @@
     </div>
     <br><br><br>
 </main>
+<?=View::formToken(IMG_VALIDATE_URL, "img_valid_url")?>
 <script src="<?=URLROOT?>/js/submit-article.js" type="module"></script>
 <script type="module">
 import{URL,newTokenData,isJson}from"<?=URLROOT?>/js/script.js";document.querySelector("#save-draft").addEventListener("click",function(){const e=newTokenData({title:document.querySelector("#title").value,tagline:document.querySelector("#tagline").value,content:document.querySelector(".ql-editor").innerHTML,draft_name:document.querySelector("#draft_name").value});fetch(`${URL}/ajax/write/save-draft`,{method:"POST",body:e}).then(e=>e.text()).then(e=>{if(isJson(e)){let t=document.getElementById("draft-err-toast"),a=new bootstrap.Toast(t,{delay:6e3}),o=JSON.parse(e);200===o.status?location.replace(`${URL}/write/draft/${o.draft_id}`):(delete o.status,t.querySelector(".toast-body").innerHTML=`${o[Object.keys(o)[0]]}`,a.show())}})});

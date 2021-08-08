@@ -1,4 +1,239 @@
-import{newTokenData,URL,isJson,syncFileReader}from"./script.js";let Header=Quill.import("formats/header");Header.create=function(e){return document.createElement("h2")};let _get=function e(t,o,l){null===t&&(t=Function.prototype);const n=Object.getOwnPropertyDescriptor(t,o);if(void 0===n){const n=Object.getPrototypeOf(t);return null===n?void 0:e(n,o,l)}if("value"in n)return n.value;{const e=n.get;return void 0===e?void 0:e.call(l)}};const CodeBlock=Quill.import("formats/code-block");class NewCodeBlock extends CodeBlock{replaceWith(e){this.domNode.textContent=this.domNode.textContent,this.attach();let t=_get(CodeBlock.prototype.__proto__||Object.getPrototypeOf(CodeBlock.prototype),"replaceWith",this).call(this,e);t.domNode.textContent=t.domNode.textContent,this.scroll.update("silent")}}NewCodeBlock.className="ql-syntax",Quill.register(NewCodeBlock,!0),Quill.register("modules/counter",function(e,t){const o=document.querySelector(t.container);e.on("text-change",function(){const e=document.querySelector(".ql-editor").innerText.replace(/\n|\r/g,"");o.innerText="word"===t.unit?e.split(/\s+/).length+" words":e.length+" characters"})});const icons=Quill.import("ui/icons"),icon_undo='<svg viewbox="0 0 18 18"><polygon class="ql-fill ql-stroke" points="6 10 4 12 2 10 6 10"></polygon><path class="ql-stroke" d="M8.09,13.91A4.6,4.6,0,0,0,9,14,5,5,0,1,0,4,9"></path></svg>',icon_redo='<svg viewbox="0 0 18 18"><polygon class="ql-fill ql-stroke" points="12 10 14 12 16 10 12 10"></polygon><path class="ql-stroke" d="M9.91,13.91A4.6,4.6,0,0,1,9,14a5,5,0,1,1,5-5"></path></svg>';icons.undo=icon_undo,icons.redo=icon_redo,icons["collapse-items"]='<i class="fas fa-angle-down"></i>',icons["code-block"]='<svg viewbox="0 -2 15 18">\n\t<polyline class="ql-even ql-stroke" points="2.48 2.48 1 3.96 2.48 5.45"/>\n\t<polyline class="ql-even ql-stroke" points="8.41 2.48 9.9 3.96 8.41 5.45"/>\n\t<line class="ql-stroke" x1="6.19" y1="1" x2="4.71" y2="6.93"/>\n\t<polyline class="ql-stroke" points="12.84 3 14 3 14 13 2 13 2 8.43"/>\n</svg>';const toolbarItems=[["collapse-items"],["undo","redo"],[{header:[2,!1]}],["bold","italic","underline","strike"],[{script:"sub"},{script:"super"}],["blockquote","code","code-block"],[{list:"ordered"},{list:"bullet"}],["image","video","link"],["clean"]],formats=["header","bold","italic","underline","strike","script","blockquote","code","code-block","list","image","video","link"],quill=new Quill("#editor",{theme:"snow",formats:formats,modules:{syntax:!0,"auto-links":!0,toolbar:{container:toolbarItems},counter:{container:"#counter",unit:"character"}}});let quillIndex=0;async function fetchBlob(e){try{const t=await fetch(e);return await t.blob()}catch(e){return console.log(e),!1}}async function fetchUrl(e){const t=newTokenData();t.append("image",e);const o=await fetch(`${URL}/ajax/write/upload-image`,{method:"POST",body:t});return await o.text()}quill.on("editor-change",function(){quillIndex=quill.getSelection()?quill.getSelection().index:0}),document.querySelector(".ql-editor").addEventListener("paste",e=>{(async()=>{const t=e.clipboardData||window.clipboardData;let o=document.createElement("div");o.innerHTML=t.getData("text/html");const l=t.items[0];if(0===l.type.indexOf("image")){e.preventDefault();const t=new syncFileReader(l.getAsFile()),n=await t.readAsDataURL();let i=document.createElement("img");i.setAttribute("src",n),o.appendChild(i)}const n=o.querySelectorAll("img");n.length>30&&alert("Please reduce the number of images"),n.length>0&&n.length<=30&&(e.preventDefault(),(async()=>{let e=document.getElementById("img-toast");e.querySelector(".toast-body").innerHTML='Adding Contents <i class="fas fa-circle-notch fa-spin"></i>';let t=new bootstrap.Toast(e,{delay:2e4});t.show();for(let e=0;e<n.length;e++){const t=n[e];if(t.src){let l=t.src,n=!1;const i=await fetchBlob(l);if(i){let t=new File([i],"file");const l=await fetchUrl(t);if(isJson(l)){let t=JSON.parse(l);200===t.status&&(o.querySelectorAll("img")[e].src=t.url,n=!0)}}n||(o.querySelectorAll("img")[e].src=`${URL}/assets/img-not-found.png`)}}t.hide(),quill.clipboard.dangerouslyPasteHTML(quillIndex,o.innerHTML)})())})()}),document.querySelector(".ql-undo").addEventListener("click",function(){quill.history.undo()}),document.querySelector(".ql-redo").addEventListener("click",function(){quill.history.redo()});let collapsed=!0;const collapser=document.querySelector(".ql-collapse-items");function videoHandler(){let e=quill.getSelection().index,t=prompt("Enter Video URL: ");null!=(t=getVideoUrl(t))&&quill.insertEmbed(e,"video",t)}collapser.addEventListener("click",function(){const e=document.querySelector(".ql-toolbar").querySelectorAll(".ql-formats"),t=[e[4],e[5],e[6],e[7]];collapsed?(collapsed=!1,t.forEach(e=>e.style.display="inline-block"),e.forEach(e=>e.style.height="34px"),collapser.innerHTML="<i class='fa fa-angle-up collapser-icon'></i>"):(collapsed=!0,t.forEach(e=>e.style.display="none"),e.forEach(e=>e.style.height="32px"),collapser.innerHTML="<i class='fa fa-angle-down collapser-icon'></i>")}),window.onresize=function(e){const t=document.querySelector(".ql-toolbar").querySelectorAll(".ql-formats"),o=[t[4],t[5],t[6],t[7]];window.screen.width>1100&&o.forEach(e=>e.style.display="inline-block")},quill.getModule("toolbar").addHandler("video",videoHandler);
+import {
+	newTokenData,
+	URL,
+	isJson,
+	syncFileReader
+} from './script.js';
+
+// Always create h2
+let Header = Quill.import('formats/header');
+Header.create = function (value) {
+	return document.createElement('h2');
+};
+
+/**
+ * Remove Code highlighting after removing codeblocks
+*/
+let _get = function get(object, property, receiver) {
+	if (object === null) object = Function.prototype;
+
+	const desc = Object.getOwnPropertyDescriptor(object, property);
+	if (desc === undefined) {
+		const parent = Object.getPrototypeOf(object);
+		return parent === null ? undefined : get(parent, property, receiver);
+	} else if ("value" in desc) {
+		return desc.value;
+	} else {
+		const getter = desc.get;
+		return getter === undefined ? undefined : getter.call(receiver);
+	}
+};
+
+const CodeBlock = Quill.import('formats/code-block');
+class NewCodeBlock extends CodeBlock {
+	replaceWith(block) {
+		this.domNode.textContent = this.domNode.textContent;
+		this.attach();
+		let newItem = _get(CodeBlock.prototype.__proto__ || Object.getPrototypeOf(CodeBlock.prototype), 'replaceWith', this).call(this, block);
+		newItem.domNode.textContent = newItem.domNode.textContent;
+		this.scroll.update('silent');
+	}
+}
+
+NewCodeBlock.className = 'ql-syntax';
+Quill.register(NewCodeBlock, true);
+
+// Character Counter
+Quill.register('modules/counter', function (quill, options) {
+	const container = document.querySelector(options.container);
+	quill.on('text-change', function () {
+		const chars = document.querySelector('.ql-editor').innerText.replace(/\n|\r/g, "");
+		container.innerText = options.unit === "word" ? 
+							  chars.split(/\s+/).length + ' words' :
+							  chars.length + ' characters';
+	});
+});
+
+
+// Icons
+const icons = Quill.import('ui/icons');
+const icon_undo = `<svg viewbox="0 0 18 18"><polygon class="ql-fill ql-stroke" points="6 10 4 12 2 10 6 10"></polygon><path class="ql-stroke" d="M8.09,13.91A4.6,4.6,0,0,0,9,14,5,5,0,1,0,4,9"></path></svg>`;
+const icon_redo = `<svg viewbox="0 0 18 18"><polygon class="ql-fill ql-stroke" points="12 10 14 12 16 10 12 10"></polygon><path class="ql-stroke" d="M9.91,13.91A4.6,4.6,0,0,1,9,14a5,5,0,1,1,5-5"></path></svg>`;
+icons["undo"] = icon_undo;
+icons["redo"] = icon_redo;
+icons["collapse-items"] = `<i class="fas fa-angle-down"></i>`;
+icons['code-block'] = '<svg viewbox="0 -2 15 18">\n' + '\t<polyline class="ql-even ql-stroke" points="2.48 2.48 1 3.96 2.48 5.45"/>\n' + '\t<polyline class="ql-even ql-stroke" points="8.41 2.48 9.9 3.96 8.41 5.45"/>\n' + '\t<line class="ql-stroke" x1="6.19" y1="1" x2="4.71" y2="6.93"/>\n' + '\t<polyline class="ql-stroke" points="12.84 3 14 3 14 13 2 13 2 8.43"/>\n' + '</svg>';
+
+// Toolbar and formats
+const toolbarItems = [
+	["collapse-items"],
+	['undo', 'redo'],
+	[{header: [2, false]}],
+	["bold", "italic", "underline", "strike"], //collapse items for small screens
+	[{'script': 'sub'}, {'script': 'super'}], // superscript/subscript
+	["blockquote", "code", "code-block"],
+	[{'list': 'ordered'}, {'list': 'bullet'}],
+	["image", "video", "link"],
+	['clean'] // remove formatting button
+];
+
+const formats = [
+	'header', 'bold', 'italic', 'underline', 'strike', 'script',
+	'blockquote', 'code', 'code-block', 'list', 'image', 'video', 'link'
+];
+
+const quill = new Quill("#editor", {
+	theme: "snow",
+	formats: formats,
+	modules: {
+		syntax: true,
+		'auto-links': true,
+		toolbar: {
+			container: toolbarItems
+		},
+		counter: {
+			container: '#counter',
+			unit: 'character'
+		}
+	}
+});
+
+// store index on change
+let quillIndex = 0;
+quill.on('editor-change', function () {
+	quillIndex = quill.getSelection() ? quill.getSelection().index : 0;
+});
+
+
+async function fetchBlob(src) {
+	try {	
+		const prefix = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(src) 
+					   ? "https://cors-anywhere.herokuapp.com/" : "";
+		const response = await fetch(prefix+src);
+		let blob = await response.blob();
+
+		return blob;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
+}
+
+async function fetchUrl(file) {
+	const formData = newTokenData();
+	formData.append("image", file);
+	const response = await fetch(`${URL}/ajax/write/upload-image`, {
+		method: "POST",
+		body: formData
+	});
+	const json = await response.text();
+	return json;
+}
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+// On content paste with images
+document.querySelector('.ql-editor').addEventListener('paste', e => {
+
+	const clipboardData = e.clipboardData || window.clipboardData;
+	let tmp = document.createElement('div');
+	tmp.innerHTML = clipboardData.getData('text/html');
+	
+	let toast = document.getElementById('img-toast');
+	toast.querySelector('.toast-body').innerHTML = 'Uploading Images <i class="fas fa-circle-notch fa-spin"></i>';
+	let bsAlert = new bootstrap.Toast(toast, {
+		delay: 50000
+	});
+	const uploadCount = tmp.querySelectorAll("img").length;
+	if(uploadCount > 0)	bsAlert.show();
+
+	
+	const main = async () => {
+		const validateUrl = document.querySelector("[name='img_valid_url']").value;
+		await delay(1000);
+		let i = 0;
+
+		document.querySelectorAll('.ql-editor img').forEach(img => {
+			let src = img.src;
+			
+			if(src.indexOf(validateUrl) !== 0) {
+				const upload = async () => {
+					const blob = await fetchBlob(src);
+					if (blob) {
+						let file = new File([blob], 'file');
+						const json = await fetchUrl(file);
+						if (isJson(json)) {
+							let obj = JSON.parse(json);
+							if (obj.status === 200) {
+								if(uploadCount === i+1) {
+									bsAlert.hide();
+								}
+								img.src = obj.url;
+							} else {
+								img.src = `${URL}/assets/img-not-found.png`;;
+							}
+						}
+					}
+					i++;
+				}
+				upload();
+			}
+		})		
+	}
+	main();
+});
+
+document.querySelector(".ql-undo").addEventListener("click", function () {
+	quill.history.undo();
+});
+document.querySelector(".ql-redo").addEventListener("click", function () {
+	quill.history.redo();
+});
+
+// Collapse on medium devices
+let collapsed = true;
+const collapser = document.querySelector(".ql-collapse-items");
+collapser.addEventListener("click", function () {
+	const toolbar = document.querySelector(".ql-toolbar");
+	const items = toolbar.querySelectorAll(".ql-formats");
+	const array = [items[4], items[5], items[6], items[7]];
+
+	if (collapsed) {
+		//open menu
+		collapsed = false;
+
+		array.forEach(el => el.style.display = "inline-block")
+		items.forEach(el => el.style.height = "34px")
+		collapser.innerHTML = "<i class='fa fa-angle-up collapser-icon'></i>";
+	} else {
+		//close menu
+		collapsed = true;
+
+		array.forEach(el => el.style.display = "none")
+		items.forEach(el => el.style.height = "32px")
+		collapser.innerHTML = `<i class='fa fa-angle-down collapser-icon'></i>`;
+	}
+});
+
+// All icons on large screen
+window.onresize = function (event) {
+	const toolbar = document.querySelector(".ql-toolbar");
+	const items = toolbar.querySelectorAll(".ql-formats");
+	const array = [items[4], items[5], items[6], items[7]];
+
+	if (window.screen.width > 1100) array.forEach(el => el.style.display = "inline-block")
+};
+
+quill.getModule("toolbar").addHandler("video", videoHandler);
+
+function videoHandler() {
+	let range = (quill.getSelection())['index'];
+	let url = prompt("Enter Video URL: ");
+	url = getVideoUrl(url);
+	if (url != null) {
+		quill.insertEmbed(range, 'video', url);
+	}
+}
 
 function getVideoUrl(url) {
 	let match = url.match(/^(?:(https?):\/\/)?(?:(?:www|m)\.)?youtube\.com\/watch.*v=([a-zA-Z0-9_-]+)/) ||
@@ -15,4 +250,14 @@ function getVideoUrl(url) {
 
 	return null;
 }
-const taglineInput=document.querySelector("#tagline");function resizeTagline(){taglineInput.style.height="1px",taglineInput.style.height=taglineInput.scrollHeight+"px"}taglineInput.addEventListener("input",resizeTagline),document.addEventListener("DOMContentLoaded",resizeTagline);
+
+// Tagline input
+const taglineInput = document.querySelector("#tagline");
+
+taglineInput.addEventListener("input", resizeTagline);
+document.addEventListener("DOMContentLoaded", resizeTagline)
+
+function resizeTagline() {
+	taglineInput.style.height = "1px";
+	taglineInput.style.height = (taglineInput.scrollHeight) + "px";
+}
