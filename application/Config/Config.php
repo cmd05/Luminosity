@@ -25,7 +25,8 @@ define('DB_TIMESTAMP_FMT', 'Y-m-d H:i:s');
  */
 define("SERVER_TIMEZONE", 'Asia/Kolkata');
 define('APPROOT', dirname(dirname(__FILE__)));
-define('URLROOT', "http://localhost/luminosity");
+define('BASE_FOLDER', basename(dirname(__DIR__, 2)));
+define('URLROOT', "http://localhost/".BASE_FOLDER);
 define('SITENAME', 'Luminosity');
 define('APP_VERSION', '1.0.0');
 define('SESSION_NAME', SITENAME);
@@ -46,24 +47,23 @@ define("DEFAULT_PROFILE_PATH", PROFILE_IMG_DIR."/".DEFAULT_PROFILE_NAME);
  * Some mailing hosts may require access from lesser known sources.
  * Default port is 587
  */
-define("SMTP_HOST", '');
-define("SMTP_USERNAME", '');
-define("SMTP_MAIL", '');
-define("SMTP_PASSWORD", '');
+define("SMTP_HOST", 'smtp.gmail.com');
+define("SMTP_USERNAME", '...');
+define("SMTP_MAIL", '...');
+define("SMTP_PASSWORD", '...');
 define("SMTP_PORT", 587);
-
 
 /**
  * Email validation API
  */
-define('EMAIL_API_TOKEN', '');
+define('EMAIL_API_TOKEN', '...');
 define('EMAIL_API', 'https://www.ipqualityscore.com/api/json/email/'.EMAIL_API_TOKEN.'/');
 
 /**
  * Setup remote location for bulk image storage
  */
 define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/demo/image/upload');
-define('IMG_CLOUD_NAME', '');
+define('IMG_CLOUD_NAME', 'demo');
 define('IMG_API_SECRET', '');
 define('IMG_API_KEY', '');
 define('IMG_API_PRESET', 'docs_upload_example_us_preset');
