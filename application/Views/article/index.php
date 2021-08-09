@@ -1,6 +1,6 @@
 <?php View::header(true, $data['article']->title) ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="<?=URLROOT?>/css/hljs-theme.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 <link rel="stylesheet" href="<?=URLROOT?>/css/article.css">
 
