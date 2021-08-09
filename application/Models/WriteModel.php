@@ -4,18 +4,17 @@ declare(strict_types = 1);
 
 class WriteModel extends Model {
     public function uploadImage($img)  {
-        $content = $img['tmp_name'];
-        $type = $img['type'];
-        
-        $cfile = new CURLFile($content, $type, (string) md5_file($content));
-        
+        $cfile = is_string($img) ? $img :  new CURLFile($img['tmp_name'], $img['type'], (string) md5_file($img['tmp_name']));
+
         $upload = array(
             "file" => $cfile,
             "upload_preset" => IMG_API_PRESET,
             "cloud_name" => IMG_CLOUD_NAME, 
+            "resource_type" => "image",
             "api_key" => IMG_API_KEY, 
             "api_secret" => IMG_API_SECRET, 
             "secure" => true,
+            'metadata' => false
         );
     
         $ch = curl_init(IMG_UPLOAD_URL);
@@ -24,11 +23,20 @@ class WriteModel extends Model {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $json = @curl_exec($ch);
 
+        // Cloudinary automatically restricts images to 10MB size for users
+        // Set allowed extensions in settings/uploads/<UPLOAD_PRESET>/uploadcontrol
         if (!curl_errno($ch)) {
             $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if ($resultStatus == 200) {
                 $array = json_decode($json, true);
                 return $array['secure_url'] ?? false;
+
+                /* // For demo Cloud Uploads
+                if($array['bytes'] <= 10000000 && in_array($array['format'], ['jpg','jpeg','gif','webp','png'])
+                   && isset($array['secure_url'])) {
+                    return $array['secure_url'];
+                } 
+                */
             }
         }
 
