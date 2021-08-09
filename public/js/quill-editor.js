@@ -104,24 +104,9 @@ quill.on('editor-change', function () {
 	quillIndex = quill.getSelection() ? quill.getSelection().index : 0;
 });
 
-
-async function fetchBlob(src) {
-	try {	
-		const prefix = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(src) 
-					   ? "https://cors-anywhere.herokuapp.com/" : "";
-		const response = await fetch(prefix+src);
-		let blob = await response.blob();
-
-		return blob;
-	} catch (error) {
-		console.log(error);
-		return false;
-	}
-}
-
-async function fetchUrl(file) {
+async function fetchUrl(src) {
 	const formData = newTokenData();
-	formData.append("image", file);
+	formData.append("src", src);
 	const response = await fetch(`${URL}/ajax/write/upload-image`, {
 		method: "POST",
 		body: formData
@@ -142,7 +127,7 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	let toast = document.getElementById('img-toast');
 	toast.querySelector('.toast-body').innerHTML = 'Uploading Images <i class="fas fa-circle-notch fa-spin"></i>';
 	let bsAlert = new bootstrap.Toast(toast, {
-		delay: 50000
+		delay: 2000
 	});
 	const uploadCount = tmp.querySelectorAll("img").length;
 	if(uploadCount > 0)	bsAlert.show();
@@ -150,7 +135,7 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	
 	const main = async () => {
 		const validateUrl = document.querySelector("[name='img_valid_url']").value;
-		await delay(1000);
+		await delay(1000); // wait for paste to finish
 		let i = 0;
 
 		document.querySelectorAll('.ql-editor img').forEach(img => {
@@ -158,26 +143,23 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 			
 			if(src.indexOf(validateUrl) !== 0) {
 				const upload = async () => {
-					const blob = await fetchBlob(src);
-					if (blob) {
-						let file = new File([blob], 'file');
-						const json = await fetchUrl(file);
-						if (isJson(json)) {
-							let obj = JSON.parse(json);
-							if (obj.status === 200) {
-								if(uploadCount === i+1) {
-									bsAlert.hide();
-								}
-								img.src = obj.url;
-							} else {
-								img.src = `${URL}/assets/img-not-found.png`;;
-							}
+					const json = await fetchUrl(src);
+					
+					if (isJson(json)) {
+						let obj = JSON.parse(json);
+						if (obj.status === 200) {
+							img.src = obj.url;
+						} else {
+							img.src = `${URL}/assets/img-not-found.png`;;
 						}
 					}
+
+					if(uploadCount === i+1) bsAlert.hide();
 					i++;
 				}
 				upload();
 			}
+			if(uploadCount === i+1) bsAlert.hide();
 		})		
 	}
 	main();

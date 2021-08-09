@@ -24,20 +24,18 @@ class Write extends ProtectedController {
             'url' => ""
         ];
 
-        if(isset($_FILES['image'])) {
-            $img = $_FILES['image'];
-            $allowedTypes = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_ICO, IMAGETYPE_WEBP];
+        // refer to write model for iamge validation
+        $img = $_FILES['image'] ?? $_POST['src'] ?? false;
 
-            if(Image::isValidImg($img, $this->maxImgUpload, $allowedTypes)) {
-                $url = $this->writeModel->uploadImage($img);
+        if($img) {
+            $url = $this->writeModel->uploadImage($img);
 
-                if($url) {
-                    $data['status'] = 200;
-                    $data['url'] = $url;
-                }
+            if($url) {
+                $data['status'] = 200;
+                $data['url'] = $url;
             }
         }
-        
+
         echo json_encode($data);
     }
 

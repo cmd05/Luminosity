@@ -104,20 +104,9 @@ quill.on('editor-change', function () {
 	quillIndex = quill.getSelection() ? quill.getSelection().index : 0;
 });
 
-async function fetchBlob(src) {
-	try {
-		const response = await fetch(src);
-		let blob = await response.blob();
-		return blob;
-	} catch (error) {
-		console.log(error);
-		return false;
-	}
-}
-
-async function fetchUrl(file) {
+async function fetchUrl(src) {
 	const formData = newTokenData();
-	formData.append("image", file);
+	formData.append("src", src);
 	const response = await fetch(`${URL}/ajax/write/upload-image`, {
 		method: "POST",
 		body: formData
@@ -126,65 +115,52 @@ async function fetchUrl(file) {
 	return json;
 }
 
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
 // On content paste with images
 document.querySelector('.ql-editor').addEventListener('paste', e => {
+
+	const clipboardData = e.clipboardData || window.clipboardData;
+	let tmp = document.createElement('div');
+	tmp.innerHTML = clipboardData.getData('text/html');
+	
+	let toast = document.getElementById('img-toast');
+	toast.querySelector('.toast-body').innerHTML = 'Uploading Images <i class="fas fa-circle-notch fa-spin"></i>';
+	let bsAlert = new bootstrap.Toast(toast, {
+		delay: 2000
+	});
+	const uploadCount = tmp.querySelectorAll("img").length;
+	if(uploadCount > 0)	bsAlert.show();
+
+	
 	const main = async () => {
-		const clipboardData = e.clipboardData || window.clipboardData;
-		let tmp = document.createElement('div');
-		tmp.innerHTML = clipboardData.getData('text/html');
+		const validateUrl = document.querySelector("[name='img_valid_url']").value;
+		await delay(1000); // wait for paste to finish
+		let i = 0;
 
-		const clipboardImg = clipboardData.items[0];
-		if (clipboardImg.type.indexOf("image") === 0) {
-			e.preventDefault();
-			const fileReader = new syncFileReader(clipboardImg.getAsFile());
-			const arrayBuffer = await fileReader.readAsDataURL();
-			let el = document.createElement('img');
-			el.setAttribute("src", arrayBuffer);
-			tmp.appendChild(el);
-		}
-
-		const imgNodeList = tmp.querySelectorAll('img');
-		if(imgNodeList.length > 30) alert("Please reduce the number of images");
-		
-		if (imgNodeList.length > 0 && imgNodeList.length <= 30) {
-			e.preventDefault();
-
-			const loop = async () => {
-				let toast = document.getElementById('img-toast');
-				toast.querySelector('.toast-body').innerHTML = 'Adding Contents <i class="fas fa-circle-notch fa-spin"></i>';
-				let bsAlert = new bootstrap.Toast(toast, {
-					delay: 20000
-				});
-				bsAlert.show();
-
-				for (let i = 0; i < imgNodeList.length; i++) {
-					const img = imgNodeList[i];
-					if (img.src) {
-						let src = img.src;
-						let res = false;
-						const blob = await fetchBlob(src);
-
-						if (blob) {
-							let file = new File([blob], 'file');
-							const json = await fetchUrl(file);
-							if (isJson(json)) {
-								let obj = JSON.parse(json);
-								if (obj.status === 200) {
-									tmp.querySelectorAll('img')[i].src = obj.url;
-									res = true;
-								}
-							}
+		document.querySelectorAll('.ql-editor img').forEach(img => {
+			let src = img.src;
+			
+			if(src.indexOf(validateUrl) !== 0) {
+				const upload = async () => {
+					const json = await fetchUrl(src);
+					
+					if (isJson(json)) {
+						let obj = JSON.parse(json);
+						if (obj.status === 200) {
+							img.src = obj.url;
+						} else {
+							img.src = `${URL}/assets/img-not-found.png`;;
 						}
-
-						if (!res) tmp.querySelectorAll('img')[i].src = `${URL}/assets/img-not-found.png`;
 					}
-				}
 
-				bsAlert.hide();
-				quill.clipboard.dangerouslyPasteHTML(quillIndex, tmp.innerHTML);
+					if(uploadCount === i+1) bsAlert.hide();
+					i++;
+				}
+				upload();
 			}
-			loop();
-		}
+			if(uploadCount === i+1) bsAlert.hide();
+		})		
 	}
 	main();
 });

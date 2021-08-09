@@ -62,8 +62,8 @@ define('EMAIL_API', 'https://www.ipqualityscore.com/api/json/email/'.EMAIL_API_T
 /**
  * Setup remote location for bulk image storage
  */
-define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/demo/image/upload');
 define('IMG_CLOUD_NAME', 'demo');
+define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/'.IMG_CLOUD_NAME.'/image/upload');
 define('IMG_API_SECRET', '');
 define('IMG_API_KEY', '');
 define('IMG_API_PRESET', 'docs_upload_example_us_preset');
