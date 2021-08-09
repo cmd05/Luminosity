@@ -185,3 +185,7 @@ textarea,
     background-color: green!important;
     border-color: green!important;
 }
+
+.loading-img {
+    filter: brightness(0.9) blur(4px);
+}

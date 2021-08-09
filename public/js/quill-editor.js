@@ -127,7 +127,7 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	let toast = document.getElementById('img-toast');
 	toast.querySelector('.toast-body').innerHTML = 'Uploading Images <i class="fas fa-circle-notch fa-spin"></i>';
 	let bsAlert = new bootstrap.Toast(toast, {
-		delay: 2000
+		delay: 4000
 	});
 	const uploadCount = tmp.querySelectorAll("img").length;
 	if(uploadCount > 0)	bsAlert.show();
@@ -136,15 +136,15 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	const main = async () => {
 		const validateUrl = document.querySelector("[name='img_valid_url']").value;
 		await delay(1000); // wait for paste to finish
-		let i = 0;
+		bsAlert.hide();
 
 		document.querySelectorAll('.ql-editor img').forEach(img => {
 			let src = img.src;
-			
+			img.classList.add("loading-img");
+
 			if(src.indexOf(validateUrl) !== 0) {
 				const upload = async () => {
 					const json = await fetchUrl(src);
-					
 					if (isJson(json)) {
 						let obj = JSON.parse(json);
 						if (obj.status === 200) {
@@ -153,13 +153,14 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 							img.src = `${URL}/assets/img-not-found.png`;;
 						}
 					}
-
-					if(uploadCount === i+1) bsAlert.hide();
-					i++;
+					return 1;
 				}
-				upload();
+				upload().then(a=> {
+					img.classList.remove("loading-img");
+				});
+			} else {
+				img.classList.remove("loading-img");
 			}
-			if(uploadCount === i+1) bsAlert.hide();
 		})		
 	}
 	main();
