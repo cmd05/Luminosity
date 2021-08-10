@@ -8,7 +8,7 @@ function newTokenData(addData = {}) {
     return data;
 }
 
-const URL = 'http://' + window.location.host + '/luminosity';
+const URL = document.querySelector("[name='app_url']").value;
 
 function isJson(str) {
     var parsedStr = str;
