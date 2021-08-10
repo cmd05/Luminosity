@@ -6,7 +6,7 @@
   - [Quill JS](https://github.com/quilljs/quill)
 
  ## Requirements
-  - PHP Version >= 7.0 (ext-mbstring and ext-exif enabled)
+  - PHP Version ≥ 7.0 (ext-mbstring and ext-exif enabled)
   - Composer package management (optional)
   - MySQL drivers
  
@@ -40,7 +40,7 @@
     ```
   
   ### 2. App Configurations
-   Setup app configurations in the Config file carefully to avoid unexpected errors <br>
+   Setup the app configurations in the Config file carefully to avoid any unexpected errors <br>
  
   - Add SMTP Mail details to app. <br><br>
     To setup using Gmail
@@ -55,11 +55,11 @@
     <br>
     More options: [Sendgrid](http://sendgrid.com/), [Mailjet](https://www.mailjet.com/feature/smtp-relay/)
     
-  - Create an [IP Quality Score](https://www.ipqualityscore.com/create-account) account for email validation API token.
+  - Create an [IP Quality Score](https://www.ipqualityscore.com/create-account) account and add your email validation API token. After signing up you will find your API key in the [account settings](https://www.ipqualityscore.com/user/settings)
     ```php
     define('EMAIL_API_TOKEN', '...');
     ```
-  - Cloudinary has been used as image host for application. Cloudinary works in default ``demo`` mode as given. Creating your own [cloud](https://cloudinary.com/users/register/free) will allow only validated images from your cloud on the application. Allowed Image Extensions can be set in the console at ``settings/uploads/<UPLOAD_PRESET>/Upload Control``
+  - Cloudinary has been used as the image host for application. Cloudinary works in the default ``demo`` mode as given. Creating your own [cloud](https://cloudinary.com/users/register/free) will allow only validated images from your cloud on the application. Allowed Image Extensions can be set in the console at ``settings/uploads/<UPLOAD_PRESET>/Upload Control``
     
     Reference [Upload API](https://cloudinary.com/documentation/image_upload_api_reference)
     ```php
@@ -88,7 +88,7 @@
     define("DB_PASS", "");
     define("DB_NAME", "luminosity");
     ```
-  - Create a database ``luminosity`` and load [``application/SQL/dump.sql``](https://github.com/cmd3BOT/Luminosity/blob/main/application/SQL/dump.sql)
+  - Create a database called ``luminosity`` and load [``application/SQL/dump.sql``](https://github.com/cmd3BOT/Luminosity/blob/main/application/SQL/dump.sql)
   
 ## Issues
   In case of a problem you can open an [issue](https://github.com/cmd3BOT/Luminosity/issues)

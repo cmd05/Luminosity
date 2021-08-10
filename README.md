@@ -4,17 +4,17 @@
 
 # Luminosity
 
-Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The Complete Modern Blogging Platform. <br>
+Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The Modern Blogging Platform. <br>
   
 ## Features
-  - Read Articles of various topics
-  - Explore Content and follow other users
-  - Use a Web Friendly interface to create posts
-  - Comment and React on articles
-  - Bookmark and save articles 
-  - Customize Profile
-  - Dark Mode option
-  - Public API (Dev.)
+  - Find articles on various topics
+  - Follow other users
+  - Use a web-friendly interface to create posts
+  - Create drafts before publishing articles
+  - Comment and react on articles
+  - Bookmark articles 
+  - Customize your profile
+  - Responsive Design and Dark Mode option
   
 <br>
 <p align = "center">
@@ -31,11 +31,11 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The C
 <p align = "center">
   <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1628588995/Luminosity/wxzarom0lbokjcipwwba.png">
 </p>
-<p align = "center"><b>Manage Your Profile</b></p>
+<p align = "center"><b>Customize your profile</b></p>
 
 ## Design 
 
-The project implements *MVC [Model-View-Controller]* design pattern. The project has been built upon a [Custom Framework](https://github.com/cmd3BOT/PHP-MVC-Framework). 
+The project implements ``Model-View-Controller`` design pattern. This project has been built using a [custom framework](https://github.com/cmd3BOT/PHP-MVC-Framework).
 
 ![MVC Structure](https://cdn.educba.com/academy/wp-content/uploads/2019/04/what-is-mvc-design-pattern.jpg)
 
@@ -57,29 +57,26 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
 
 ## Project Structure
   
-``application/``
-  Contains Backend and Application Logic
-  - **Config** - Contains Configuration Files for project
-  - **Libraries** - Contains Basic Libraries used by classes and other units.
-    - See ``Core.php`` for URL Router logic
+``application/`` Contains Backend and Application Logic
+  - **Config** - Contains configuration files for project
+  - **Libraries** - Contains basic libraries used by classes and other units.
+    - See ``Core.php`` for URL based routing
   - **Controllers**
-    - **Ajax Controllers**: Internal API request logic
-    - **Controller Traits**: Config values for controllers
-    - **View Controllers**: Load correct page with data 
-  - **Helpers** - Helper Files for common methods used across the application
-  - **SQL** - Contains SQL Dump and Procedures for Models
-  - **Views** - Each Controller has a seperate view folder containing files for a specific page [default index]
-  - **Vendor** - Packages used in PHP
-  - **Bootstrap.php** - Setup Environment, start session and intanstiate autoloader
+    - **Ajax Controllers**: Handle internal API requests. ``(Returns: JSON)``
+    - **Controller Traits**: Constant values for controlling application logic. Eg: maxArticles
+    - **View Controllers**: Load the correct view along with the data to be displayed
+  - **Helpers** - Helper files provide common utility functions used across the application
+  - **SQL** - Contains ``SQL Dump`` and ``Procedures`` for Models
+  - **Views** - Each view controller has unique view folder containing different pages in it ``(default index.php)``
+  - **Vendor** - External Packages used by PHP
+  - **Bootstrap.php** - The bootstrap file builds the application by including the Config files and starting the session. It also initializes the class and vendor autoloaders.
 
-``/public``
-  Application frontend
+``/public`` Application frontend
   - **index.php**: Entry File
  
- ``root/.htaccess``
-  Route Requests through Public folder
+ ``root/.htaccess`` Route Requests through Public folder
   
- Packages used:
+ Packages used
   - [PHP Mailer](https://github.com/PHPMailer/PHPMailer)
   - [HTML Purifier](https://github.com/ezyang/htmlpurifier)
   - [Quill JS](https://github.com/quilljs/quill)
@@ -91,7 +88,7 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
  
  ## Setup Luminosity 
  
- Follow the Installation [Guide](https://github.com/cmd3BOT/Luminosity/blob/main/INSTALLATION.md) to set up Luminosity.
+ Follow the [Installation Guide](https://github.com/cmd3BOT/Luminosity/blob/main/INSTALLATION.md) to set up Luminosity.
 
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
