@@ -56,16 +56,17 @@ class ExploreModel extends Model {
                           WHERE (articles.title LIKE :query_1
                           OR articles.tagline LIKE :query_2
                           OR LEFT(articles.content, 5000) LIKE :query_3
-                          OR :query_4 IN (SELECT tag FROM article_tags 
-                            WHERE articles.article_id = article_tags.article_id))
-                          $idConstraint
+                        --   OR :query_4 IN (SELECT tag FROM article_tags 
+                        --     WHERE articles.article_id = article_tags.article_id)
+                          )
+                          $idConstraint 
                           ORDER BY articles.id DESC LIMIT $limit
                          ");
 
         $this->db->bind(":query_1", "%$query%");
         $this->db->bind(":query_2", "%$query%");
         $this->db->bind(":query_3", "%$query%");
-        $this->db->bind(":query_4", "$query");
+        // $this->db->bind(":query_4", "$query");
 
         if(!is_null($lastId)) $this->db->bind(":id", $lastId);
 
