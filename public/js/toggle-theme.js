@@ -1,1 +1,38 @@
-DarkReader.setFetchMethod(window.fetch);let theme="light";function darkTheme(){DarkReader.enable({brightness:100,contrast:95,sepia:10}),localStorage.setItem("theme","dark")}function lightTheme(){DarkReader.disable(),localStorage.setItem("theme","light")}localStorage.getItem("theme")||localStorage.setItem("theme","light"),"dark"===localStorage.getItem("theme")&&(document.querySelectorAll(".toggle-theme").forEach(e=>e.querySelector("input").checked=!0),darkTheme()),document.querySelectorAll(".toggle-theme").forEach(e=>{e.addEventListener("input",function(){"light"===theme?(theme="dark",darkTheme()):(theme="light",lightTheme()),document.querySelectorAll(".toggle-theme").forEach(e=>e.querySelector("input").checked="light"!==theme)})});
+DarkReader.setFetchMethod(window.fetch);
+
+let theme = 'light';
+
+if (!localStorage.getItem("theme")) localStorage.setItem('theme', 'light');
+
+if (localStorage.getItem('theme') === 'dark') {
+    document.querySelectorAll('.toggle-theme').forEach(btn => btn.querySelector('input').checked = true);
+    darkTheme();
+}
+
+function darkTheme() {
+    DarkReader.enable({
+        brightness: 100,
+        contrast: 95,
+        sepia: 10
+    });
+    localStorage.setItem('theme', 'dark');
+}
+
+function lightTheme() {
+    DarkReader.disable();
+    localStorage.setItem('theme', 'light');
+}
+
+document.querySelectorAll('.toggle-theme').forEach(btn => {
+    btn.addEventListener('input', function() {
+        if (theme === 'light') {
+            theme = 'dark';
+            darkTheme();
+        } else {
+            theme = 'light';
+            lightTheme();
+        }
+
+        document.querySelectorAll('.toggle-theme').forEach(btn => btn.querySelector('input').checked = theme !== 'light');
+    })
+})

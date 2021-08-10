@@ -1,1 +1,67 @@
-import{ht,isJson,URL,LiveLoader,loginMdl,newTokenData}from"./script.js";const uniq=document.querySelector("[name='uniq_id']").value,bodyLoader=new LiveLoader;bodyLoader.addIdSelector("[name='last_follower_id']"),bodyLoader.addBtn("#show-more"),bodyLoader.addParams({profile_uniq:uniq}),bodyLoader.addEndPoint("ajax/profile/load-followers"),bodyLoader.addListener(o=>{Object.entries(o.followers).forEach(([o,n])=>{const e=n;let t="";e.show_btn&&e.show_btn&&(t=`<button class="btn mb-1 follow-btn btn-outline-primary float-end rounded ${e.is_following?"active":""}" \n            data-uniq="${e.uniq_id}">\n                ${e.is_following?"Following":"Follow"}\n            </button>`),document.querySelector(".list-container").innerHTML+=`\n            <div class="p-2 row mb-0 pb-1">\n            <div class="col-2 text-center">\n                <div class="follow-list-img" style='background-image: url(${URL}/uploads/${e.profile_img});'></div>\n            </div>\n            <div class="col-10">\n                <h6 class='d-inline-block'>\n                    <a href="${URL}/profile?u=${e.username}" class='text-dark text-decoration-none'>${ht(e.display_name)}</a>\n                </h6>\n                ${t}\n                <p class="text-muted">@${ht(e.username)}</p>\n            </div>\n        </div>\n        `})}),document.addEventListener("click",function(o){const n=o.target;if(n.classList.contains("follow-btn")){const o=newTokenData({profile_uniq:n.getAttribute("data-uniq")});fetch(`${URL}/ajax/profile/toggle-follow`,{method:"POST",body:o}).then(o=>o.text()).then(o=>{if(isJson(o)){200===JSON.parse(o).status&&(n.classList.toggle("active"),"Follow"==n.innerHTML.trim()?n.innerHTML="Following":n.innerHTML="Follow")}else loginMdl()})}});
+import {ht, isJson, URL, LiveLoader, loginMdl, newTokenData} from "./script.js";
+
+const uniq = document.querySelector("[name='uniq_id']").value;
+
+const bodyLoader = new LiveLoader();
+bodyLoader.addIdSelector("[name='last_follower_id']");
+bodyLoader.addBtn("#show-more");
+bodyLoader.addParams({
+    "profile_uniq": uniq
+});
+bodyLoader.addEndPoint("ajax/profile/load-followers");
+
+bodyLoader.addListener((response) => {    
+  Object.entries(response.followers).forEach(
+      ([key, value]) => {
+        const profile = value;
+        let btn = '';
+
+        if(profile.show_btn && profile.show_btn) {
+            btn =
+            `<button class="btn mb-1 follow-btn btn-outline-primary float-end rounded ${profile.is_following?"active":""}" 
+            data-uniq="${profile.uniq_id}">
+                ${profile.is_following ? "Following" : "Follow"}
+            </button>`;
+        }
+
+        document.querySelector(".list-container").innerHTML += `
+            <div class="p-2 row mb-0 pb-1">
+            <div class="col-2 text-center">
+                <div class="follow-list-img" style='background-image: url(${URL}/uploads/${profile.profile_img});'></div>
+            </div>
+            <div class="col-10">
+                <h6 class='d-inline-block'>
+                    <a href="${URL}/profile?u=${profile.username}" class='text-dark text-decoration-none'>${ht(profile.display_name)}</a>
+                </h6>
+                ${btn}
+                <p class="text-muted">@${ht(profile.username)}</p>
+            </div>
+        </div>
+        `;
+      }
+  );
+});
+
+document.addEventListener("click", function(e) {
+    const target = e.target;
+    if(target.classList.contains("follow-btn")) {
+        const form = newTokenData({"profile_uniq": target.getAttribute("data-uniq")})
+		fetch(`${URL}/ajax/profile/toggle-follow`, {method: "POST", body: form})
+		.then(r => r.text())
+		.then(res => {
+			if(isJson(res)) {
+				let obj = JSON.parse(res);
+				if(obj.status === 200) {
+					target.classList.toggle("active");
+					if(target.innerHTML.trim() == "Follow") {
+						target.innerHTML = "Following";
+					} else {
+						target.innerHTML = "Follow";
+					}
+				}
+			} else {
+				loginMdl();
+			}
+		})
+    }
+})

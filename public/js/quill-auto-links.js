@@ -1,1 +1,84 @@
-var _extends=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var a in n)Object.prototype.hasOwnProperty.call(n,a)&&(t[a]=n[a])}return t};function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var DEFAULT_OPTIONS={paste:!0,type:!0},REGEXP=/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;function registerTypeListener(t){var e;t.keyboard.addBinding({collapsed:!0,key:" ",prefix:REGEXP,handler:(e=0,function(n){var a=void 0,r=t.getText(e,n.index).match(REGEXP);if(null===r)return e=n.index,!0;a=r.length>1?r[r.length-1]:r[0];var s=[];return s.push({retain:n.index-a.length}),s.push({delete:a.length}),s.push({insert:a,attributes:{link:a}}),t.updateContents({ops:s}),e=n.index,!0})})}function registerPasteListener(t){t.clipboard.addMatcher(Node.TEXT_NODE,function(t,e){if("string"==typeof t.data){var n=t.data.match(REGEXP);if(n&&n.length>0){var a=[],r=t.data;n.forEach(function(t){var e=r.split(t),n=e.shift();a.push({insert:n}),a.push({insert:t,attributes:{link:t}}),r=e.join(t)}),a.push({insert:r}),e.ops=a}return e}})}var AutoLinks=function t(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};_classCallCheck(this,t);var a=_extends({},DEFAULT_OPTIONS,n);a.type&&registerTypeListener(e),a.paste&&registerPasteListener(e)};Quill.register("modules/auto-links",AutoLinks);
+var _extends = Object.assign || function(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DEFAULT_OPTIONS = {
+    paste: true,
+    type: true
+};
+
+var REGEXP = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+
+function registerTypeListener(quill) {
+    quill.keyboard.addBinding({
+        collapsed: true,
+        key: ' ',
+        prefix: REGEXP,
+        handler: function() {
+            var prevOffset = 0;
+            return function(range) {
+                var url = void 0;
+                var text = quill.getText(prevOffset, range.index);
+                var match = text.match(REGEXP);
+                if (match === null) {
+                    prevOffset = range.index;
+                    return true;
+                }
+                if (match.length > 1) {
+                    url = match[match.length - 1];
+                } else {
+                    url = match[0];
+                }
+                var ops = [];
+                ops.push({ retain: range.index - url.length });
+                ops.push({ 'delete': url.length });
+                ops.push({ insert: url, attributes: { link: url } });
+                quill.updateContents({ ops: ops });
+                prevOffset = range.index;
+                return true;
+            };
+        }()
+    });
+}
+
+function registerPasteListener(quill) {
+    quill.clipboard.addMatcher(Node.TEXT_NODE, function(node, delta) {
+        if (typeof node.data !== 'string') {
+            return;
+        }
+        var matches = node.data.match(REGEXP);
+        if (matches && matches.length > 0) {
+            var ops = [];
+            var str = node.data;
+            matches.forEach(function(match) {
+                var split = str.split(match);
+                var beforeLink = split.shift();
+                ops.push({ insert: beforeLink });
+                ops.push({ insert: match, attributes: { link: match } });
+                str = split.join(match);
+            });
+            ops.push({ insert: str });
+            delta.ops = ops;
+        }
+
+        return delta;
+    });
+}
+
+var AutoLinks = function AutoLinks(quill) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, AutoLinks);
+
+    var opts = _extends({}, DEFAULT_OPTIONS, options);
+
+    if (opts.type) {
+        registerTypeListener(quill);
+    }
+    if (opts.paste) {
+        registerPasteListener(quill);
+    }
+};
+
+
+Quill.register('modules/auto-links', AutoLinks)

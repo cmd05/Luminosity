@@ -1,1 +1,99 @@
-import{URL,clipboardCopy,newTokenData,isJson,LiveLoader,ht}from"./script.js";const toast=document.getElementById("drafts-toast"),toastBody=toast.querySelector(".toast-body");function isBlank(t){return!t||/^\s*$/.test(t)}document.addEventListener("click",t=>{if(t.target.classList.contains("copy-link")){clipboardCopy(t.target.getAttribute("data-link")),toastBody.innerHTML="Copied Link",new bootstrap.Toast(toast,{delay:2e3}).show()}else if(t.target.classList.contains("delete-draft")){let e=prompt("Enter username to delete draft: ");const a=newTokenData({username:e,draft_id:t.target.getAttribute("data-delete-id")});toastBody.innerHTML="Delete";let n=new bootstrap.Toast(toast,{delay:5e3});n.show(),fetch(`${URL}/ajax/write/delete-draft`,{method:"POST",body:a}).then(t=>t.text()).then(e=>{if(isJson(e)){let a=JSON.parse(e);if(200===a.status){toastBody.innerHTML="Draft Deleted",new bootstrap.Toast(toast,{delay:2e3}).show(),t.target.closest(".col").remove()}else delete a.status,toastBody.innerHTML=`${a[Object.keys(a)[0]]}`}setTimeout(function(){n.hide()},3e3)})}});const bodyLoader=new LiveLoader;bodyLoader.addIdSelector("[name='last_draft_id']"),bodyLoader.addBtn("#drafts-more-btn"),bodyLoader.addEndPoint("ajax/write/load-drafts"),bodyLoader.addListener(t=>{const e=t.drafts;Object.entries(e).forEach(([t,e])=>{const a=e,n=`${URL}/write/draft/${a.draft_id}`,s=isBlank(a.title)?"<i class='fs-6'>Title</i> ":ht(a.title,40),d=isBlank(a.tagline)?"<i class='fs-6'>Title</i> ":ht(a.tagline,100);document.querySelector("#drafts-container").innerHTML+=`\n          <div class="col mb-3">\n            <div class="card shadow-sm">\n              <div class="card-body">\n                <h4 class='draft-name'><a href="${n}" class='text-dark text-decoration-none'>${ht(a.draft_name,40)}</a></h4>\n                <div class="p-2"></div>\n                <h5>\n                    <span style='font-weight: 400'>${s}</span>\n                </h5>\n                <p class="card-text tagline">\n                  ${d}\n                </p>\n                <p class="card-text">${ht(a.content,200)}</p>\n                <div class="py-2">\n                  <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> ${ht(a.created_at)}</small>\n                </div>\n                <div class="d-flex justify-content-between align-items-center pt-2">\n                  <div class="btn-group">\n                    <button type="button" class="btn btn-sm btn-outline-danger delete-draft" data-delete-id="${a.draft_id}">&nbsp;Delete&nbsp;</button>\n                    <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${n}">Copy Link</button>\n                  </div>\n                  <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Last Edit: </span> ${a.last_edited}</small>\n                </div>\n              </div>\n            </div>\n          </div>`})});
+import { URL, clipboardCopy, newTokenData,  isJson, LiveLoader, ht } from "./script.js";
+
+const toast = document.getElementById('drafts-toast');
+const toastBody = toast.querySelector('.toast-body');
+
+document.addEventListener("click", (e) => {
+    if(e.target.classList.contains("copy-link")) {
+    	clipboardCopy(e.target.getAttribute("data-link"));
+
+		toastBody.innerHTML = `Copied Link`;
+		let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
+		bsAlert.show();
+		
+    } else if(e.target.classList.contains('delete-draft')) {
+		
+		let name = prompt("Enter username to delete draft: ");
+		const data = newTokenData({
+			"username": name, 
+			'draft_id': e.target.getAttribute("data-delete-id")
+		})
+
+		toastBody.innerHTML = `Delete`;
+		let bsAlert = new bootstrap.Toast(toast, { delay: 5000 });
+		bsAlert.show();
+
+		fetch(`${URL}/ajax/write/delete-draft`, {
+				method: "POST",
+				body: data
+			})
+			.then(response => response.text())
+			.then(result => {
+				if(isJson(result)) {
+					let obj = JSON.parse(result);
+					if(obj.status === 200) {
+						toastBody.innerHTML = `Draft Deleted`;
+						let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
+						bsAlert.show();
+						e.target.closest('.col').remove();
+					} else {
+						delete obj.status;
+						toastBody.innerHTML = `${obj[Object.keys(obj)[0]]}`;
+					}
+				}
+
+				setTimeout(function() {
+					bsAlert.hide();
+				}, 3000)
+			})
+    }
+})
+
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+
+const bodyLoader = new LiveLoader();
+bodyLoader.addIdSelector("[name='last_draft_id']");
+bodyLoader.addBtn("#drafts-more-btn");
+bodyLoader.addEndPoint("ajax/write/load-drafts");
+
+bodyLoader.addListener((response) => {
+  const drafts = response.drafts;
+    
+  Object.entries(drafts).forEach(
+      ([key, value]) => {
+          const draft = value;
+
+          const link = `${URL}/write/draft/${draft["draft_id"]}`;
+          const title = isBlank(draft['title']) ? "<i class='fs-6'>Title</i> " : ht(draft['title'], 40);
+          const tagline = isBlank(draft['tagline']) ? "<i class='fs-6'>Title</i> " : ht(draft['tagline'], 100)
+          document.querySelector("#drafts-container").innerHTML += `
+          <div class="col mb-3">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h4 class='draft-name'><a href="${link}" class='text-dark text-decoration-none'>${ht(draft['draft_name'], 40)}</a></h4>
+                <div class="p-2"></div>
+                <h5>
+                    <span style='font-weight: 400'>${title}</span>
+                </h5>
+                <p class="card-text tagline">
+                  ${tagline}
+                </p>
+                <p class="card-text">${ht(draft['content'], 200)}</p>
+                <div class="py-2">
+                  <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> ${ht(draft['created_at'])}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-2">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-danger delete-draft" data-delete-id="${draft['draft_id']}">&nbsp;Delete&nbsp;</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${link}">Copy Link</button>
+                  </div>
+                  <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Last Edit: </span> ${draft['last_edited']}</small>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      }
+  );
+});

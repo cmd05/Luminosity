@@ -107,6 +107,9 @@ quill.on('editor-change', function () {
 async function fetchUrl(src) {
 	const formData = newTokenData();
 	formData.append("src", src);
+	// console.log('wait start');
+	
+	// console.log('promise api');
 	const response = await fetch(`${URL}/ajax/write/upload-image`, {
 		method: "POST",
 		body: formData
@@ -115,7 +118,7 @@ async function fetchUrl(src) {
 	return json;
 }
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+let delay = ms => new Promise(res => setTimeout(res, ms));
 
 // On content paste with images
 document.querySelector('.ql-editor').addEventListener('paste', e => {
@@ -127,7 +130,7 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	let toast = document.getElementById('img-toast');
 	toast.querySelector('.toast-body').innerHTML = 'Uploading Images <i class="fas fa-circle-notch fa-spin"></i>';
 	let bsAlert = new bootstrap.Toast(toast, {
-		delay: 2000
+		delay: 4000
 	});
 	const uploadCount = tmp.querySelectorAll("img").length;
 	if(uploadCount > 0)	bsAlert.show();
@@ -136,30 +139,42 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	const main = async () => {
 		const validateUrl = document.querySelector("[name='img_valid_url']").value;
 		await delay(1000); // wait for paste to finish
-		let i = 0;
-
+		bsAlert.hide();
+		// hide 
 		document.querySelectorAll('.ql-editor img').forEach(img => {
-			let src = img.src;
-			
-			if(src.indexOf(validateUrl) !== 0) {
-				const upload = async () => {
-					const json = await fetchUrl(src);
-					
-					if (isJson(json)) {
-						let obj = JSON.parse(json);
-						if (obj.status === 200) {
-							img.src = obj.url;
-						} else {
-							img.src = `${URL}/assets/img-not-found.png`;;
-						}
-					}
+            if((img.src).indexOf(validateUrl) !== 0) img.classList.add("loading-img");
+        })
 
-					if(uploadCount === i+1) bsAlert.hide();
-					i++;
-				}
-				upload();
-			}
-			if(uploadCount === i+1) bsAlert.hide();
+        
+		document.querySelectorAll('.ql-editor img').forEach(function (img, index) {
+            let interval = 200;
+
+            setTimeout(function () {
+                let src = img.src;
+                img.classList.add("loading-img");
+                
+                if(src.indexOf(validateUrl) !== 0) {
+                    const upload = async () => {
+                        const json = await fetchUrl(src);
+                        if (isJson(json)) {
+                            let obj = JSON.parse(json);
+                            if (obj.status === 200) {
+                                img.src = obj.url;
+                            } else {
+                                img.src = `${URL}/assets/img-not-found.png`;;
+                            }
+                        } else {
+                            img.src = `${URL}/assets/img-not-found.png`;;
+                        }
+                        return 1;
+                    }
+                    upload().then(a=> {
+                        img.classList.remove("loading-img");
+                    });
+                } else {
+                    img.classList.remove("loading-img");
+                }
+            }, index*interval)
 		})		
 	}
 	main();

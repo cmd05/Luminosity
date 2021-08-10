@@ -1,5 +1,129 @@
+function newTokenData(addData = {}) {
+    const TOKEN = document.querySelector("#ajax_csrf").value;
+    const data = new FormData;
+    data.append("csrf_token", TOKEN);
+    for(let [key, value] of Object.entries(addData)) {
+        data.append(key, value);
+    }
+    return data;
+}
+
 const URL = document.querySelector("[name='app_url']").value;
-function newTokenData(e={}){const t=document.querySelector("#ajax_csrf").value,n=new FormData;n.append("csrf_token",t);for(let[t,r]of Object.entries(e))n.append(t,r);return n}function isJson(e){var t=e;try{t=JSON.parse(e)}catch(e){return!1}return"object"==typeof t}function addFormErrors(e){for(let t in e){const n=e[t],r=document.querySelector(`[name='${t}']`);r&&(r.innerText=n);const o=document.querySelector(`[data-error='${t}']`);o&&(""!=n?o.classList.add("is-invalid"):o.classList.remove("is-invalid"))}}function removeFormErrors(e){for(let t in e){e[t];const n=document.querySelector(`[name='${t}']`);n&&(n.innerText="");const r=document.querySelector(`[data-error='${t}']`);r&&r.classList.remove("is-invalid")}}function dataURLtoFile(e,t){for(var n=e.split(","),r=n[0].match(/:(.*?);/)[1],o=atob(n[1]),a=o.length,c=new Uint8Array(a);a--;)c[a]=o.charCodeAt(a);return new File([c],t,{type:r})}function syncFileReader(e){let t=!1,n="";const r=function(e){return new Promise(t=>setTimeout(t,e))};this.readAsDataURL=async function(){for(;!1===t;)await r(100);return n};const o=new FileReader;o.onloadend=function(e){n=e.target.result,t=!0},o.readAsDataURL(e)}function constructFormNameObj(e){let t={};return e.forEach(e=>t[e]=document.querySelector(`[name='${e}']`).value),t}function clipboardCopy(e){var t=document.createElement("input");t.style="position: absolute; left: -1000px; top: -1000px",t.value=e,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}function ht(e,t=null){if(null!=t){const n=e.length;e=e.substring(0,t),n.len>t&&(e+="...")}var n=document.createTextNode(e),r=document.createElement("p");return r.appendChild(n),r.innerHTML}
+
+function isJson(str) {
+    var parsedStr = str;
+    try {
+        parsedStr = JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return typeof parsedStr === 'object'
+}
+
+function addFormErrors(obj) {
+    for (let key in obj) {
+        const value = obj[key];
+        const errorBox = document.querySelector(`[name='${key}']`);
+
+        if (errorBox) {
+            errorBox.innerText = value;
+        }
+
+        const input = document.querySelector(`[data-error='${key}']`);
+
+        if (input) {
+            // if not empty error
+            if (value != '') {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        }
+    }
+}
+
+function removeFormErrors(obj) {
+    for (let key in obj) {
+        const value = obj[key];
+        const errorBox = document.querySelector(`[name='${key}']`);
+        if (errorBox) {
+            errorBox.innerText = '';
+        }
+
+        const input = document.querySelector(`[data-error='${key}']`);
+
+        if (input) {
+            input.classList.remove('is-invalid');
+        }
+    }
+}
+
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+}
+
+function syncFileReader(file) {
+    let self = this;
+    let ready = false;
+    let result = '';
+
+    const sleep = function (ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    self.readAsDataURL = async function() {
+        while (ready === false) {
+            await sleep(100);
+        }
+        return result;
+    }    
+
+    const reader = new FileReader();
+    reader.onloadend = function(evt) {
+        result = evt.target.result;
+        ready = true;
+    };
+    reader.readAsDataURL(file);
+}
+
+function constructFormNameObj(arr) {
+    let obj = {};
+    arr.forEach(x => obj[x] = document.querySelector(`[name='${x}']`).value);
+    return obj;
+}
+
+function clipboardCopy(str) {
+    var tempInput = document.createElement("input");
+    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    tempInput.value = str;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+}
+
+function ht(html, len = null){
+    if(len != null) {
+        const tmp = html.length;
+        html = html.substring(0, len);
+        if(tmp.len > len) html += '...';
+    }
+    
+    var text = document.createTextNode(html);
+    var p = document.createElement('p');
+    p.appendChild(text);
+    return p.innerHTML;
+}
 
 // function showLoginModal
   
@@ -81,7 +205,9 @@ class LiveLoader {
     }
 }
 
-function loginMdl() {document.querySelector("#bs-login-mdl-btn").click();}
+function loginMdl() {
+    document.querySelector("#bs-login-mdl-btn").click();
+}
 
 
 export { newTokenData, URL, isJson, addFormErrors, removeFormErrors, 
