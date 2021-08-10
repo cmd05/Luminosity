@@ -48,13 +48,16 @@
   - Local Version Setup and Tested
   - Email API error handling
   - URL Routing fixed
-  - Create Base 
+  - Show article results on search
+  - Profile controller followers/following errors fixed
 
   **Changes**
+  - Important: Serve unminified JS as default for easier development
   - Create ``ENVIRONMENT`` and ``BASE_FOLDER`` configuration
   - Add Installation Guide
   - Merge into single main branch
   - Highlight-js theme changed to Github-Dark
+  - Update INSTALLATION and README
 
   **Features to add**
   - Same as V1.0.1 Jul28. 
