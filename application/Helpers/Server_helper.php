@@ -55,7 +55,7 @@ class Server {
     }
 
     public static function getRequestUrl(): string {
-        $query = Str::replaceFirstOcc(strtolower(BASE_FOLDER), '', $_SERVER['REQUEST_URI']); // Remove sitename from request URL
+        $query = Str::replaceFirstOcc(BASE_FOLDER, '', $_SERVER['REQUEST_URI']); // Remove sitename from request URL
         $query = trim($query, '/ '); // Remove traliing and preceeding forward slashes and spaces
         $query = preg_replace('/\\?.*/', '', $query); // Remove GET Parameters
         $query = filter_var($query, FILTER_SANITIZE_URL); // Sanitize URL
