@@ -6,7 +6,7 @@
   - [Quill JS](https://github.com/quilljs/quill)
 
  ## Requirements
-  - PHP Version >= 7.0
+  - PHP Version >= 7.0 (ext-mbstring and ext-exif enabled)
   - Composer package management (optional)
   - MySQL drivers
  

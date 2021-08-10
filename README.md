@@ -8,6 +8,7 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The C
   
 ## Features
   - Read Articles of various topics
+  - Explore Content and follow other users
   - Use a Web Friendly interface to create posts
   - Comment and React on articles
   - Bookmark and save articles 
@@ -15,11 +16,22 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The C
   - Dark Mode option
   - Public API (Dev.)
   
-  
-### User Interface
 <br>
-<img src="https://res.cloudinary.com/cmd3bot/image/upload/v1624821106/Luminosity/e1758d997027b68c2a640fb0c65b96c9.png" alt="User Interface">
+<p align = "center">
+  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1624821106/Luminosity/e1758d997027b68c2a640fb0c65b96c9.png"/>
+</p>
+<p align = "center"><b>Create Drafts and Articles</b></p>
+<br>
+<p align = "center">
+  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1628588453/Luminosity/93b5b94326a535be9c6f3585991aaa94.png">
+</p>
+<p align = "center"><b>Explore Articles</b></p>
 
+<br>
+<p align = "center">
+  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1628588995/Luminosity/wxzarom0lbokjcipwwba.png">
+</p>
+<p align = "center"><b>Manage Your Profile</b></p>
 
 ## Design 
 
