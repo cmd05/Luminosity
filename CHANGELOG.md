@@ -41,3 +41,21 @@
   - Public API
   - Logo Redesign
   - UI cleanup
+
+## V1.1
+  **Fixes**
+  - Image Uploading - Prevent API spam, Show loading
+  - Local Version Setup and Tested
+  - Email API error handling
+  - URL Routing fixed
+  - Create Base 
+
+  **Changes**
+  - Create ``ENVIRONMENT`` and ``BASE_FOLDER`` configuration
+  - Add Installation Guide
+  - Merge into single main branch
+  - Highlight-js theme changed to Github-Dark
+
+  **Features to add**
+  - Same as V1.0.1 Jul28. 
+  - No ETA

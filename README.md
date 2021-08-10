@@ -60,13 +60,13 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
 ``application/``
   Contains Backend and Application Logic
   - **Config** - Contains Configuration Files for project
-  - **Libraries** - Contains Basic Libraries extended by classes and units.
+  - **Libraries** - Contains Basic Libraries used by classes and other units.
     - See ``Core.php`` for URL Router logic
   - **Controllers**
     - **Ajax Controllers**: Internal API request logic
     - **Controller Traits**: Config values for controllers
     - **View Controllers**: Load correct page with data 
-  - **Helpers** - Helper Files for common methods used across application
+  - **Helpers** - Helper Files for common methods used across the application
   - **SQL** - Contains SQL Dump and Procedures for Models
   - **Views** - Each Controller has a seperate view folder containing files for a specific page [default index]
   - **Vendor** - Packages used in PHP
@@ -91,7 +91,7 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
  
  ## Setup Luminosity 
  
- Following Installation [Guide](https://github.com/cmd3BOT/Luminosity/blob/main/INSTALLATION.md) to set up Luminosity.
+ Follow the Installation [Guide](https://github.com/cmd3BOT/Luminosity/blob/main/INSTALLATION.md) to set up Luminosity.
 
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
