@@ -36,7 +36,7 @@ define('BASE_FOLDER', $basePath);
 define('URLROOT', "http://localhost".BASE_FOLDER);
 
 define('SITENAME', 'Luminosity');
-define('APP_VERSION', '1.0.0');
+define('APP_VERSION', '1.1.0');
 define('SESSION_NAME', SITENAME);
 
 /**

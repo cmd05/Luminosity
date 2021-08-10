@@ -23,8 +23,8 @@
     <br><br>
     **Rename** `application/Config/Config.example.php` **to** ``Config.php``
     <br><br>
-  - When hosting Luminosity typically the URL would not contain the folder name and only the host name. 
-    Therefore, we can change the environment in Config.php from ``local`` to ``prod``.  <br><br>
+  - When remotely hosting your site typically the URL would not contain the folder name but only the host name. 
+    Therefore, when deploying we can change the environment in Config.php from ``local`` to ``prod``.  <br><br>
     ```php
     define("ENVIRONMENT", "local");
 
