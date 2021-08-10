@@ -127,13 +127,10 @@ class UserModel extends Model {
     }
 
     public function isSecureMail(string $mail): bool {
-		$domain = explode('@', $mail)[1];
 		$emailUrl = EMAIL_API.urlencode($mail);
-		$emailJson = file_get_contents($emailUrl);
-		$array = json_decode($emailJson, true);
-		$validity = $array['valid'];
+		$emailJson = @file_get_contents($emailUrl);
 
-		return $validity;
+		return $emailJson ? json_decode($emailJson, true)['valid'] : false;
 	}
 
     public function checkVerificationRequestTime($email) {

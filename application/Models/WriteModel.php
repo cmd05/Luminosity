@@ -23,20 +23,23 @@ class WriteModel extends Model {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $json = @curl_exec($ch);
 
-        // Cloudinary automatically restricts images to 10MB size for users
-        // Set allowed extensions in settings/uploads/<UPLOAD_PRESET>/uploadcontrol
+        /**
+         * Cloudinary automatically restricts images to 10MB size for users
+         * Set allowed extensions in settings/uploads/<UPLOAD_PRESET>/Upload Control
+         * 
+         * Response type: JSON {bytes. format, url, secure_url}
+         * Demo cloud users will need to validate image response
+         */
         if (!curl_errno($ch)) {
             $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if ($resultStatus == 200) {
                 $array = json_decode($json, true);
-                return $array['secure_url'] ?? false;
-
-                /* // For demo Cloud Uploads
+                
+                // Validate size and correct format
                 if($array['bytes'] <= 10000000 && in_array($array['format'], ['jpg','jpeg','gif','webp','png'])
                    && isset($array['secure_url'])) {
                     return $array['secure_url'];
                 } 
-                */
             }
         }
 
