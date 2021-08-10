@@ -1,102 +1,85 @@
+<p align="center">
+  <img src="https://res.cloudinary.com/cmd3bot/image/upload/v1624820642/Luminosity/183f875c4d964caa3fe6bc802d7d7f91.png" alt="UI" width='300'>
+</p>
+
 # Luminosity
 
-Luminosity Local development branch.
+Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The Complete Modern Blogging Platform. <br>
+  
+## Features
+  - Read Articles of various topics
+  - Use a Web Friendly interface to create posts
+  - Comment and React on articles
+  - Bookmark and save articles 
+  - Customize Profile
+  - Dark Mode option
+  - Public API (Dev.)
+  
+  
+### User Interface
+<br>
+<img src="https://res.cloudinary.com/cmd3bot/image/upload/v1624821106/Luminosity/e1758d997027b68c2a640fb0c65b96c9.png" alt="User Interface">
 
+
+## Design 
+
+The project implements *MVC [Model-View-Controller]* design pattern. The project has been built upon a [Custom Framework](https://github.com/cmd3BOT/PHP-MVC-Framework). 
+
+![MVC Structure](https://cdn.educba.com/academy/wp-content/uploads/2019/04/what-is-mvc-design-pattern.jpg)
+
+> Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
+
+**Model**
+
+The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to render data.
+
+**View**
+
+The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
+
+**Controller**
+
+Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller will be used to view the Customer data.
+
+A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
+
+## Project Structure
+  
+``application/``
+  Contains Backend and Application Logic
+  - **Config** - Contains Configuration Files for project
+  - **Libraries** - Contains Basic Libraries extended by classes and units.
+    - See ``Core.php`` for URL Router logic
+  - **Controllers**
+    - **Ajax Controllers**: Internal API request logic
+    - **Controller Traits**: Config values for controllers
+    - **View Controllers**: Load correct page with data 
+  - **Helpers** - Helper Files for common methods used across application
+  - **SQL** - Contains SQL Dump and Procedures for Models
+  - **Views** - Each Controller has a seperate view folder containing files for a specific page [default index]
+  - **Vendor** - Packages used in PHP
+  - **Bootstrap.php** - Setup Environment, start session and intanstiate autoloader
+
+``/public``
+  Application frontend
+  - **index.php**: Entry File
+ 
+ ``root/.htaccess``
+  Route Requests through Public folder
+  
  Packages used:
   - [PHP Mailer](https://github.com/PHPMailer/PHPMailer)
   - [HTML Purifier](https://github.com/ezyang/htmlpurifier)
   - [Quill JS](https://github.com/quilljs/quill)
 
  ## Requirements
-  - PHP Version >= 7.0
-  - Composer package management (optional)
-  - MySQL drivers
+  - PHP Version ≥ 7.0
+  - Composer Package Management
+  - MySQL Drivers
  
- ## Setup Locally 
+ ## Setup Luminosity 
  
- Follow the given steps to test Luminosity locally.  <br> <br>
+ Following Installation [Guide](https://github.com/cmd3BOT/Luminosity/blob/main/INSTALLATION.md) to set up Luminosity.
 
-  ### (I) Setup Project
-  - Clone project in htdocs directory using: <br>
-    ```
-    git clone --single-branch --branch Local git@github.com:cmd3BOT/Luminosity.git
-    ```
-    Your directory should look like: ```C:\(xampp or any other stack)\htdocs\Luminosity```
-    <br><br>
-    **Rename** `application/Config/Config.example.php` **to** ``Config.php``
-    <br><br>
-  - Check that Project Directory Paths match: <br><br>
-    - [``public/.htaccess``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/.htaccess#L4) 
-      ```apache
-      RewriteBase /Luminosity/public #append /public folder to path 
-      ```
-    - [``js/script.js``](https://github.com/cmd3BOT/Luminosity/blob/Local/public/js/script.js#L1)
-      ```js
-      const URL = 'http://' + window.location.host + "/luminosity"; // set app url
-      ```
-    - [``Config/Config.php``](https://github.com/cmd3BOT/Luminosity/blob/Local/application/Config/Config.php#L28)
-      ```php
-      define('BASE_FOLDER', basename(dirname(__DIR__, 2))); // root folder containing project
-      define('URLROOT', "http://localhost/".BASE_FOLDER); // URL for application
-      ```
-      
-  
-  ### (II) App Configurations
-   Setup app configs in ``application/Config.php``. <br><br>
- 
-  - Add SMTP Mail details to app. <br><br>
-    To setup using Gmail:
-    ```php
-    define("SMTP_HOST", 'smtp.gmail.com');
-    define("SMTP_USERNAME", 'username@gmail.com');
-    define("SMTP_MAIL", 'username@gmail.com');
-    define("SMTP_PASSWORD", 'password');
-    define("SMTP_PORT", 587); // default mail port
-    ```    
-    Testing with gmail on localhost requires [access from less secure apps](https://myaccount.google.com/lesssecureapps)
-    <br>
-    More options: [Sendgrid](http://sendgrid.com/), [Mailjet](https://www.mailjet.com/feature/smtp-relay/)
-    
-  - Refer to [IP Quality Score](https://www.ipqualityscore.com/documentation/email-validation/overview) for email validation API token.
-    ```php
-    define('EMAIL_API_TOKEN', '...');
-    ```
-  - Cloudinary has been used as image host for application. Cloudinary works in default ``demo`` mode as given. 
-    <br>
-    You can optionally create your own [cloud](https://cloudinary.com/users/register/free). Reference [Upload API](https://cloudinary.com/documentation/image_upload_api_reference)
-    ```php
-    define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/demo/image/upload');
-    define('IMG_CLOUD_NAME', 'demo');
-    ``` 
-    <br>
-    
-    **Note:** 
-    Cloudinary automatically restricts images greater than 10MB for cloud accounts. <br>
-    Allowed Extensions can be set in the console at ``settings/uploads/<UPLOAD_PRESET>/Upload Control``
-    <br> <br>
-    Using demo mode allows unrestricted file upload for users. To prevent this, edit [``Models/WriteModel #L32``](https://github.com/cmd3BOT/Luminosity/blob/Local/application/Models/WriteModel.php#L32):
-    ```php
-    if($array['bytes'] <= 10000000 && in_array($array['format'], ['jpg','jpeg','gif','webp','png'])
-       && isset($array['secure_url'])) {
-         return $array['secure_url'];
-    }
-    ```
-    <br>
-    
-  - Configurations should be setup carefully to prevent unexpected errors
-
-  ### (III) Setup Database
-  Use MySQL database for the application. 
-  
-  - Add database credentials to ``Config.php``
-    ```php
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "luminosity");
-    ```
-  - Create a database ``luminosity`` and load [``application/SQL/dump.sql``](https://github.com/cmd3BOT/Luminosity/blob/Local/application/SQL/dump.sql)
-  
 ## Contributing
   You may open an issue [here](https://github.com/cmd3BOT/Luminosity/issues)
-  
