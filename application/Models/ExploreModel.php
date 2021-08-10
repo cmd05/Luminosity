@@ -52,14 +52,10 @@ class ExploreModel extends Model {
         $this->db->query("SELECT DISTINCT articles.article_id, articles.title, articles.tagline,
                             articles.content, articles.created_at, articles.preview_img
                           FROM articles
-                          INNER JOIN article_tags
                           WHERE (articles.title LIKE :query_1
                           OR articles.tagline LIKE :query_2
-                          OR LEFT(articles.content, 5000) LIKE :query_3
-                        --   OR :query_4 IN (SELECT tag FROM article_tags 
-                        --     WHERE articles.article_id = article_tags.article_id)
-                          )
-                          $idConstraint 
+                          OR LEFT(articles.content, 5000) LIKE :query_3)
+                          $idConstraint
                           ORDER BY articles.id DESC LIMIT $limit
                          ");
 
