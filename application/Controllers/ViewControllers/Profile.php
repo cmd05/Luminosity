@@ -55,7 +55,7 @@ class Profile extends Controller {
     /**
      * @route
      */
-    public function following(string $username = NULL) {
+    public function following(string $username) {
         if(is_null($username)) {
             if(Session::isLoggedIn()) {
                 $username = $_SESSION['username'];
@@ -78,7 +78,7 @@ class Profile extends Controller {
         $data['profile']->uniq_id = $info->uniq_id;
 
         $data['following'] = $this->profileModel->getProfileFollowing($profileId, $userId, $this->maxFollowingOnPage);
-        $data['last_id'] = end($data['following'])->id;
+        $data['last_id'] = end($data['following'])->id ?? 0;
 
         $this->view("profile/following", $data);
     }
@@ -86,7 +86,7 @@ class Profile extends Controller {
     /**
      * @route
      */
-    public function followers(string $username = NULL) {
+    public function followers(string $username) {
         if(is_null($username)) {
             if(Session::isLoggedIn()) {
                 $username = $_SESSION['username'];
