@@ -4,7 +4,7 @@
     <div class="container-lg">
         <!-- Nav Brand -->
         <a class="navbar-brand pe-3" href="<?=URLROOT?>">
-        <img src="<?=URLROOT?>/public/assets/logo.png" class='navbar-logo mb-1'>
+        <img src="<?=URLROOT?>/assets/logo.png" class='navbar-logo mb-1'>
         <span class='nav-brand-title'><?=SITENAME?></span>
         </a> 
         <!-- Nav items 3 - only  -->
