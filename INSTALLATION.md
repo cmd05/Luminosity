@@ -59,7 +59,7 @@
     ```php
     define('EMAIL_API_TOKEN', '...');
     ```
-  - Cloudinary has been used as image host for application. Cloudinary works in default ``demo`` mode as given. Creating your own [cloud](https://cloudinary.com/users/register/free) will allow only validated images from your cloud on the application. Images Allowed Extensions can be set in the console at ``settings/uploads/<UPLOAD_PRESET>/Upload Control``
+  - Cloudinary has been used as image host for application. Cloudinary works in default ``demo`` mode as given. Creating your own [cloud](https://cloudinary.com/users/register/free) will allow only validated images from your cloud on the application. Allowed Image Extensions can be set in the console at ``settings/uploads/<UPLOAD_PRESET>/Upload Control``
     
     Reference [Upload API](https://cloudinary.com/documentation/image_upload_api_reference)
     ```php
@@ -68,6 +68,14 @@
     define('IMG_UPLOAD_URL', 'https://api.cloudinary.com/v1_1/'.IMG_CLOUD_NAME.'/image/upload');
     define('IMG_API_KEY', '');
     define('IMG_API_PRESET', 'docs_upload_example_us_preset');
+    ```
+    
+    You can modify the allowed size and extensions for user uploaded images in [WriteModel](https://github.com/cmd3BOT/Luminosity/blob/main/application/Models/WriteModel.php#L39)
+    ```php
+    if($array['bytes'] <= 10000000 && in_array($array['format'], ['jpg','jpeg','gif','webp','png'])
+       && isset($array['secure_url'])) {
+        return $array['secure_url'];
+    }
     ```
 
   ### 3. Setup Database
