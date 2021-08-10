@@ -1,1 +1,90 @@
-import{URL,loginMdl,newTokenData,isJson,LiveLoader,ht}from"./script.js";const userId=document.querySelector("[name='user_uniq_id']").value,bodyLoader=new LiveLoader;function isBlank(e){return!e||/^\s*$/.test(e)}bodyLoader.addIdSelector("[name='last_article_id']"),bodyLoader.addBtn("#load-more-articles"),bodyLoader.addParams({profile_uniq:userId}),bodyLoader.addEndPoint("ajax/profile/load-profile-articles"),document.addEventListener("click",e=>{const t=e.target;if(t.classList.contains("toggle-bookmark")){const e=t.getAttribute("data-article-id"),o=newTokenData({article_id:e});fetch(`${URL}/ajax/article/toggle-bookmark`,{method:"POST",body:o}).then(e=>e.text()).then(e=>{isJson(e)?(t.querySelector("i").classList.toggle("far"),t.querySelector("i").classList.toggle("fas")):loginMdl()})}}),document.querySelector("#follow-btn")&&document.querySelector("#follow-btn").addEventListener("click",function(){const e=newTokenData({profile_uniq:userId});fetch(`${URL}/ajax/profile/toggle-follow`,{method:"POST",body:e}).then(e=>e.text()).then(e=>{if(isJson(e)){200===JSON.parse(e).status&&(this.classList.toggle("active"),"Follow"==this.innerHTML.trim()?this.innerHTML="Following":this.innerHTML="Follow")}else loginMdl()})}),bodyLoader.addListener(e=>{Object.entries(e.articles).forEach(([e,t])=>{const o=t,a=(o.article_id,isBlank(o.preview_img)?"":`<img src="${o.preview_img}" class="preview-img pb-3" alt="...">`),n=o.article_id;document.querySelector(".articles-container").innerHTML+=`\n          <div class="p-1">\n              <div class="card-body row">\n                  <div class="col-12 ms-2">\n                      ${a}\n                      <br>\n                      <a class='mb-3 d-block h3 text-decoration-none text-dark' href="${URL}/article?a=${n}">${ht(o.title,100)}</a>\n                      <small class="text-muted mb-4 d-block">Published ${o.created_at}</small>\n                      <p class="text-muted" style='font-size: 17px'>${ht(o.tagline,300)}</p>\n                      <p class='article-content'>${ht(o.content,1e3)}</p>\n                      \n                      ${o.view_count} <i class="fas fa-eye"></i>\n\n                      <button class="btn btn-dark float-end toggle-bookmark" data-article-id="${o.article_id}">\n                          <i class="${o.is_bookmarked?"fas":"far"} fa-bookmark" style='pointer-events: none;'></i>\n                      </button>\n                  </div>\n                  <hr class='my-4'>\n              </div>\n          </div>\n          <br>\n          `})});
+import { URL, loginMdl, newTokenData,  isJson, LiveLoader, ht } from "./script.js";
+
+const userId = document.querySelector("[name='user_uniq_id']").value;
+
+const bodyLoader = new LiveLoader();
+bodyLoader.addIdSelector("[name='last_article_id']");
+bodyLoader.addBtn("#load-more-articles");
+bodyLoader.addParams({
+    "profile_uniq": userId
+});
+bodyLoader.addEndPoint("ajax/profile/load-profile-articles");
+
+document.addEventListener("click", (e) => {
+    const target = e.target;
+    if(target.classList.contains("toggle-bookmark")) {
+        const articleId = target.getAttribute("data-article-id");
+        const form = newTokenData({"article_id": articleId})
+        fetch(`${URL}/ajax/article/toggle-bookmark`, {method: "POST", body: form})
+        .then(r => r.text())
+        .then(res => {
+            if(isJson(res)) {
+                target.querySelector("i").classList.toggle("far");
+                target.querySelector("i").classList.toggle("fas");
+            } else {
+                loginMdl();
+            }
+        })
+    }
+})
+
+if(document.querySelector("#follow-btn")) {
+	document.querySelector("#follow-btn").addEventListener("click", function() {
+		const form = newTokenData({"profile_uniq": userId})
+		fetch(`${URL}/ajax/profile/toggle-follow`, {method: "POST", body: form})
+		.then(r => r.text())
+		.then(res => {
+			if(isJson(res)) {
+				let obj = JSON.parse(res);
+				if(obj.status === 200) {
+					this.classList.toggle("active");
+					if(this.innerHTML.trim() == "Follow") {
+						this.innerHTML = "Following";
+					} else {
+						this.innerHTML = "Follow";
+					}
+				}
+			} else {
+				loginMdl();
+			}
+		})
+	})
+}
+
+function isBlank(str) {
+  return (!str || /^\s*$/.test(str));
+}
+
+bodyLoader.addListener((response) => {
+  Object.entries(response.articles).forEach(
+      ([key, value]) => {
+          const article = value;
+          const link = `${URL}/article?a=${article.article_id}`;
+          const img = !isBlank(article.preview_img) ? `<img src="${article.preview_img}" class="preview-img pb-3" alt="...">` : "";
+          const id = article.article_id;
+
+          document.querySelector(".articles-container").innerHTML += `
+          <div class="p-1">
+              <div class="card-body row">
+                  <div class="col-12 ms-2">
+                      ${img}
+                      <br>
+                      <a class='mb-3 d-block h3 text-decoration-none text-dark' href="${URL}/article?a=${id}">${ht(article.title, 100)}</a>
+                      <small class="text-muted mb-4 d-block">Published ${article.created_at}</small>
+                      <p class="text-muted" style='font-size: 17px'>${ht(article.tagline, 300)}</p>
+                      <p class='article-content'>${ht(article.content, 1000)}</p>
+                      
+                      ${article.view_count} <i class="fas fa-eye"></i>
+
+                      <button class="btn btn-dark float-end toggle-bookmark" data-article-id="${article.article_id}">
+                          <i class="${article.is_bookmarked ? "fas" : "far"} fa-bookmark" style='pointer-events: none;'></i>
+                      </button>
+                  </div>
+                  <hr class='my-4'>
+              </div>
+          </div>
+          <br>
+          `;
+      }
+  );
+});

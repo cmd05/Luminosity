@@ -107,9 +107,7 @@ quill.on('editor-change', function () {
 async function fetchUrl(src) {
 	const formData = newTokenData();
 	formData.append("src", src);
-	console.log('wait start');
 	
-	console.log('promise api');
 	const response = await fetch(`${URL}/ajax/write/upload-image`, {
 		method: "POST",
 		body: formData
