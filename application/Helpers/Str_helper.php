@@ -60,4 +60,9 @@ class Str {
     public static function trimWhiteSpaces(string $str): string {
         return preg_replace('/\s+/', '', $str);
     }
+
+    public static function replaceFirstOcc(string $needle, string $replace, string $haystack): string {
+        $pos = strpos($haystack, $needle);
+        return $pos !== false ? substr_replace($haystack, $replace, $pos, strlen($needle)) : $haystack;
+    }
 }

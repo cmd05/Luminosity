@@ -23,10 +23,18 @@ define('DB_TIMESTAMP_FMT', 'Y-m-d H:i:s');
 /**
  * Site Settings
  */
+/**
+ * Site Settings
+ */
+define("ENVIRONMENT", "local"); // use local or prod
+
 define("SERVER_TIMEZONE", 'Asia/Kolkata');
 define('APPROOT', dirname(dirname(__FILE__)));
-define('BASE_FOLDER', basename(dirname(__DIR__, 2)));
-define('URLROOT', "http://localhost/".BASE_FOLDER);
+
+$basePath = ENVIRONMENT === "local" ? '/'.basename(dirname(__DIR__, 2)) : '';
+define('BASE_FOLDER', $basePath);
+define('URLROOT', "http://localhost".BASE_FOLDER);
+
 define('SITENAME', 'Luminosity');
 define('APP_VERSION', '1.0.0');
 define('SESSION_NAME', SITENAME);
