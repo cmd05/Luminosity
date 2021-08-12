@@ -132,26 +132,27 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
 	});
 	const uploadCount = tmp.querySelectorAll("img").length;
 	if(uploadCount > 0)	bsAlert.show();
-
 	
 	const main = async () => {
 		const validateUrl = document.querySelector("[name='img_valid_url']").value;
 		await delay(1000); // wait for paste to finish
 		bsAlert.hide();
-		// hide 
+        
+
 		document.querySelectorAll('.ql-editor img').forEach(img => {
             if((img.src).indexOf(validateUrl) !== 0) img.classList.add("loading-img");
         })
 
-        
-		document.querySelectorAll('.ql-editor img').forEach(function (img, index) {
-            let interval = 200;
+        const els = document.querySelectorAll('.ql-editor img');
 
-            setTimeout(function () {
+        async function loop() {
+            for(let x = 0; x < els.length; x++) {
+                let img = els[x]
                 let src = img.src;
                 img.classList.add("loading-img");
-                
+                    
                 if(src.indexOf(validateUrl) !== 0) {
+                    await delay(1000)
                     const upload = async () => {
                         const json = await fetchUrl(src);
                         if (isJson(json)) {
@@ -172,9 +173,10 @@ document.querySelector('.ql-editor').addEventListener('paste', e => {
                 } else {
                     img.classList.remove("loading-img");
                 }
-            }, index*interval)
-		})		
-	}
+            }
+	    }
+        loop();
+    }
 	main();
 });
 
