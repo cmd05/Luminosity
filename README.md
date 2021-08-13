@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/cmd3bot/image/upload/v1624820642/Luminosity/183f875c4d964caa3fe6bc802d7d7f91.png" alt="UI" width='300'>
+  <img src="https://user-images.githubusercontent.com/63466463/129299558-e1e7acff-644b-484c-959a-c10dec7fde79.png" alt="UI" width='300'>
 </p>
 
 # Luminosity
@@ -18,18 +18,18 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The M
   
 <br>
 <p align = "center">
-  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1624821106/Luminosity/e1758d997027b68c2a640fb0c65b96c9.png"/>
+  <img src = "https://user-images.githubusercontent.com/63466463/129299606-2a4d8560-e534-4a89-9184-7aa1facc0240.png"/>
 </p>
 <p align = "center"><b>Create Drafts and Articles</b></p>
 <br>
 <p align = "center">
-  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1628588453/Luminosity/93b5b94326a535be9c6f3585991aaa94.png">
+  <img src = "https://user-images.githubusercontent.com/63466463/129299632-5d4d2f56-4b1e-4d7c-8805-ea14d05b78a0.png">
 </p>
 <p align = "center"><b>Explore Articles</b></p>
 
 <br>
 <p align = "center">
-  <img src = "https://res.cloudinary.com/cmd3bot/image/upload/v1628588995/Luminosity/wxzarom0lbokjcipwwba.png">
+  <img src = "https://user-images.githubusercontent.com/63466463/129299670-54689033-ccc6-4183-b925-2b68ab8992b4.png">
 </p>
 <p align = "center"><b>Customize your profile</b></p>
 
@@ -37,7 +37,9 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The M
 
 The project implements ``Model-View-Controller`` design pattern. This project has been built using a [custom framework](https://github.com/cmd3BOT/PHP-MVC-Framework).
 
-![MVC Structure](https://cdn.educba.com/academy/wp-content/uploads/2019/04/what-is-mvc-design-pattern.jpg)
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/63466463/129299701-bfa87642-60f6-4e96-a409-45a856a9c118.png">
+</p>
 
 > Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
 
@@ -62,9 +64,9 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
   - **Libraries** - Contains basic libraries used by classes and other units.
     - See ``Core.php`` for URL based routing
   - **Controllers**
-    - **Ajax Controllers**: Handle internal API requests. ``(Returns: JSON)``
-    - **Controller Traits**: Constant values for controlling application logic. Eg: maxArticles
-    - **View Controllers**: Load the correct view along with the data to be displayed
+    - **Ajax Controllers** - Handle internal API requests. ``(Returns: JSON)``
+    - **Controller Traits** - Constant values for controlling application logic. Eg: maxArticles
+    - **View Controllers** - Load the correct view along with the data to be displayed
   - **Helpers** - Helper files provide common utility functions used across the application
   - **SQL** - Contains ``SQL Dump`` and ``Procedures`` for Models
   - **Views** - Each view controller has unique view folder containing different pages in it ``(default index.php)``
@@ -72,7 +74,7 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
   - **Bootstrap.php** - The bootstrap file builds the application by including the Config files and starting the session. It also initializes the class and vendor autoloaders.
 
 ``/public`` Application frontend
-  - **index.php**: Entry File
+  - **index.php** - Script starts from here
  
  ``root/.htaccess`` Route Requests through Public folder
   
@@ -80,11 +82,6 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
   - [PHP Mailer](https://github.com/PHPMailer/PHPMailer)
   - [HTML Purifier](https://github.com/ezyang/htmlpurifier)
   - [Quill JS](https://github.com/quilljs/quill)
-
- ## Requirements
-  - PHP Version ≥ 7.0
-  - Composer Package Management
-  - MySQL Drivers
  
  ## Setup Luminosity 
  
