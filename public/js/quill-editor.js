@@ -225,7 +225,7 @@ quill.getModule("toolbar").addHandler("video", videoHandler);
 
 function videoHandler() {
 	let range = (quill.getSelection())['index'];
-	let url = prompt("Enter Video URL: ");
+	let url = prompt("Enter Video URL: ")??" ";
 	url = getVideoUrl(url);
 	if (url != null) {
 		quill.insertEmbed(range, 'video', url);

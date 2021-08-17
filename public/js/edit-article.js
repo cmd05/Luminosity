@@ -69,7 +69,7 @@ function updateArticle() {
 }
 
 document.querySelector('#delete').addEventListener("click", function() {
-    let name = prompt("Enter username to delete article: ");
+    let name = prompt("Enter username to delete article: ")??" ";
     const data = newTokenData({
         "username": name, 
         'article_id': articleId
