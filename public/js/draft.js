@@ -71,7 +71,7 @@ function updateDraft() {
 }
 
 document.querySelector('#rename').addEventListener("click", function() {
-    let name = prompt("Enter new draft name: ");
+    let name = prompt("Enter new draft name: ")??" ";
     const data = newTokenData({
         "new_name": name, 
         'draft_id': draftId
@@ -105,7 +105,7 @@ document.querySelector('#rename').addEventListener("click", function() {
 })
 
 document.querySelector('#delete').addEventListener("click", function() {
-    let name = prompt("Enter username to delete draft: ");
+    let name = prompt("Enter username to delete draft: ")??" ";
     const data = newTokenData({
         "username": name, 
         'draft_id': draftId

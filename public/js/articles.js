@@ -14,7 +14,7 @@ document.addEventListener("click", (e) => {
 
     } else if(e.target.classList.contains('delete-article')) {
 		
-		let name = prompt("Enter username to delete article: ");
+		let name = prompt("Enter username to delete article: ")??" ";
 		const data = newTokenData({
 			"username": name, 
 			'article_id': e.target.getAttribute("data-delete-id")
