@@ -35,7 +35,7 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The M
 
 ## Design 
 
-The project implements ``Model-View-Controller`` design pattern. This project has been built using a [custom framework](https://github.com/cmd3BOT/PHP-MVC-Framework).
+The project implements ``Model-View-Controller`` design pattern. This project has been built using a [custom framework](https://github.com/cmd3BOT/PHP-MVC-Framework)
 
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/63466463/129299701-bfa87642-60f6-4e96-a409-45a856a9c118.png">
@@ -59,24 +59,23 @@ A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
 
 ## Project Structure
   
-``application/`` Contains Backend and Application Logic
-  - **Config** - Contains configuration files for project
-  - **Libraries** - Contains basic libraries used by classes and other units.
-    - See ``Core.php`` for URL based routing
-  - **Controllers**
-    - **Ajax Controllers** - Handle internal API requests. ``(Returns: JSON)``
-    - **Controller Traits** - Constant values for controlling application logic. Eg: maxArticles
-    - **View Controllers** - Load the correct view along with the data to be displayed
-  - **Helpers** - Helper files provide common utility functions used across the application
-  - **SQL** - Contains ``SQL Dump`` and ``Procedures`` for Models
-  - **Views** - Each view controller has unique view folder containing different pages in it ``(default index.php)``
-  - **Vendor** - External Packages used by PHP
-  - **Bootstrap.php** - The bootstrap file builds the application by including the Config files and starting the session. It also initializes the class and vendor autoloaders.
+``application/`` App Logic and Backend
+  * ``Config`` - Configuration items and files
+  * ``Libraries`` - Base classes and main libraries used by derived classes
+  * ``Controllers``
+    * ``Ajax Controllers`` - Handle internal API requests. ``(Returns: JSON)``
+    * ``Controller Traits`` - Configuration values for controllers
+    * ``View Controllers`` - Load appropriate view and display data
+  * ``Helpers`` - Includes common utility functions used across the application
+  * ``SQL`` - Contains ``SQL Dump`` and ``Procedures`` for Models
+  * ``Views`` - Each view controller has unique view folder with different pages ``(default index.php)``
+  * ``Vendor`` - External Packages used by PHP
+  * ``Bootstrap.php`` - The bootstrap file builds the application by including the setup files and starting the session. It also initializes the class and vendor autoloaders.
 
-``/public`` Application frontend
-  - **index.php** - Script starts from here
+``public/`` Application frontend
+  * ``index.php`` - Main file
  
- ``root/.htaccess`` Route Requests through Public folder
+``.htaccess`` Route Requests through Public folder
   
  Packages used
   - [PHP Mailer](https://github.com/PHPMailer/PHPMailer)
