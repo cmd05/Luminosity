@@ -10,7 +10,7 @@
         <div class="px-lg-1">
             <div class="border p-2">
                 <h5 class='pt-3 ps-2'>
-                    Search Results for '<?=ht($data['query'], 100)?>'
+                    Search Results for <pre class='ms-1 d-inline'><?=ht($data['query'], 100)?></pre>
                 </h5>
                 <br>
                 <h5 class='d-block ps-4 pt-2'>Users</h5>

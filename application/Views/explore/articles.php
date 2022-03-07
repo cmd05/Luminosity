@@ -5,11 +5,12 @@
    <?php Session::alert("alert_article_delete") ?>
    <div class="container-fluid container-lg">
       <?php if(count($data['articles']) > 0): ?>
-        <h2>Explore - Articles</h2>
+        <h2>Explore / Articles</h2>
       <?php else: ?>
         <h1>0 results</h1>
       <?php endif; ?>
       <br>
+		  <p class='mt-0 mb-4'> <b class='me-1'>Sorted by:</b> <?=$data['sort']?></p>
       
       <div class="dropdown d-inline me-4">
         <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +49,11 @@
                   <div class="card-body">
                       <h4 class='draft-name'><a href="<?=$view_link?>" class='text-dark text-decoration-none'><?=ht($article->title, 40)?></a></h4>
                       <small class="text-muted pt-1 pb-0 mb-0">Published: <?=date("d/m/y", strtotime($article->created_at))?></small>
-                      <p class="card-text tagline"><?=Str::isEmptyStr($article->tagline)?"<i class='fs-6'>Tagline</i>":ht($article->tagline, 100)?></p>
+                      <?php if(!Str::isEmptyStr($article->tagline)): ?> 
+                        <p class="card-text tagline"><?=ht($article->tagline, 100)?></p>
+                      <?php else: ?>
+                        <p class="my-3"></p>
+                      <?php endif; ?>
                       <p class="card-text"><?=ht($article->content, 200)?></p>
                       <br>
                       <span>

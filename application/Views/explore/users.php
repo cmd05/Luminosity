@@ -5,12 +5,12 @@
 	<?php Session::alert("alert_article_delete") ?>
 	<div class="container-fluid container-lg">
 		<?php if(count($data['users']) > 0): ?>
-		  <h2>Explore - Users</h2>
+		  <h2>Explore / Users</h2>
 		<?php else: ?>
 		  <h1>0 results</h1>
 		<?php endif; ?>
 		
-		<p class='my-4'>Sorted by - <?=$data['sort']?></p>
+		<p class='my-4'> <b class='me-1'>Sorted by:</b> <?=$data['sort']?></p>
 		
 		<div class="dropdown d-inline me-4">
 		  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

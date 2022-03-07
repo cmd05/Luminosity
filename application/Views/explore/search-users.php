@@ -8,8 +8,10 @@
     <div class="px-lg-5 mx-lg-5">
         <div class="px-lg-1">
             <div class="border p-2">
-                <h5 class='pt-3 ps-2'>
-                    Users Results for '<?=ht($data['query'], 100)?>'
+                <h5 class='pt-3 ps-2 ms-2'>
+                    Search / Users
+                    <p class="my-3"></p>
+                    <i class="fas fa-search me-2" style='font-size: 15px'></i> <pre class='ms-1 d-inline'><?=ht($data['query'], 100)?></pre>
                 </h5>
 
                 <?=count($data['users']) === 0 ? '<br><h5 class="text-muted p-3">0 results</5>' : "<br>"?>
