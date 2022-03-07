@@ -26,8 +26,8 @@
             <div class="col-6 col-md">
                 <h5>Users</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary <?=View::activeFooter("/user/sign-up")?>" href="<?=URLROOT?>/user/sign-up">Sign Up</a></li>
-                    <li><a class="link-secondary <?=View::activeFooter("/user/login")?>" href="<?=URLROOT?>/user/login">Login</a></li>
+                    <li><a class="link-secondary <?=View::activeFooter("/user/sign-up")?>" href="<?=URLROOT?>/user/sign-up">Register</a></li>
+                    <li><a class="link-secondary <?=View::activeFooter("/user/login")?>" href="<?=URLROOT?>/user/login">Sign in</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">

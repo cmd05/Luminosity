@@ -64,16 +64,16 @@
                 <!-- Nav items 2 -->
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0" id='nav-items-2'>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=URLROOT?>/user/login" tabindex="-1">Login</a>
+                        <a class="nav-link" href="<?=URLROOT?>/user/login" tabindex="-1">Sign in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=URLROOT?>/user/sign-up" tabindex="-1">Sign Up</a>
+                        <a class="nav-link" href="<?=URLROOT?>/user/sign-up" tabindex="-1">Register</a>
                     </li>
                 </ul>
                 <!-- Nav items 3 - only  -->
                 <ul class="navbar-nav ms-auto mb-md-0" id='nav-items-3'>
                     <li class="nav-item">
-                        <a class="nav-link" style='font-size: 17px' href="<?=URLROOT?>/user/login" tabindex="-1">Login <i class="fas fa-sign-in-alt" style='font-size: 15px; padding-left: 8px'></i></a>
+                        <a class="nav-link" style='font-size: 17px' href="<?=URLROOT?>/user/login" tabindex="-1">Sign in <i class="fas fa-sign-in-alt" style='font-size: 15px; padding-left: 8px'></i></a>
                     </li>
                 </ul>
             </div>
@@ -129,7 +129,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=URLROOT?>/user/sign-up" tabindex="-1">Sign Up</a>
+                        <a class="nav-link" href="<?=URLROOT?>/user/sign-up" tabindex="-1">Register</a>
                     </li>
                 </ul>
             </div>
