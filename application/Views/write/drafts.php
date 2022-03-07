@@ -31,7 +31,7 @@
               <div class="d-flex justify-content-between align-items-center pt-2">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-danger delete-draft" data-delete-id="<?=$draft->draft_id?>">&nbsp;Delete&nbsp;</button>
-                  <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$draft_link?>">Copy Link</button>
+                  <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$draft_link?>">Copy link</button>
                 </div>
                 <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Last Edit: </span> <?=Str::formatEpoch(strtotime($draft->last_updated), "d/m H:i")?></small>
               </div>

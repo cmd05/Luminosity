@@ -31,16 +31,15 @@
             </div>
             <div class="col-md-4 col-12 order-md-2 order-1 p-md-4 ps-md-5 mt-0 sticky-md-top">
                 <div class="px-4 bg-white rounded pt-4 mt-0 pb-3 sticky-md-top" style='border: 1px solid #d7d7d7; top: 100px!important'>
-                    <p style='font-weight: 500!important; font-size: 17px'>Save as a draft: </p>
                     <div class="input-group mb-3">
-                        <input type="text" id='draft_name' class="form-control" placeholder="Name" aria-label="" aria-describedby="save-draft">
+                        <input type="text" id='draft_name' class="form-control" placeholder="Save as a Draft" aria-label="" aria-describedby="save-draft">
                         <button class="btn btn-dark" type="button" id="save-draft">Save</button>
                     </div>
                     <p class="invalid-feedback is-invalid">Error</p>
-                    <b class='pt-3 pb-2 d-block'>Writing a Great Post Title</b>
-                    <p style='line-height: 29px; font-size: 15px'>Think of your post title as a super short (but compelling!) description — like an overview of the actual post in one short sentence.
-                        <small class="text-muted">&nbsp;<a href="">Guide</a></small>
+                    <b class='pt-3 pb-2 d-block'>Unsaved Changes</b>
+                    <p class='mb-3' style='line-height: 29px; font-size: 15px'>Your content will not be automatically saved. Creating a draft allows you to work on your piece as and when you wish. 
                     </p>
+                    <a class="btn btn-primary w-100" href='#submit-post'>Post now <i class=" ms-2 fa-caret-down fas"></i></a>
                 </div>
             </div>
         </div>

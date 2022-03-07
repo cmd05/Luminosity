@@ -17,7 +17,7 @@
                 <span class="ps-auto float-end pt-2" style="font-size: 14px!important">
                     <button type="button" class="btn btn-info text-white me-2 py-1" id="rename">Rename <i class="fas fa-pencil-alt"></i></button>
                     <button type="button" class="btn btn-danger me-2 py-1" id="delete">Delete <i class="fas fa-trash"></i></button>
-                    <button type="button" class="btn btn-primary py-1" id='copy-link'>Copy Link <i class="fas fa-copy"></i></button>
+                    <button type="button" class="btn btn-primary py-1" id='copy-link'>Copy link <i class="fas fa-copy"></i></button>
                 </span>
             </span> 
             <div class="pb-md-1 pb-3"></div>
@@ -40,10 +40,9 @@
                 <div class="px-4 bg-white rounded pt-4 mt-0 pb-3 sticky-md-top" style='border: 1px solid #d7d7d7; top: 100px!important'>
                     <button class="btn d-block btn-success text-white w-100" id='save-changes' style='background-image: none!important; font-size: 17px;'>Saved</button>
                     <p class="invalid-feedback is-invalid">Error</p>
-                    <b class='pt-3 pb-2 d-block'>Writing a Great Post Title</b>
-                    <p style='line-height: 29px; font-size: 15px'>Think of your post title as a super short (but compelling!) description — like an overview of the actual post in one short sentence.
-                        <small class="text-muted">&nbsp;<a href="">Guide</a></small>
-                    </p>
+                    <!-- <b class='pt-3 pb-2 d-block'>Editing draft</b> -->
+                    <p style='line-height: 29px; font-size: 16px; font-family: calibri;' class='m-0 my-3'>Press <code class='mx-2'>Ctrl + S</code> to save changes</p>
+                    <a class="btn btn-light w-100" href='#submit-post'>Post as article <i class=" ms-2 fa-caret-down fas"></i></a>
                 </div>
             </div>
         </div>
