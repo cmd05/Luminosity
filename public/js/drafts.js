@@ -7,7 +7,7 @@ document.addEventListener("click", (e) => {
     if(e.target.classList.contains("copy-link")) {
     	clipboardCopy(e.target.getAttribute("data-link"));
 
-		toastBody.innerHTML = `Copied Link`;
+		toastBody.innerHTML = `Link copied to clipboard`;
 		let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
 		bsAlert.show();
 		
@@ -87,7 +87,7 @@ bodyLoader.addListener((response) => {
                 <div class="d-flex justify-content-between align-items-center pt-2">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-danger delete-draft" data-delete-id="${draft['draft_id']}">&nbsp;Delete&nbsp;</button>
-                    <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${link}">Copy Link</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${link}">Copy link</button>
                   </div>
                   <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Last Edit: </span> ${draft['last_edited']}</small>
                 </div>
