@@ -21,7 +21,7 @@
                 <a href="<?=URLROOT?>/settings" class="btn btn-primary float-end">Edit Profile</a>
             <?php endif; ?>
             <p class="text-muted my-0 pt-0">@<?=ht($data['profile_info']->username)?></p>
-            <small class="text-muted pt-2 pb-3 d-block">Created <?=date("d M Y", strtotime($data['profile_info']->created_at))?></small>
+            <small class="text-muted pt-2 pb-3 d-block">Joined <?=date("d M Y", strtotime($data['profile_info']->created_at))?></small>
             
             <p class='pb-1'><?=ht($data['profile_info']->about)?></p>
 
