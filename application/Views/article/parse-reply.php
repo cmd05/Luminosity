@@ -8,7 +8,7 @@
         <div class="col-md-10 col-9 mt-1">
         <h6>
             <a href="<?=URLROOT?>/profile?u=<?=$_SESSION['username']?>" class='text-decoration-none text-dark d-inline-block me-2'><?=ht($_SESSION['display_name'])?></a>
-            <small class='text-muted fw-normal' id='username-<?=$parse['id']?>'><?=Str::formatEpoch(time(), "d/m/y H:i")?></small>
+            <small class='text-muted fw-normal' id='username-<?=$parse['id']?>'><?=date("d M Y (H:i)", time())?></small>
         </h6>
         
         <p id='content-<?=$parse['id']?>'><?=ht($parse['content'])?></p>

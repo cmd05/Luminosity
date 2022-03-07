@@ -5,9 +5,9 @@
 <?php if(!Session::isLoggedIn()) require_once APPROOT."/Views/inc/login-modal.php" ?>
 
 <div class="container m-auto">
-    <a href="<?=URLROOT?>/article?a=<?=$data['article']->article_id?>" class="btn btn-dark">
+    <a href="<?=URLROOT?>/article?a=<?=$data['article']->article_id?>" class="btn btn-light">
         <i class="fas fa-arrow-left pe-2"></i>
-        Return to Article
+        Return to article
     </a>
 
     <br><br>

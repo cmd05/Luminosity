@@ -44,7 +44,7 @@
         <div class="col-md-8 col-10 mt-1">
             <h6>
                 <a href="<?=URLROOT?>/profile?u=<?=$comment->username?>" class='text-decoration-none text-dark d-inline-block me-2'><?=ht($comment->display_name)?></a>
-                <small class='text-muted fw-normal' id='username-<?=$comment->id?>'><?=Str::formatEpoch(strtotime($comment->created_at), "d/m/y H:i")?> <?= $comment->is_edited ? "&nbsp;(edited)" : "" ?></small>
+                <small class='text-muted fw-normal' id='username-<?=$comment->id?>'><?=date("d M Y (H:i)", strtotime($comment->created_at))?> <?= $comment->is_edited ? "&nbsp;(edited)" : "" ?></small>
             </h6>
             <p id='content-<?=$comment->id?>'><?=ht($comment->content)?></p>
             
@@ -92,7 +92,7 @@
                 <div class="col-md-10 col-9 mt-1">
                     <h6>
                         <a href="<?=URLROOT?>/profile?u=<?=$reply->username?>" class='text-decoration-none text-dark d-inline-block me-2'><?=ht($reply->display_name)?></a>
-                        <small class='text-muted fw-normal' id='username-<?=$reply->id?>'><?=Str::formatEpoch(strtotime($reply->created_at), "d/m/y H:i")?> <?= $comment->is_edited ? "(edited)" : "" ?></small>
+                        <small class='text-muted fw-normal' id='username-<?=$reply->id?>'><?=date("d M Y (H:i)", strtotime($reply->created_at))?> <?= $comment->is_edited ? "(edited)" : "" ?></small>
                     </h6>
 
                     <p id='content-<?=$reply->id?>'><?=ht($reply->content)?></p>
