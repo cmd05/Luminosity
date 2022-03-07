@@ -10,7 +10,7 @@
         <!-- Nav items 3 - only  -->
         <ul class="navbar-nav ms-auto mb-md-0" id='nav-items-3'>
             <li class="nav-item">
-                <a class="nav-link" style='font-size: 17px' href="<?=URLROOT?>/user/sign-up" tabindex="-1">Sign Up <i class="fas fa-sign-in-alt" style='font-size: 15px; padding-left: 8px'></i></a>
+                <a class="nav-link" style='font-size: 17px' href="<?=URLROOT?>/user/sign-up" tabindex="-1">Register <i class="fas fa-sign-in-alt" style='font-size: 15px; padding-left: 8px'></i></a>
             </li>
         </ul>
     </div>
