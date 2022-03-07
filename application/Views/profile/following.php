@@ -6,12 +6,12 @@
 
     <div class="px-lg-5 mx-lg-5">
         <div class="px-lg-1">
-            <h5 >@<?=$data['profile']->username?> - Following</h5>
+            <h5 >@<?=$data['profile']->username?> / Following</h5>
             <br>
             <div class="border p-2">
                 <h5 class='pt-3 ps-2'>
                     <a href="<?=URLROOT?>/profile?u=<?=$data['profile']->username?>" class='pe-2'><i class="fas fa-arrow-left"></i></a>
-                    Return to Profile
+                    Profile
                 </h5>
 
                 <?=count($data['following']) === 0 ? '<br><h5 class="text-muted p-3">0 results</5>' : "<br>"?>
