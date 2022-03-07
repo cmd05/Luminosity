@@ -25,7 +25,7 @@
 
 			<br>
 
-			<label for="about" class="form-label">About</label>
+			<label for="about" class="form-label">Description</label>
 			<textarea name="about" id="about" rows="5" class='form-control' name='about' data-error='about_err'><?=ht($_SESSION['about'])?></textarea>
 			<small class="mt-2 d-block invalid-feedback" name='about_err'></small>
 
