@@ -33,32 +33,10 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The M
 </p>
 <p align = "center"><b>Customize your profile</b></p>
 
-## Design 
+## Design
 
 The project implements ``Model-View-Controller`` design pattern. This project has been built using a [custom framework](https://github.com/cmd3BOT/PHP-MVC-Framework)
 
-<p align = "center">
-  <img src = "https://user-images.githubusercontent.com/63466463/129299701-bfa87642-60f6-4e96-a409-45a856a9c118.png">
-</p>
-
-> Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
-
-**Model**
-
-The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to render data.
-
-**View**
-
-The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
-
-**Controller**
-
-Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller will be used to view the Customer data.
-
-A common example is [ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc)
-
-## Project Structure
-  
 ``application/`` App Logic and Backend
   * ``Config`` - Configuration items and files
   * ``Libraries`` - Base classes and main libraries used by derived classes
