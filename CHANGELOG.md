@@ -62,3 +62,8 @@
   **Features to add**
   - Same as V1.0.1 Jul28. 
   - No ETA
+
+  ### March 8 2022
+  - Clean up UI and html views
+  - Change 'Login' to 'Sign in' and 'Sign up' to 'Register'
+  - Create proper contribute page
