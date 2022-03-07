@@ -30,15 +30,19 @@ class Explore extends Controller {
 
         switch ($sort) {
             case 'most_recent':
+                $data['sort'] = "Most Recent";
                 $data['articles'] = $this->exploreModel->getMostRecentArticles($this->maxExploreArticles);
                 break;
             case 'most_comments':
+                $data['sort'] = "Most Comments";
                 $data['articles'] = $this->exploreModel->getMostCommentedArticles($this->maxExploreArticles);
                 break;
             case 'most_reactions':
+                $data['sort'] = "Most Reactions";
                 $data['articles'] = $this->exploreModel->getMostReactedArticles($this->maxExploreArticles);
                 break;
             default:
+                $data['sort'] = "Most Views";
                 $data['articles'] = $this->exploreModel->getMostViewedArticles($this->maxExploreArticles);
                 break;
         }
@@ -59,11 +63,11 @@ class Explore extends Controller {
 
         switch ($sort) {
             case 'views':
-                $data['sort'] = "Views";
+                $data['sort'] = "Most Views";
                 $data['users'] = $this->exploreModel->getUsersByViewCount($this->maxExploreUsers, $userId);
                 break;
             default:
-                $data['sort'] = "Followers";
+                $data['sort'] = "Most Followers";
                 $data['users'] = $this->exploreModel->getUsersByFollowCount($this->maxExploreUsers, $userId);
                 break;
         }

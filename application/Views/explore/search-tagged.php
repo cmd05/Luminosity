@@ -10,7 +10,7 @@
         <div class="mx-lg-5 px-lg-5">
             <main class='m-auto d-block'>
                 <br><br>
-                <h3 class='ms-2'>Articles tagged '<?=ht($data['query'], 200)?>'</h3>
+                <h3 class='ms-2'>Articles tagged (<pre class='d-inline'><?=ht($data['query'], 100)?></pre>)</h3>
                 <br>
                 <div class="ps-4">
                 </div>

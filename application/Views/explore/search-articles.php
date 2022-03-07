@@ -10,9 +10,14 @@
         <div class="mx-lg-5 px-lg-5">
             <main class='m-auto d-block'>
                 <br><br>
-                <h3 class='ms-2'>Articles similar to '<?=ht($data['query'], 100)?>'</h3>
-                <br>
-                <div class="ps-4">
+                <h4 class='pt-3 ps-2 ms-2'>
+                    Search / Articles
+                    <p class="my-3"></p>
+                    <i class="fas fa-search me-2" style='font-size: 15px'></i> <pre class='ms-1 d-inline'><?=ht($data['query'], 100)?></pre>
+                </h4>
+                
+                <br> 
+                <div class="ps-3">
                     <?php if(count($data['tags']) > 0): ?>
                         <h6 class='d-inline pt-3'>Related Tags &nbsp;</h6>
                     <?php endif; ?>
@@ -21,8 +26,8 @@
                         <a href="<?=URLROOT?>/explore/search?q=<?=$tag->tag?>&type=tagged_articles" class="btn btn-sm btn-primary text-white me-1 my-2"><?=ht($tag->tag)?></a>
                     <?php endforeach; ?>
                 </div>
-                
-                <br>
+                <hr><br>
+
                 <div class="articles-container m-0 p-0">
                     <!-- Fetch Articles -->
                     <?php foreach($data['articles'] as $article): ?>
