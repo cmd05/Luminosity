@@ -30,7 +30,7 @@
                     <div id="editor" class='bg-white'><?=($data['content'])?></div>
                     <div id="counter">characters</div>
                     <br>
-                    <input type="text" class='form-control' placeholder="Add tags" id="tags">
+                    <input type="text" class='form-control' placeholder="Add tags (comma seperated)" id="tags">
                     <br>
                     <button class="btn btn-success px-3 float-end d-block mt-1" id="submit-post">Post</button>
                     <div style='margin-bottom: 40px'></div>
