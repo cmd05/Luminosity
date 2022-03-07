@@ -148,7 +148,7 @@ document.addEventListener('keydown', e => {
 document.querySelector("#copy-link").addEventListener("click", function() {
     clipboardCopy(`${URL}/write/draft/${draftId}`);
 
-    toastBody.innerHTML = `Copied Link`;
+    toastBody.innerHTML = `Link copied to clipboard`;
     let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
     bsAlert.show();
 });

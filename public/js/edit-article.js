@@ -106,7 +106,7 @@ saveBtn.addEventListener("click", updateArticle)
 document.querySelector("#copy-link").addEventListener("click", function() {
     clipboardCopy(`${URL}/write/edit-article/${articleId}`);
 
-    toastBody.innerHTML = `Copied Link`;
+    toastBody.innerHTML = `Link copied to clipboard`;
     let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
     bsAlert.show();
 });

@@ -9,7 +9,7 @@ document.addEventListener("click", (e) => {
     if(tg.classList.contains("copy-link")) {
     	clipboardCopy(tg.getAttribute("data-link"));
 
-		toastBody.innerHTML = `Copied Link`;
+		toastBody.innerHTML = `Link copied to clipboard`;
 		let bsAlert = new bootstrap.Toast(toast, { delay: 2000 });
 		bsAlert.show();
 
@@ -69,7 +69,7 @@ bodyLoader.addListener((response) => {
                         <br>
 
                         <div class="btn-group mx-auto">
-                            <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${view_link}">Copy Link</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="${view_link}">Copy link</button>
                         </div>
 
                         <button type="button" class="toggle-bookmark btn btn-sm btn-primary delete-article float-end" data-article-id="${article.article_id}">
