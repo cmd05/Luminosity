@@ -23,11 +23,13 @@
                   <div class="card-body">
                       <h4 class='draft-name'><a href="<?=$view_link?>" class='text-dark text-decoration-none'><?=ht($article->title, 40)?></a></h4>
                       <div class="p-2"></div>
-                      <p class="card-text tagline"><?=Str::isEmptyStr($article->tagline)?"<i class='fs-6'>Tagline</i>":ht($article->tagline, 100)?></p>
+                      <?php if(!Str::isEmptyStr($article->tagline)): ?> 
+                        <p class="card-text tagline"><?=ht($article->tagline, 100)?></p>
+                      <?php endif; ?>
                       <p class="card-text"><?=ht($article->content, 200)?></p>
                       <br>
                       <div class="btn-group mx-auto">
-                          <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$view_link?>">Copy Link</button>
+                          <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$view_link?>">Copy link</button>
                       </div>
                       <button type="button" class="toggle-bookmark btn btn-sm btn-primary delete-article float-end" data-article-id="<?=$article->article_id?>">
                         <i class="fas fa-bookmark" style='pointer-events: none;'></i>
