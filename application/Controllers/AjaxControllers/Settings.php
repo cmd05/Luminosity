@@ -28,7 +28,7 @@ class Settings extends ProtectedController {
 
         if(!Str::isValidDisplayName($display_name)) $data['display_name_err'] = "Invalid Display Name";
 
-        if(strlen($about) > 300) $data['about_err'] = "About must be below 300 characters";
+        if(strlen($about) > 300) $data['about_err'] = "Description must be below 300 characters";
 
         $img = $_FILES['image'] ?? false;
         

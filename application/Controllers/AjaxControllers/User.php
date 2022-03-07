@@ -116,7 +116,7 @@ class User extends GuestController {
                 $mailStatus = $this->mailModel->sendMail($email, 'Account Verification Link', $body);
 
                 if($this->userModel->insertNewEmailToken($email, $newToken) && $mailStatus) {
-                    Session::flash('register_success', 'Success! Check your email (and spam) to verify account');
+                    Session::flash('register_success', 'Success! Check your email and spam folder to verify your account');
                     $this->userModel->deleteOldEmailTokens($email, $newToken);
                     $data['status'] = 200;
                 }
