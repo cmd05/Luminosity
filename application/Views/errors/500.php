@@ -6,7 +6,7 @@
         <br>
         <b>500</b> 
         <br>
-        <span class="fs-3">Something went wrong at our end :/</span>
+        <span class="fs-3">Something went wrong :/</span>
     </p>
 </div>
 <br><br><br><br><br>
