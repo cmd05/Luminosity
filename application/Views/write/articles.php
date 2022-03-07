@@ -24,7 +24,9 @@
                   <div class="card-body">
                       <h4 class='draft-name'><a href="<?=$view_link?>" class='text-dark text-decoration-none'><?=ht($article->title, 40)?></a></h4>
                       <div class="p-2"></div>
-                      <p class="card-text tagline"><?=Str::isEmptyStr($article->tagline)?"<i class='fs-6'>Tagline</i>":ht($article->tagline, 100)?></p>
+                      <?php if(!Str::isEmptyStr($article->tagline)): ?> 
+                        <p class="card-text tagline"><?=ht($article->tagline, 100)?></p>
+                      <?php endif; ?>
                       <p class="card-text"><?=ht($article->content, 200)?></p>
                       <div class="py-2">
                         <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> <?=Str::formatEpoch(strtotime($article->created_at), "d/m H:i")?></small>
@@ -37,7 +39,7 @@
                       <br>
                       <div class="btn-group mx-auto">
                         <button type="button" class="btn btn-sm btn-outline-danger delete-article" data-delete-id="<?=$article->article_id?>">&nbsp;Delete&nbsp;</button>
-                        <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$view_link?>">Copy Link</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary copy-link" data-link="<?=$view_link?>">Copy link</button>
                       </div>
                   </div>
                 </div>
