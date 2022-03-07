@@ -21,9 +21,9 @@
       <?php endif; ?>
 
       <br><br>
-      <p class="text-muted"><?=$data['views'] === 1 ? $data['views']. " view": $data['views']. " views"?></p>
-      <p class="text-muted mb-1">Created: <?=Str::formatEpoch(strtotime($data['article']->created_at), "d/m/y H:i")?></p>
-      <p class="text-muted">Last Edit: <?=Str::formatEpoch(strtotime($data['article']->last_updated), "d/m/y H:i")?></p>
+      <p class=" fs-5"><?=$data['views'] === 1 ? $data['views']. " view": $data['views']. " views"?></p>
+      <pre class="mb-1">Posted: <?=date("d M Y (H:i)", strtotime($data['article']->created_at))?></pre>
+      <pre class="">Last Edited: <?=date("d M Y (H:i)", strtotime($data['article']->last_updated))?></pre>
       <br>
 
       <div class="user-details" style="width: 250px; height: 80px; cursor: pointer" 
