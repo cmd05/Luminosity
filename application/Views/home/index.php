@@ -27,7 +27,7 @@
             <div class="articles-container m-0 p-0">
                     <!-- Fetch Articles -->
                     <?php if(count($data['articles']) < 5): ?>
-                        <h6>Looks Pretty empty in here. <a href="<?=URLROOT?>/explore">Explore</a></h6>
+                        <p>Looks pretty empty in here. <a href="<?=URLROOT?>/explore" class='text-decoration-none'>Explore <i class="fas fa-angle-double-right" style='font-size: 15px'></i></a></p>
                     <?php endif; ?>
 
                     <?php foreach($data['articles'] as $article): ?>
@@ -69,7 +69,7 @@
         </div>
         <div class="col-lg-3 col-md-4 d-md-inline-block d-none bg-light">
             <div class="card mx-2 mt-3">
-                <h5 class='m-3'>Suggested Articles</h5>
+                <h5 class='m-3'>Suggested</h5>
                 <div class="card-body">
                     <?php foreach($data['suggested'] as $article): ?>
                     <div class="article">
