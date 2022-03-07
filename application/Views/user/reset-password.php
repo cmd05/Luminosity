@@ -8,9 +8,8 @@
 </div>
 <?php else: ?>
 <form action="<?= URLROOT ?>/user/reset-password/<?=$data['token']?>" method='POST' id='page-form' class='mt-3'>
-    <h3 class='text-center mb-5'>Reset Password</h3>
+    <h3 class='text-center mb-5'>Set new password</h3>
     <div class="form-group mb-3">
-        <label for="password" class='d-block pb-2'>Enter New Password </label>
         <div class="input-group">
             <input type="password" id='pwd-input' class="form-control <?= !empty($data['password_err']) ?  'is-invalid' : ''?>" name='password' placeholder="New Password" value="<?=ht($data['password'])?>">
             <span class="input-group-btn">
@@ -23,12 +22,11 @@
             </p>
         </div>
         <small class="mt-2 d-block text-muted">
-        Password contain atleast 8 characters and a number
+        Password must contain atleast 8 characters and a number
         </small>
     </div>
 
     <div class="form-group mb-4">
-        <label for="confirm_password" class='d-block pb-2'>Confirm Password </label>
         <input type="password" class="form-control <?= !empty($data['confirm_password_err']) ?  'is-invalid' : ''?>" name='confirm_password' placeholder="Confirm Password" value="<?=ht($data['confirm_password'])?>">
         <p class="invalid-feedback pt-1 mb-0">
             <?=$data['confirm_password_err']?>
