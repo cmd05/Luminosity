@@ -133,7 +133,7 @@ class User extends GuestController {
 
                 if($this->userModel->insertNewEmailToken($email, $newToken) && $mailStatus) {
                     $this->userModel->deleteOldEmailTokens($email, $newToken);
-                    Session::flash('email_token_sent', 'Check Email (and spam) For new verification link');
+                    Session::flash('email_token_sent', 'Check email and spam folder for new verification link');
                     Server::redirect('user/login');
                 }   else {
                     $data['error'] = "Error Encountered";
@@ -155,7 +155,7 @@ class User extends GuestController {
         $data['message'] = '';
         
         if($this->userModel->verifyByToken($token)) {
-            Session::flash('email_verified', 'Email verified successfully. Login');
+            Session::flash('email_verified', 'Email verified successfully. Sign in');
             Server::redirect('user/login');
         }   else {
             $data['message'] = "Invalid Request. Try Again";
@@ -197,7 +197,7 @@ class User extends GuestController {
 
                 if($this->userModel->insertNewPasswordToken($email, $newToken) && $mailStatus) {
                     $this->userModel->deleteOldPasswordTokens($email, $newToken);
-                    Session::flash('forgot_password', 'Check Email (and spam) to Reset Password');
+                    Session::flash('forgot_password', 'Check email and spam folder to reset password');
                     Server::redirect('user/login');
                 }   else {
                     $data['error'] = "Error Encountered";
@@ -273,7 +273,7 @@ class User extends GuestController {
                     $mailStatus = $this->mailModel->sendMail($email, 'Password Reset for '.SITENAME, $body);
     
                     if($mailStatus) {
-                        Session::flash('password_reset', 'Password Reset. Login');
+                        Session::flash('password_reset', 'Password successfully reset.');
                         Server::redirect('user/login');
                     }
                 }

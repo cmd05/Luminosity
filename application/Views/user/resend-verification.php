@@ -19,8 +19,8 @@
     <input type="submit" value="Send Email" class='btn btn-success w-100'>
     <br>
     <div class="container-fluid w-100 p-0 mt-4 mb-0" style='height: 50px'>
-        <a href="<?=URLROOT?>/user/login" class="btn text-primary float-start">Login</a>
-        <a href="<?=URLROOT?>/user/sign-up" class="btn text-black float-end text-dark">Sign Up</a>
+        <a href="<?=URLROOT?>/user/login" class="btn text-primary float-start">Sign in</a>
+        <a href="<?=URLROOT?>/user/sign-up" class="btn text-black float-end text-dark">Register</a>
     </div>
 </form>
 <?php View::footer(false) ?>
