@@ -57,19 +57,18 @@ class Explore extends Controller {
      */
     public function users() {
         $data = [];
-
         $sort = $_GET['sort_by'] ?? "";
         $userId = $_SESSION['user_id'] ?? 0;
 
-        switch ($sort) {
-            case 'views':
-                $data['sort'] = "Most Views";
-                $data['users'] = $this->exploreModel->getUsersByViewCount($this->maxExploreUsers, $userId);
-                break;
-            default:
-                $data['sort'] = "Most Followers";
-                $data['users'] = $this->exploreModel->getUsersByFollowCount($this->maxExploreUsers, $userId);
-                break;
+        if($sort == 'views') {
+            $data['sort'] = "Most Views";
+            $data['users'] = $this->exploreModel->getUsersByViewCount($this->maxExploreUsers, $userId);
+        } else if ($sort == 'recent' && Server::isAdmin()) {
+            $data['sort'] = "Most Recent";
+            $data['users'] = $this->exploreModel->getMostRecentUsers($this->maxExploreUsers, $userId);
+        } else {
+            $data['sort'] = "Most Followers";
+            $data['users'] = $this->exploreModel->getUsersByFollowCount($this->maxExploreUsers, $userId);
         }
 
         $this->view("explore/users", $data);
