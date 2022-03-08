@@ -258,6 +258,27 @@ class ExploreModel extends Model {
         return $rows;        
     }
 
+    public function getMostRecentUsers(int $limit, int $userId) {
+        $this->db->query("SELECT DISTINCT users.username, users.display_name, users.about,
+                          users.profile_img, users.uniq_id
+                          FROM users
+                          ORDER BY id DESC
+                          LIMIT $limit
+                        ");
+        $this->db->execute();
+
+        $rows = $this->db->fetchRows();
+
+        foreach($rows as $row) {
+            $followedProfileId = $this->_userModel->getInfoByUniqId($row->uniq_id)->id;
+            $row->show_btn = $userId !== $followedProfileId;
+            $row->is_following = $this->_profileModel->isFollowing($userId, $followedProfileId);
+            $row->followers_count = $this->_profileModel->followersCount($followedProfileId);
+        }
+
+        return $rows;
+    }
+
     public function homeArticles(int $userId, int $limit, int $lastId = NULL) {
         $idConstraint = !is_null($lastId) ? " AND articles.id < :id " : " ";
         
