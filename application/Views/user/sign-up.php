@@ -31,7 +31,7 @@
                 </span>
             </div>
             <small class="mt-2 d-block text-muted">
-            Password contain atleast 8 characters and a number
+            Password must contain atleast 8 characters and a number
             </small>
             <small class="mt-2 d-block invalid-feedback" name='password_err'></small>
         </div>
