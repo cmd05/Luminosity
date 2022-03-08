@@ -36,6 +36,8 @@ define('URLROOT', "http://localhost".BASE_FOLDER);
 define('SITENAME', 'Luminosity');
 define('APP_VERSION', '1.1.0');
 define('SESSION_NAME', SITENAME);
+define('ALLOW_ADMIN', false);
+define('ADMIN_EMAIL', ''); // set an admin with user.email in users table
 
 /**
  * App Image Directories
