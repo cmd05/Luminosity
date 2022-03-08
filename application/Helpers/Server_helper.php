@@ -54,6 +54,10 @@ class Server {
         header('Content-Type: application/json');
     }
 
+    public static function isAdmin(): bool {
+        return ALLOW_ADMIN && ($_SESSION['email'] ?? 0) == ADMIN_EMAIL;
+    }
+
     public static function getRequestUrl(): string {
         $query = substr($_SERVER['REQUEST_URI'], strlen(BASE_FOLDER)); // Remove root folder name from request URL
         $query = trim($query, '/ '); // Remove traliing and preceeding forward slashes and spaces
