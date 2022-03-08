@@ -38,14 +38,14 @@
                 </div>
                 <br>
                 <?php if(count($data['users']) > 0): ?>
-                <a href="<?=$url?>&type=users" class="btn btn-primary ms-5 mb-4">Show More</a>
+                <a href="<?=$url?>&type=users" class="btn btn-light border ms-5 mb-4">Show More</a>
                 <?php endif; ?>
 
                 <br><br>
 
                 <h5 class='d-block ps-4 pt-2'>Articles</h5>
                 <br>
-                <a href="<?=URLROOT?>/explore/search?q=<?=urlencode($data['query'])?>&type=tagged_articles" class="btn btn-primary ms-5">Show articles tagged (<?=ht($data['query'], 15)?>)</a>
+                <a href="<?=URLROOT?>/explore/search?q=<?=urlencode($data['query'])?>&type=tagged_articles" class="btn btn-light border ms-5">Show articles tagged (<?=ht($data['query'], 15)?>)</a>
                 <br>
                 <?=count($data['articles']) === 0 ? '<br><h5 class="text-muted p-3">0 results</5>' : "<br>"?>
                 <div class="list-container">
@@ -76,7 +76,7 @@
                 </div>
                 <br>
                 <?php if(count($data['articles']) > 0): ?>
-                <a href="<?=$url?>&type=articles" class="btn btn-primary ms-5 mb-4">Show More</a>
+                <a href="<?=$url?>&type=articles" class="btn btn-light border ms-5 mb-4">Show More</a>
                 <?php endif; ?>
                 <br>
             </div>
