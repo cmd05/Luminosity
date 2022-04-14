@@ -48,8 +48,10 @@ class Explore extends Controller {
         $articleId = $articleId->id; 
         $data = [];
         $data['articles'] = $this->exploreModel->getArticleResults($_POST['query'], $this->maxResultsOnPage, $articleId);
-        
-        foreach ($data['articles'] as $article) $article->content = Html::getChars($article->content);
+
+        ob_start();
+        require_once APPROOT."/Views/explore/render-articles.php";
+        $data['article_renders'] = ob_get_clean();            
 
         $data['last_id']  = end($data['articles'])->article_id ?? 0;
         $data['status'] = count($data['articles']) > 0 ? 200 : 500;
@@ -70,7 +72,9 @@ class Explore extends Controller {
         $data = [];
         $data['articles'] = $this->exploreModel->getTaggedArticles($_POST['query'], $this->maxResultsOnPage, $articleId);
         
-        foreach ($data['articles'] as $article) $article->content = Html::getChars($article->content);
+        ob_start();
+        require_once APPROOT."/Views/explore/render-articles.php";
+        $data['article_renders'] = ob_get_clean();
 
         $data['last_id']  = end($data['articles'])->article_id ?? 0;
         $data['status'] = count($data['articles']) > 0 ? 200 : 500;

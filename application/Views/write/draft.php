@@ -40,7 +40,6 @@
                 <div class="px-4 bg-white rounded pt-4 mt-0 pb-3 sticky-md-top" style='border: 1px solid #d7d7d7; top: 100px!important'>
                     <button class="btn d-block btn-success text-white w-100" id='save-changes' style='background-image: none!important; font-size: 17px;'>Saved</button>
                     <p class="invalid-feedback is-invalid">Error</p>
-                    <!-- <b class='pt-3 pb-2 d-block'>Editing draft</b> -->
                     <p style='line-height: 29px; font-size: 16px; font-family: calibri;' class='m-0 my-3'>Press <code class='mx-2'>Ctrl + S</code> to save changes</p>
                     <a class="btn btn-light w-100" href='#submit-post'>Post as article <i class=" ms-2 fa-caret-down fas"></i></a>
                 </div>

@@ -42,7 +42,7 @@ class Article extends Controller {
         
         if(!$article) Server::die_404();
 
-        if(Session::isLoggedIn()) $this->articleModel->addView($articleId);
+        $this->articleModel->addView($articleId);
         
         $userId = $_SESSION['user_id'] ?? 0;
 

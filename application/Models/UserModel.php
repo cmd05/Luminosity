@@ -202,7 +202,15 @@ class UserModel extends Model {
                         ");
         $this->db->bind(":token", $token);
         $this->db->execute();
-
+        
+        // delete all tokens after verification
+        $this->db->query("DELETE from email_verification_tokens
+                          WHERE email = 
+                            (SELECT email from email_verification_tokens WHERE token = :token) 
+                         ");
+        $this->db->bind(":token", $token);
+        $this->db->execute();
+        
         return $this->db->rowCount() ? true : false;
     }
 

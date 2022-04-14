@@ -41,13 +41,14 @@ class Profile extends Controller {
         $data['is_following'] = $this->profileModel->isFollowing($userId, $profileId);
         $data['profile_info']->following_count = $this->profileModel->followingCount($profileId);
         $data['profile_info']->followers_count = $this->profileModel->followersCount($profileId);
+        
         $data['articles'] = $this->articleModel->getProfileArticles($profileId, $userId, $this->articlesOnPage);
-        $data['last_article_id'] = 0;
 
-        foreach ($data['articles'] as $article) {
-            $data['last_article_id'] = $article->article_id;
-            $article->content = Html::getChars($article->content);
-        }
+        $data['last_article_id'] = end($data['articles'])->article_id ?? "0";
+        
+        ob_start();
+        require_once APPROOT."/Views/profile/render-articles.php";
+        $data['article_renders'] = ob_get_clean();
 
         $this->view("profile/index", $data);
     }

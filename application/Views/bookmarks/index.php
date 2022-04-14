@@ -49,7 +49,7 @@
 <div class="toast align-items-center text-white bg-dark border-0 center-toast m-auto fixed-bottom mb-4 text-center" role="alert" aria-live="assertive" aria-atomic="true" id='articles-toast' style='width: 300px!important; padding: 2px; font-size: 15px;'>
    <div class="d-flex">
       <div class="toast-body container show-save text-center">
-         Toast Body   <i class="fas fa-circle-notch fa-spin"></i>                        
+            <i class="fas fa-circle-notch fa-spin"></i>                        
       </div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
    </div>

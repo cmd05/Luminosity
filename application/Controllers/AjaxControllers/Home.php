@@ -19,20 +19,19 @@ class Home extends ProtectedController {
      * Fetch Articles
      * @route true
      */
-    public function loadArticles(string $lastId): void {        
+    public function loadArticles(string $lastId): void {      
         $article = $this->articleModel->fetchArticle($lastId);
         $lastId = $article ? $article->id : 0;
 
         $data = [];
         $data['articles'] = $this->exploreModel->homeArticles($_SESSION['user_id'], $this->maxArticles, $lastId);
-        $data['status'] = 500;
+        $data['status'] = 200;
 
-        foreach ($data['articles'] as $article) {
-            $data['status'] = 200;
-            $article->content = Html::getChars($article->content);
-            $article->created_at = date("d M Y", strtotime($article->created_at));
-        }
+        ob_start();
+        require_once APPROOT."/Views/home/render-articles.php";
+        $data['article_renders'] = ob_get_clean();
 
+        $data['status'] = count($data['articles']) ? 200 : 500;
         $data['last_id'] = end($data['articles'])->article_id ?? "0";
 
         echo json_encode($data);

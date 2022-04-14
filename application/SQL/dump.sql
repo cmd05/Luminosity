@@ -118,7 +118,7 @@ CREATE TABLE `article_tags` (
 
 CREATE TABLE `article_views` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
   `article_id` varchar(32) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -29,14 +29,13 @@ class Profile extends Controller {
 
         $data = [];
         $data['articles'] = $this->articleModel->getProfileArticles($profileId, $userId, $this->articlesOnPage, $lastId);
-        $data['status'] = 500;
 
-        foreach ($data['articles'] as $article) {
-            $data['status'] = 200;
-            $data['last_id'] = $article->article_id;
-            $article->content = Html::getChars($article->content);
-            $article->created_at = date("d M Y", strtotime($article->created_at));
-        }
+        $data['last_id'] = end($data['articles'])->article_id ?? "0";
+        $data['status'] = count($data['articles']) ? 200 : 500;
+        
+        ob_start();
+        require_once APPROOT."/Views/profile/render-articles.php";
+        $data['article_renders'] = ob_get_clean();
 
         echo json_encode($data);
     }

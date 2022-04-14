@@ -104,12 +104,12 @@ class Explore extends Controller {
                 case "articles":
                     $data['articles'] = $this->exploreModel->getArticleResults($query, $this->maxResultsOnPage);
                     $data['tags'] = $this->exploreModel->getSimilarTags($query, $this->maxSimilarTags);
-                    $data['last_article_id']  = end($data['articles'])->article_id ?? "";
+                    $data['last_article_id']  = end($data['articles'])->article_id ?? "0";
                     $data['query'] = $query;
 
-                    foreach ($data['articles'] as $article) {
-                        $article->content = Html::getChars($article->content);
-                    }
+                    ob_start();
+                    require_once APPROOT."/Views/explore/render-articles.php";
+                    $data['article_renders'] = ob_get_clean();            
 
                     $this->view("explore/search-articles", $data);
                     break;
@@ -118,9 +118,9 @@ class Explore extends Controller {
                     $data['last_article_id']  = end($data['articles'])->article_id ?? "";
                     $data['query'] = $query;
 
-                    foreach ($data['articles'] as $article) {
-                        $article->content = Html::getChars($article->content);
-                    }
+                    ob_start();
+                    require_once APPROOT."/Views/explore/render-articles.php";
+                    $data['article_renders'] = ob_get_clean();
 
                     $this->view("explore/search-tagged", $data);
                     break;
@@ -129,10 +129,10 @@ class Explore extends Controller {
                     $data['articles'] = $this->exploreModel->getArticleResults($query, $this->maxResultsIndex);
                     $data['query'] = $query;
 
-                    foreach ($data['articles'] as $article) {
-                        $article->content = Html::getChars($article->content);
-                    }
-
+                    ob_start();
+                    require_once APPROOT."/Views/explore/render-articles-index.php";
+                    $data['article_renders'] = ob_get_clean();
+                    
                     $this->view("explore/search-index", $data);
                     break;
             }

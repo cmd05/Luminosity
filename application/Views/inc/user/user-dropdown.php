@@ -23,7 +23,6 @@
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/write/drafts"><i class="fas fa-scroll pe-2 py-2"></i> Saved Drafts</a></li>
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/write/articles"><i class="far fa-newspaper pe-2 py-2"></i> My Articles</a></li>
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/bookmarks"><i class="fas fa-bookmark pe-2 py-2"></i> Bookmarks</a></li>
-            <li><a class="dropdown-item hover-primary" href="#"><i class="fas fa-chart-line pe-2 py-2"></i> Stats</a></li>
             <li>
                 <a class="dropdown-item py-2 theme-toggle-link py-2" href="#">
                     <i class="fas fa-cloud-moon pe-2"></i> Night Sky
@@ -64,7 +63,6 @@
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/write/drafts"><i class="fas fa-scroll pe-2 py-2"></i> Saved Drafts</a></li>
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/write/articles"><i class="far fa-newspaper pe-2 py-2"></i> My Articles</a></li>
             <li><a class="dropdown-item hover-primary" href="<?=URLROOT?>/bookmarks"><i class="fas fa-bookmark pe-2 py-2"></i> Bookmarks</a></li>
-            <li><a class="dropdown-item hover-primary" href="#"><i class="fas fa-chart-line pe-2 py-2"></i> Stats</a></li>
             <li>
                 <a class="dropdown-item py-2 theme-toggle-link py-2" href="#">
                     <i class="fas fa-cloud-moon pe-2"></i> Night Sky

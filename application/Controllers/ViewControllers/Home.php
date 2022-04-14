@@ -19,13 +19,13 @@ class Home extends ProtectedController {
         $data = [];
         $data['articles'] = $this->exploreModel->homeArticles($_SESSION['user_id'], $this->maxArticles);
 
-        foreach ($data['articles'] as $article) {
-            $article->content = Html::getChars($article->content);
-        }
-
         $data['suggested'] = $this->exploreModel->getMostViewedArticles($this->maxSuggested);
         $data['last_id'] = end($data['articles'])->article_id ?? "0";
         
+        ob_start();
+        require_once APPROOT."/Views/home/render-articles.php";
+        $data['article_renders'] = ob_get_clean();
+
         $this->view('home/index', $data);
     }
 }

@@ -3,6 +3,6 @@
 declare(strict_types = 1); 
 
 trait HomeTraits {
-    protected $maxArticles = 15;
-    protected $maxSuggested = 3;
+    protected $maxArticles = 10;
+    protected $maxSuggested = 4;
 }

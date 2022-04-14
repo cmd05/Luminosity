@@ -58,9 +58,11 @@ class ArticleModel extends Model {
 
     public function addView(string $articleId) {
         // Try Catch on unique constraint b/w article_id and user_id of table
+        // Use ip if not logged in
 		try {
+            $id = $_SESSION['user_id'] ?? Server::getIpAddress();
 			$this->db->dbInsert("article_views", [
-				"user_id" => $_SESSION['user_id'],
+				"user_id" => $id,
 				"article_id" => $articleId
 			]);
 		} catch (Exception $e) {}		

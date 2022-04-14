@@ -6,7 +6,7 @@ bodyLoader.addBtn("#load-more-articles");
 bodyLoader.addParams({
     "query": document.querySelector("[name='query']").value
 });
-bodyLoader.addEndPoint("ajax/explore/load-article-results");
+bodyLoader.addEndPoint("ajax/explore/load-tagged-articles");
 
 
 function isBlank(str) {

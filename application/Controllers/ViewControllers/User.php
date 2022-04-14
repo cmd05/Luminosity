@@ -256,11 +256,12 @@ class User extends GuestController {
                     $ipDetails = "Unable to determine user information";
                     $userDetails = $_SERVER['HTTP_USER_AGENT'] ?? "";
 
-                    if(filter_var($_SERVER["REMOTE_ADDR"], FILTER_VALIDATE_IP)) 
-                        $ipDetails = $this->userModel->ipDetails($_SERVER['REMOTE_ADDR']);
+                    $ip = Server::getIpAddress() ?? "";
+                    if(filter_var($ip, FILTER_VALIDATE_IP)) 
+                        $ipDetails = $this->userModel->ipDetails($ip);
 
                     $body = "
-                        Password was recently reset for your account for email address $email. 
+                        Password was recently reset for your Luminosity account using email address $email. 
                         <br> 
                         <h2>Activity Details</h2>
                         <b>$userDetails</b>
