@@ -1,6 +1,11 @@
 <?php View::header(true, "Explore") ?>
 <br><br>
 <link rel="stylesheet" href="<?=URLROOT?>/css/drafts.css">
+<style>
+  .prev-img {
+    max-height: 400px;
+  }
+</style>
 <div class="container-lg container-fluid">
    <?php Session::alert("alert_article_delete") ?>
    <div class="container-fluid container-lg">
@@ -10,8 +15,7 @@
         <h1>0 results</h1>
       <?php endif; ?>
       <br>
-		  <p class='mt-0 mb-4'> <b class='me-1'>Sorted by:</b> <?=$data['sort']?></p>
-      
+	  <p class='mt-0 mb-4'> <b class='me-1'>Sorted by:</b> <?=$data['sort']?></p>
       <div class="dropdown d-inline me-4">
         <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Explore
@@ -44,20 +48,19 @@
             <div class="col mb-3">
                 <div class="card shadow-sm">
                   <?php if(!Str::isEmptyStr($article->preview_img)): ?>
-                    <img src="<?=$article->preview_img?>" class="card-img-top" alt="...">
+                    <img src="<?=$article->preview_img?>" class="card-img-top prev-img" alt="...">
                   <?php endif; ?>
                   <div class="card-body">
                       <h4 class='draft-name'><a href="<?=$view_link?>" class='text-dark text-decoration-none'><?=ht($article->title, 40)?></a></h4>
                       <small class="text-muted pt-1 pb-0 mb-0">Published: <?=date("d/m/y", strtotime($article->created_at))?></small>
                       <?php if(!Str::isEmptyStr($article->tagline)): ?> 
-                        <p class="card-text tagline"><?=ht($article->tagline, 100)?></p>
+                        <p class="card-text tagline"><?=ht($article->tagline, 1000)?></p>
                       <?php else: ?>
                         <p class="my-3"></p>
                       <?php endif; ?>
-                      <p class="card-text"><?=ht($article->content, 200)?></p>
                       <br>
-                      <span>
-                        <?=$article->view_count?> <i class="fas fa-eye"></i>
+                      <span style='color: grey'>
+                        <?=$article->view_count?> view<?=$article->view_count > 1 ? "s" : ''?>
                       </span>
                       <span class="float-end">
                         <?=$article->comments_count?> <i class="fas fa-comment"></i>
@@ -74,7 +77,7 @@
 <div class="toast align-items-center text-white bg-dark border-0 center-toast m-auto fixed-bottom mb-4 text-center" role="alert" aria-live="assertive" aria-atomic="true" id='articles-toast' style='width: 300px!important; padding: 2px; font-size: 15px;'>
    <div class="d-flex">
       <div class="toast-body container show-save text-center">
-         Toast Body   <i class="fas fa-circle-notch fa-spin"></i>                        
+            <i class="fas fa-circle-notch fa-spin"></i>                        
       </div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
    </div>

@@ -18,13 +18,15 @@
             <div class="card-body">
               <h4 class='draft-name'><a href="<?=$draft_link?>" class='text-dark text-decoration-none'><?=ht($draft->draft_name, 40)?></a></h4>
               <div class="p-2"></div>
-              <h5>
-                  <span style='font-weight: 400'>
+              <h5 class='mb-3'>
+                  <span style='font-weight: 400; font-size: 22px;'>
                     <?=Str::isEmptyStr($draft->title)?"<i class='fs-6'>Title</i>":ht($draft->title, 40)?>
                   </span>
               </h5>
-              <p class="card-text tagline"><?=Str::isEmptyStr($draft->tagline)?"<i class='fs-6'>Tagline</i>":ht($draft->tagline, 100)?></p>
-              <p class="card-text"><?=ht($draft->content, 200)?></p>
+              <?php if(!Str::isEmptyStr($draft->tagline)): ?> 
+                <p class="card-text tagline"><?=ht($draft->tagline, 100)?></p>
+              <?php endif; ?>
+              
               <div class="py-2">
                 <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> <?=Str::formatEpoch(strtotime($draft->created_at), "d/m H:i")?></small>
               </div>
@@ -51,7 +53,7 @@
 <div class="toast align-items-center text-white bg-dark border-0 center-toast m-auto fixed-bottom mb-4 text-center" role="alert" aria-live="assertive" aria-atomic="true" id='drafts-toast' style='width: 300px!important; padding: 2px; font-size: 15px;'>
     <div class="d-flex">
         <div class="toast-body container show-save text-center">
-            Toast Body   <i class="fas fa-circle-notch fa-spin"></i>                        
+          <i class="fas fa-circle-notch fa-spin"></i>
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>

@@ -21,8 +21,8 @@ trait WriteTraits {
         "tags" => 5
     ];
 
-    protected $draftsOnPage = 20;
-    protected $articlesOnPage = 20;
+    protected $draftsOnPage = 1;
+    protected $articlesOnPage = 1;
     protected $maxImgUpload = 20; // mb
     protected $maxUserArticlesPerHour = 15;
     protected $maxUserArticles = 500;

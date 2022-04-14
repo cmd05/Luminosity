@@ -1,6 +1,8 @@
 <?php View::header(true, "Search") ?>
 
 <link rel="stylesheet" href="<?=URLROOT?>/css/profile.css">
+<link rel="stylesheet" href="<?=URLROOT?>/css/article-preview.css">
+
 <br><br>
 <div class="container px-lg-5">
     <?php if(!Session::isLoggedIn()) require_once APPROOT."/Views/inc/login-modal.php" ?>
@@ -8,12 +10,12 @@
 
     <div class="px-lg-5 mx-lg-5">
         <div class="px-lg-1">
-            <div class="border p-2">
+            <div class="p-2">
                 <h5 class='pt-3 ps-2'>
                     Search Results for <pre class='ms-1 d-inline'><?=ht($data['query'], 100)?></pre>
                 </h5>
                 <br>
-                <h5 class='d-block ps-4 pt-2'>Users</h5>
+                <h5 class='d-block ps-2 pt-2'>Users</h5>
                 <?=count($data['users']) === 0 ? '<br><h5 class="text-muted p-3">0 results</5>' : "<br>"?>
                 <div class="list-container">
                     <?php foreach($data['users'] as $profile): ?>
@@ -38,45 +40,22 @@
                 </div>
                 <br>
                 <?php if(count($data['users']) > 0): ?>
-                <a href="<?=$url?>&type=users" class="btn btn-light border ms-5 mb-4">Show More</a>
+                <a href="<?=$url?>&type=users" class="btn btn-light border ms-5 mb-4">Show more users</a>
                 <?php endif; ?>
-
+                
                 <br><br>
 
-                <h5 class='d-block ps-4 pt-2'>Articles</h5>
+                <h5 class='d-block ps-2 pt-2'>Articles</h5>
                 <br>
-                <a href="<?=URLROOT?>/explore/search?q=<?=urlencode($data['query'])?>&type=tagged_articles" class="btn btn-light border ms-5">Show articles tagged (<?=ht($data['query'], 15)?>)</a>
+                <a href="<?=URLROOT?>/explore/search?q=<?=urlencode($data['query'])?>&type=tagged_articles" class="btn btn-light border ms-4">Show articles tagged (<?=ht($data['query'], 15)?>)</a>
                 <br>
                 <?=count($data['articles']) === 0 ? '<br><h5 class="text-muted p-3">0 results</5>' : "<br>"?>
                 <div class="list-container">
-                    <?php foreach($data['articles'] as $article): ?>
-                        <div class="p-1">
-                            <div class="card-body row">
-                                <div class="col-12 ms-2">
-                                    <?php if(!Str::isEmptyStr($article->preview_img)):?>
-                                        <img src="<?=$article->preview_img?>" alt="" class="preview-img pb-3">
-                                    <?php endif; ?>
-                                    <br>
-                                    <a class='mb-3 d-block h3 text-decoration-none text-dark' href="<?=URLROOT?>/article?a=<?=$article->article_id?>"><?=ht($article->title, 100)?></a>
-                                    <small class="text-muted mb-4 d-block">Published <?=date("d M Y", strtotime($article->created_at))?></small>
-                                    <p class="text-muted" style='font-size: 17px'><?=ht($article->tagline, 300)?></p>
-                                    <p class='article-content'><?=ht($article->content, 1000)?></p>
-                                    
-                                    <?=$article->view_count?> <i class="fas fa-eye"></i>
-
-                                    <span class='d-inline-block float-end me-2'>
-                                        <?=$article->comments_count?> <i class="fas fa-comment"></i>    
-                                    </span>
-                                </div>
-                                <hr class='my-4'>
-                            </div>
-                        </div>
-                        <br>
-                    <?php endforeach; ?>
+                    <?=$data['article_renders']?>
                 </div>
                 <br>
                 <?php if(count($data['articles']) > 0): ?>
-                <a href="<?=$url?>&type=articles" class="btn btn-light border ms-5 mb-4">Show More</a>
+                    <a href="<?=$url?>&type=articles" class="btn btn-light border ms-5 mb-4">Show more articles</a>
                 <?php endif; ?>
                 <br>
             </div>

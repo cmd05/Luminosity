@@ -19,8 +19,12 @@
     margin: auto;
 }
 
-.article-content {
-    word-wrap: break-word;
+.title-link {
+    text-decoration: none;
+}
+
+.title-link:hover {
+    text-decoration: underline;
 }
 
 .follow-list-img {

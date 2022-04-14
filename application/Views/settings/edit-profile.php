@@ -1,11 +1,6 @@
 <?php
 	View::header(false, "Settings");
-	View::customNav([
-		"Edit Profile" => "settings/edit-profile",
-		"Account" => "settings/account",
-		"Preferences" => "settings/preferences",
-		"Privacy" => "info/privacy"
-	]);
+	View::customNav();
 ?>
 <link rel="stylesheet" href="<?=URLROOT?>/css/edit-profile.css">
 <br><br><br><br>

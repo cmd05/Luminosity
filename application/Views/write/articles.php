@@ -1,5 +1,10 @@
 <?php View::header(true, "Articles") ?>
 <br><br>
+<style>
+  .prev-img {
+    max-height: 400px;
+  }
+</style>
 <link rel="stylesheet" href="<?=URLROOT?>/css/drafts.css">
 <div class="container-lg container-fluid">
    <?php Session::alert("alert_article_delete") ?>
@@ -19,7 +24,7 @@
             <div class="col mb-3">
                 <div class="card shadow-sm">
                   <?php if(!Str::isEmptyStr($article->preview_img)): ?>
-                    <img src="<?=$article->preview_img?>" class="card-img-top" alt="...">
+                    <img src="<?=$article->preview_img?>" class="card-img-top prev-img" alt="...">
                   <?php endif; ?>
                   <div class="card-body">
                       <h4 class='draft-name'><a href="<?=$view_link?>" class='text-dark text-decoration-none'><?=ht($article->title, 40)?></a></h4>
@@ -27,7 +32,6 @@
                       <?php if(!Str::isEmptyStr($article->tagline)): ?> 
                         <p class="card-text tagline"><?=ht($article->tagline, 100)?></p>
                       <?php endif; ?>
-                      <p class="card-text"><?=ht($article->content, 200)?></p>
                       <div class="py-2">
                         <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> <?=Str::formatEpoch(strtotime($article->created_at), "d/m H:i")?></small>
                         <br>
@@ -56,7 +60,7 @@
 <div class="toast align-items-center text-white bg-dark border-0 center-toast m-auto fixed-bottom mb-4 text-center" role="alert" aria-live="assertive" aria-atomic="true" id='articles-toast' style='width: 300px!important; padding: 2px; font-size: 15px;'>
    <div class="d-flex">
       <div class="toast-body container show-save text-center">
-         Toast Body   <i class="fas fa-circle-notch fa-spin"></i>                        
+            <i class="fas fa-circle-notch fa-spin"></i>                        
       </div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
    </div>

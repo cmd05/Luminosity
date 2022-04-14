@@ -67,3 +67,10 @@
   - Clean up UI and html views
   - Change 'Login' to 'Sign in' and 'Sign up' to 'Register'
   - Create proper contribute page
+
+## V1.2
+  **Changes**
+  - Change all plain text article previews to HTML
+  - Remove account and stats link
+  - Improve UI
+  - Add view by IP

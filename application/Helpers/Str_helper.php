@@ -43,8 +43,9 @@ class Str {
         return filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 300;
     }
 
+    // Password must contain atleast 8 characters, at least one letter, one number and one special character
     public static function isValidPassword(string $password): bool {
-        return preg_match("/^(?=.*\d).{8,}$/", $password) && strlen($password) <= 100;
+        return preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/", $password) && strlen($password) <= 100;
     }
 
     public static function isValidDisplayName(string $name): bool {

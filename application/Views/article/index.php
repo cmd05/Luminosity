@@ -16,8 +16,7 @@
       
       <?php if(($_SESSION['user_id'] ?? "") === $data['article']->user_id): ?>
         <br><br>
-        <a class="btn btn-light px-2 me-2" href="<?=URLROOT?>/write/edit-article/<?=$data['article']->article_id?>">Edit Article</a>
-        <a class="btn btn-light px-2">Stats</a>
+        <a class="btn btn-light border-dark p-2 px-3 me-2" href="<?=URLROOT?>/write/edit-article/<?=$data['article']->article_id?>">Edit Article</a>
       <?php endif; ?>
 
       <br><br>

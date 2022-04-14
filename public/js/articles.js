@@ -68,8 +68,8 @@ bodyLoader.addListener((response) => {
         const article = value;
         const edit_link = `${URL}/write/edit-article/${article.article_id}`;
         const view_link = `${URL}/write/edit-article/${article.article_id}`;
-        const tagline = isBlank(article.tagline) ? "<i class='fs-6'>Title</i> " : ht(article.tagline, 100)
-        const img = !isBlank(article.preview_img) ? `<img src="${article.preview_img}" class="card-img-top" alt="...">` : "";
+        const tagline = isBlank(article.tagline) ? "" : `<p class="card-text tagline">${ht(article.tagline, 100)}</p>`
+        const img = !isBlank(article.preview_img) ? `<img src="${article.preview_img}" class="card-img-top prev-img" alt="...">` : "";
 
         document.querySelector("#articles-container").innerHTML += `
             <div class="col mb-3">
@@ -78,8 +78,7 @@ bodyLoader.addListener((response) => {
                 <div class="card-body">
                 <h4 class='draft-name'><a href="${view_link}" class='text-dark text-decoration-none'>${ht(article.title, 40)}</a></h4>
                 <div class="p-2"></div>
-                <p class="card-text tagline">${tagline}</p>
-                <p class="card-text">${ht(article.content, 200)}</p>
+                ${tagline}
                 <div class="py-2">
                     <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> ${article.created_at} </small>
                     <br>

@@ -67,20 +67,19 @@ bodyLoader.addListener((response) => {
 
           const link = `${URL}/write/draft/${draft["draft_id"]}`;
           const title = isBlank(draft['title']) ? "<i class='fs-6'>Title</i> " : ht(draft['title'], 40);
-          const tagline = isBlank(draft['tagline']) ? "<i class='fs-6'>Title</i> " : ht(draft['tagline'], 100)
+          const tagline = isBlank(draft.tagline) ? "" : `<p class="card-text tagline">${ht(draft.tagline, 100)}</p>`
+
           document.querySelector("#drafts-container").innerHTML += `
           <div class="col mb-3">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h4 class='draft-name'><a href="${link}" class='text-dark text-decoration-none'>${ht(draft['draft_name'], 40)}</a></h4>
                 <div class="p-2"></div>
-                <h5>
-                    <span style='font-weight: 400'>${title}</span>
+                <h5 class='mb-3'>
+                    <span style='font-weight: 400; font-size: 22px;'>${title}</span>
                 </h5>
-                <p class="card-text tagline">
                   ${tagline}
-                </p>
-                <p class="card-text">${ht(draft['content'], 200)}</p>
+                
                 <div class="py-2">
                   <small class="text-muted"><span style='font-weight: 500; font-size: 14px;'>Created: </span> ${ht(draft['created_at'])}</small>
                 </div>

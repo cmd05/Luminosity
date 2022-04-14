@@ -51,40 +51,6 @@ if(document.querySelector("#follow-btn")) {
 	})
 }
 
-function isBlank(str) {
-  return (!str || /^\s*$/.test(str));
-}
-
 bodyLoader.addListener((response) => {
-  Object.entries(response.articles).forEach(
-      ([key, value]) => {
-          const article = value;
-          const link = `${URL}/article?a=${article.article_id}`;
-          const img = !isBlank(article.preview_img) ? `<img src="${article.preview_img}" class="preview-img pb-3" alt="...">` : "";
-          const id = article.article_id;
-
-          document.querySelector(".articles-container").innerHTML += `
-          <div class="p-1">
-              <div class="card-body row">
-                  <div class="col-12 ms-2">
-                      ${img}
-                      <br>
-                      <a class='mb-3 d-block h3 text-decoration-none text-dark' href="${URL}/article?a=${id}">${ht(article.title, 100)}</a>
-                      <small class="text-muted mb-4 d-block">Published ${article.created_at}</small>
-                      <p class="text-muted" style='font-size: 17px'>${ht(article.tagline, 300)}</p>
-                      <p class='article-content'>${ht(article.content, 1000)}</p>
-                      
-                      ${article.view_count} <i class="fas fa-eye"></i>
-
-                      <button class="btn btn-dark float-end toggle-bookmark" data-article-id="${article.article_id}">
-                          <i class="${article.is_bookmarked ? "fas" : "far"} fa-bookmark" style='pointer-events: none;'></i>
-                      </button>
-                  </div>
-                  <hr class='my-4'>
-              </div>
-          </div>
-          <br>
-          `;
-      }
-  );
+    document.querySelector(".articles-container").innerHTML += response.article_renders;
 });
