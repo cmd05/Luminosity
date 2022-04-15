@@ -4,22 +4,22 @@ Server Redirects: kebab-case
 Ajax and Form Calls: kebab-case
 
 File Structure:
-    app:
-        - All app folders containing logic are PascalCase
-        - All app logic files are PascalCase
-        - Helpers are trailed with _helper for clarity
-        - View folder must be kebab-case as it closely resembles public folder
-        - vendor folder to remain as is to decrease error possibilites
+	app:
+		- All app folders containing logic are PascalCase
+		- All app logic files are PascalCase
+		- Helpers are trailed with _helper for clarity
+		- View folder must be kebab-case as it closely resembles public folder
+		- vendor folder to remain as is to decrease error possibilites
 
-        Config: PascalCase
-        Controllers: PascalCase
-        Docs: PascalCase
-        Helpers: PascalCase (*_helper.php)
-        Libraries: PascalCase
-        Models: PascalCase *Model.php
-        Views: kebab-case
-    public:
-        all to remain kebab-case
+		Config: PascalCase
+		Controllers: PascalCase
+		Docs: PascalCase
+		Helpers: PascalCase (*_helper.php)
+		Libraries: PascalCase
+		Models: PascalCase *Model.php
+		Views: kebab-case
+	public:
+		all to remain kebab-case
 
 
 POST request (Ajax and Forms) : snake_case

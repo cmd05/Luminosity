@@ -11,24 +11,24 @@ label:focus,
 .btn:active,
 .btn.active
 {
-    outline:0px !important;
-    -webkit-appearance:none;
-    box-shadow: none !important;
+	outline:0px !important;
+	-webkit-appearance:none;
+	box-shadow: none !important;
 }
 
 .token {
-    display: none;
-    visibility: hidden;
-    color: transparent;
-    width: 0;
-    height: 0;
+	display: none;
+	visibility: hidden;
+	color: transparent;
+	width: 0;
+	height: 0;
 }
 
 .hover-primary:hover {
-    background: #0d6efd;
-    color: white;
+	background: #0d6efd;
+	color: white;
 }
 
 .hover-light:hover {
-    background: #f8f9fa!important;
+	background: #f8f9fa!important;
 }

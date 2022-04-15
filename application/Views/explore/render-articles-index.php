@@ -13,7 +13,7 @@
                 <p class="text-muted pt-1 pb-2" style='font-size: 16px'><?=ht($article->tagline, 300)?></p>
 
                 <div class="mb-4 pb-1 px-0 mx-0 article-content-preview" style='max-height: 500px;'
-                        onclick="javascript:window.location.href= '<?=URLROOT?>/article?a=<?=$article->article_id?>'">
+                    onclick="javascript:window.location.href= '<?=URLROOT?>/article?a=<?=$article->article_id?>'">
                     <?=trh($article->content, 500)?>
                 </div>
 

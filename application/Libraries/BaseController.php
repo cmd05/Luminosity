@@ -8,14 +8,14 @@ declare(strict_types = 1);
  */
 
 abstract class BaseController {
-    public function model(string $model) {
-        require_once APPROOT.'/Models/'.$model.'.php';
+	public function model(string $model) {
+		require_once APPROOT.'/Models/'.$model.'.php';
 
-        return new $model;
-    }
+		return new $model;
+	}
 
-    public function view(string $view, array $data = []): void {
-        $filePath = APPROOT.'/Views/'.$view.'.php';
-        file_exists($filePath) ? require_once $filePath : die('View Not Found'); 
-    }
+	public function view(string $view, array $data = []): void {
+		$filePath = APPROOT.'/Views/'.$view.'.php';
+		file_exists($filePath) ? require_once $filePath : die('View Not Found'); 
+	}
 }
