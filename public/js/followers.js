@@ -6,46 +6,47 @@ const bodyLoader = new LiveLoader();
 bodyLoader.addIdSelector("[name='last_follower_id']");
 bodyLoader.addBtn("#show-more");
 bodyLoader.addParams({
-    "profile_uniq": uniq
+	"profile_uniq": uniq
 });
 bodyLoader.addEndPoint("ajax/profile/load-followers");
 
 bodyLoader.addListener((response) => {    
   Object.entries(response.followers).forEach(
-      ([key, value]) => {
-        const profile = value;
-        let btn = '';
+	  ([key, value]) => {
+		const profile = value;
+		let btn = '';
 
-        if(profile.show_btn && profile.show_btn) {
-            btn =
-            `<button class="btn mb-1 follow-btn btn-outline-primary float-end rounded ${profile.is_following?"active":""}" 
-            data-uniq="${profile.uniq_id}">
-                ${profile.is_following ? "Following" : "Follow"}
-            </button>`;
-        }
+		if(profile.show_btn && profile.show_btn) {
+			btn =
+			`<button class="btn mb-1 follow-btn btn-outline-primary float-end rounded ${profile.is_following?"active":""}" 
+			data-uniq="${profile.uniq_id}">
+				${profile.is_following ? "Following" : "Follow"}
+			</button>`;
+		}
 
-        document.querySelector(".list-container").innerHTML += `
-            <div class="p-2 row mb-0 pb-1">
-            <div class="col-2 text-center">
-                <div class="follow-list-img" style='background-image: url(${URL}/uploads/${profile.profile_img});'></div>
-            </div>
-            <div class="col-10">
-                <h6 class='d-inline-block'>
-                    <a href="${URL}/profile?u=${profile.username}" class='text-dark text-decoration-none'>${ht(profile.display_name)}</a>
-                </h6>
-                ${btn}
-                <p class="text-muted">@${ht(profile.username)}</p>
-            </div>
-        </div>
-        `;
-      }
+		document.querySelector(".list-container").innerHTML += 
+		`
+		<div class="p-2 row mb-0 pb-1">
+			<div class="col-2 text-center">
+				<div class="follow-list-img" style='background-image: url(${URL}/uploads/${profile.profile_img});'></div>
+			</div>
+			<div class="col-10">
+				<h6 class='d-inline-block'>
+					<a href="${URL}/profile?u=${profile.username}" class='text-dark text-decoration-none'>${ht(profile.display_name)}</a>
+				</h6>
+				${btn}
+				<p class="text-muted">@${ht(profile.username)}</p>
+			</div>
+		</div>
+		`;
+	  }
   );
 });
 
 document.addEventListener("click", function(e) {
-    const target = e.target;
-    if(target.classList.contains("follow-btn")) {
-        const form = newTokenData({"profile_uniq": target.getAttribute("data-uniq")})
+	const target = e.target;
+	if(target.classList.contains("follow-btn")) {
+		const form = newTokenData({"profile_uniq": target.getAttribute("data-uniq")})
 		fetch(`${URL}/ajax/profile/toggle-follow`, {method: "POST", body: form})
 		.then(r => r.text())
 		.then(res => {
@@ -63,5 +64,5 @@ document.addEventListener("click", function(e) {
 				loginMdl();
 			}
 		})
-    }
+	}
 })

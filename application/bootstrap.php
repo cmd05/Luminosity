@@ -24,18 +24,18 @@ if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_byt
 
 // Autoload libraries
 spl_autoload_register(function($className) {
-    /**
-     * Paths as associative arrays
-     * Directory => Extension
-     */
-    $paths = [
-        "/Helpers/" => '_helper',
-        "/Libraries/" => '',
-        "/Controllers/ControllerTraits/" => ""
-    ];
-    
-    foreach ($paths as $path => $ext) {
-        $filePath = APPROOT . $path . $className . $ext . '.php';
-        if(file_exists($filePath)) require_once $filePath;
-    }
+	/**
+	 * Paths as associative arrays
+	 * Directory => Extension
+	 */
+	$paths = [
+		"/Helpers/" => '_helper',
+		"/Libraries/" => '',
+		"/Controllers/ControllerTraits/" => ""
+	];
+	
+	foreach ($paths as $path => $ext) {
+		$filePath = APPROOT . $path . $className . $ext . '.php';
+		if(file_exists($filePath)) require_once $filePath;
+	}
 });

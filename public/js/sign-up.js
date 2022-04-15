@@ -34,27 +34,27 @@ next1Btn.addEventListener("click", function () {
 	const body = newTokenData(form);
 
 	fetch(`${URL}/ajax/user/sign-up-check-1`, {
-			method: "POST",
-			body: body
-		})
-		.then(response => response.text())
-		.then(result => {
-			if (isJson(result)) {
-				let obj = JSON.parse(result);
-				if (obj.status === 200) {
-					removeFormErrors(obj);
-					section1.style.display = 'none';
-					section2.style.display = 'block';
-				} else {
-					addFormErrors(obj);
-				}
+		method: "POST",
+		body: body
+	})
+	.then(response => response.text())
+	.then(result => {
+		if (isJson(result)) {
+			let obj = JSON.parse(result);
+			if (obj.status === 200) {
+				removeFormErrors(obj);
+				section1.style.display = 'none';
+				section2.style.display = 'block';
+			} else {
+				addFormErrors(obj);
 			}
-		})
+		}
+	})
 })
 
 completeBtn.addEventListener("click", function () {
 	const form = constructFormNameObj(
-			['email', 'gender', 'password', 'confirm_password', 'display_name', 'username', 'about']
+		['email', 'gender', 'password', 'confirm_password', 'display_name', 'username', 'about']
 	);
 
 	form["profile_img"] = document.querySelector(`[name='profile_img']`).files[0];
@@ -65,25 +65,25 @@ completeBtn.addEventListener("click", function () {
 	completeBtn.disabled = true;
 
 	fetch(`${URL}/ajax/user/complete-sign-up`, {
-			method: "POST",
-			body: body
-		})
-		.then(response => response.text())
-		.then(result => {
-			completeBtn.disabled = false;
-			completeBtn.style.opacity = '1';
-			completeBtn.querySelector('span').innerHTML = 'Complete';
+		method: "POST",
+		body: body
+	})
+	.then(response => response.text())
+	.then(result => {
+		completeBtn.disabled = false;
+		completeBtn.style.opacity = '1';
+		completeBtn.querySelector('span').innerHTML = 'Complete';
 
-			if (isJson(result)) {
-				let obj = JSON.parse(result);
-				if (obj.status === 200) {
-					removeFormErrors(obj);
-					location.replace(`${URL}/user/login`);
-				} else {
-					addFormErrors(obj);
-				}
+		if (isJson(result)) {
+			let obj = JSON.parse(result);
+			if (obj.status === 200) {
+				removeFormErrors(obj);
+				location.replace(`${URL}/user/login`);
+			} else {
+				addFormErrors(obj);
 			}
-		})
+		}
+	})
 })
 
 

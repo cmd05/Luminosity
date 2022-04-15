@@ -1,17 +1,17 @@
 body {
-    background-color: #fcfcfc;
+	background-color: #fcfcfc;
 }
 
 .ql-toolbar {
-    background-color: white;
-    top: 62px!important;
-    z-index: 1000;
-    position: sticky;
+	background-color: white;
+	top: 62px!important;
+	z-index: 1000;
+	position: sticky;
 }
 
 .page-accordion {
-    padding-top: 14px;
-    padding-bottom: 14px;
+	padding-top: 14px;
+	padding-bottom: 14px;
 }
 
 input,
@@ -19,34 +19,34 @@ textarea,
 #editor,
 .ql-toolbar,
 .page-accordion {
-    border: 1px solid #d7d7d7!important;
+	border: 1px solid #d7d7d7!important;
 }
 
 #tagline {
-    overflow: hidden;
-    width: 100%;
-    border: none!important;
-    border-left: 4px solid grey!important;
-    height: 30px;
-    outline: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-    padding: 4px;
-    line-height: 22px;
-    padding-left: 12px;
-    resize: none;
-    letter-spacing: 0.2px;
-    border-radius: 0;
+	overflow: hidden;
+	width: 100%;
+	border: none!important;
+	border-left: 4px solid grey!important;
+	height: 30px;
+	outline: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+	padding: 4px;
+	line-height: 22px;
+	padding-left: 12px;
+	resize: none;
+	letter-spacing: 0.2px;
+	border-radius: 0;
 }
 
 
 /* QUILL STYLES */
 
 .ql-editor {
-    min-height: 300px;
-    height: auto;
+	min-height: 300px;
+	height: auto;
 }
 
 .ql-editor p,
@@ -54,138 +54,138 @@ textarea,
 .ql-editor li,
 .ql-editor ul,
 .ql-editor a {
-    font-size: 15px;
-    line-height: 24px;
+	font-size: 15px;
+	line-height: 24px;
 }
 
 .ql-editor img {
-    display: block;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 500px;
-    width: auto;
+	display: block;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	max-height: 500px;
+	width: auto;
 }
 
 .ql-editor pre.ql-syntax {
-    border-radius: 0;
-    font-size: 12px;
-    font-family: 'Consolas';
-    background-color: #1e1e1e !important;
+	border-radius: 0;
+	font-size: 12px;
+	font-family: 'Consolas';
+	background-color: #1e1e1e !important;
 }
 
 .ql-editor pre.ql-syntax {
-    background-color: rgb(29, 30, 30)!important;
+	background-color: rgb(29, 30, 30)!important;
 }
 
 .ql-snow .ql-editor code {
-    background-color: #272822;
-    color: #fff;
-    border-radius: 0.3rem;
-    padding: 4px 4px 4px;
-    font-size: 12px;
+	background-color: #272822;
+	color: #fff;
+	border-radius: 0.3rem;
+	padding: 4px 4px 4px;
+	font-size: 12px;
 }
 
 .ql-editor iframe {
-    display: block;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 500px;
+	display: block;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 500px;
 }
 
 .ql-editor h2 {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 #counter {
-    border: 1px solid #ccc;
-    border-width: 0px 1px 1px 1px;
-    color: #aaa;
-    padding: 5px 15px;
-    text-align: right;
-    line-height: 30px;
-    font-size: 15px;
-    height: 40px;
-    width: 100%;
+	border: 1px solid #ccc;
+	border-width: 0px 1px 1px 1px;
+	color: #aaa;
+	padding: 5px 15px;
+	text-align: right;
+	line-height: 30px;
+	font-size: 15px;
+	height: 40px;
+	width: 100%;
 }
 
 .ql-toolbar.ql-snow .ql-formats:nth-child(1) {
-    float: right;
-    display: none;
+	float: right;
+	display: none;
 }
 
 .ql-formats {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    outline: none;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	outline: none;
 }
 
 .ql-toolbar.ql-snow .ql-formats:nth-child(5),
 .ql-toolbar.ql-snow .ql-formats:nth-child(6),
 .ql-toolbar.ql-snow .ql-formats:nth-child(7),
 .ql-toolbar.ql-snow .ql-formats:nth-child(8) {
-    display: inline-block;
+	display: inline-block;
 }
 
 @media only screen and (max-width: 1100px) {
-    .ql-toolbar.ql-snow .ql-formats {
-        margin-right: 7px;
-    }
-    .ql-toolbar.ql-snow .ql-formats:nth-child(1) {
-        display: inline-block;
-    }
-    .ql-toolbar.ql-snow .ql-formats:nth-child(5),
-    .ql-toolbar.ql-snow .ql-formats:nth-child(6),
-    .ql-toolbar.ql-snow .ql-formats:nth-child(7),
-    .ql-toolbar.ql-snow .ql-formats:nth-child(8) {
-        display: none;
-    }
+	.ql-toolbar.ql-snow .ql-formats {
+		margin-right: 7px;
+	}
+	.ql-toolbar.ql-snow .ql-formats:nth-child(1) {
+		display: inline-block;
+	}
+	.ql-toolbar.ql-snow .ql-formats:nth-child(5),
+	.ql-toolbar.ql-snow .ql-formats:nth-child(6),
+	.ql-toolbar.ql-snow .ql-formats:nth-child(7),
+	.ql-toolbar.ql-snow .ql-formats:nth-child(8) {
+		display: none;
+	}
 }
 
 .ql-collapse-items {
-    outline: none!important;
-    font-size: 20px;
-    font-weight: bold;
-    color: dodgerblue;
-    margin-bottom: 2px;
+	outline: none!important;
+	font-size: 20px;
+	font-weight: bold;
+	color: dodgerblue;
+	margin-bottom: 2px;
 }
 
 .inline-block {
-    display: inline-block;
+	display: inline-block;
 }
 
 .none {
-    display: none;
+	display: none;
 }
 
 .center-toast {
-    display: block;
-    min-width: 200px;
-    margin-left: -100px;
-    text-align: center;
-    position: fixed;
-    z-index: 1100;
-    left: 50%;
-    bottom: 30px;
-    max-width: 250px!important;
-    font-size: 16px;
+	display: block;
+	min-width: 200px;
+	margin-left: -100px;
+	text-align: center;
+	position: fixed;
+	z-index: 1100;
+	left: 50%;
+	bottom: 30px;
+	max-width: 250px!important;
+	font-size: 16px;
 }
 
 .code-bg {
-    background-color: #272822;
-    color: #fff;
-    border-radius: 0.3rem;
-    padding: 4px 4px 4px;
+	background-color: #272822;
+	color: #fff;
+	border-radius: 0.3rem;
+	padding: 4px 4px 4px;
 }
 
 #copy-link:active {
-    /* transition: 1s linear; */
-    background-color: green!important;
-    border-color: green!important;
+	/* transition: 1s linear; */
+	background-color: green!important;
+	border-color: green!important;
 }
 
 .loading-img {
-    filter: brightness(0.9) blur(4px);
+	filter: brightness(0.9) blur(4px);
 }
