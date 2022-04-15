@@ -63,6 +63,19 @@
 	</div>
 </div>
 <script type='module'>
-import{isJson,URL,loginMdl,newTokenData}from"<?=URLROOT?>/js/script.js";document.addEventListener("click",function(t){const n=t.target;if(n.classList.contains("follow-btn")){const t=newTokenData({profile_uniq:n.getAttribute("data-uniq")});fetch(`${URL}/ajax/profile/toggle-follow`,{method:"POST",body:t}).then(t=>t.text()).then(t=>{if(isJson(t)){200===JSON.parse(t).status&&(n.classList.toggle("active"),"Follow"==n.innerHTML.trim()?n.innerHTML="Following":n.innerHTML="Follow")}else loginMdl()})}});
+import { isJson, URL, loginMdl, newTokenData } from "<?=URLROOT?>/js/script.js";
+document.addEventListener("click", function (t) {
+    const n = t.target;
+    if (n.classList.contains("follow-btn")) {
+        const t = newTokenData({ profile_uniq: n.getAttribute("data-uniq") });
+        fetch(`${URL}/ajax/profile/toggle-follow`, { method: "POST", body: t })
+            .then((t) => t.text())
+            .then((t) => {
+                if (isJson(t)) {
+                    200 === JSON.parse(t).status && (n.classList.toggle("active"), "Follow" == n.innerHTML.trim() ? (n.innerHTML = "Following") : (n.innerHTML = "Follow"));
+                } else loginMdl();
+            });
+    }
+});
 </script>
 <?php View::footer() ?>
