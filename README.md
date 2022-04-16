@@ -18,18 +18,18 @@ Remote repository for [Luminosity](http://luminosity-dev.herokuapp.com/) - The M
   
 <br>
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/63466463/163675168-bebbe574-b4f2-42dd-ad4c-12dfdfbd5824.png"/>
+  <img src = "https://user-images.githubusercontent.com/63466463/163675370-372d316c-15b4-49a3-ba48-b21dcdde1b3d.png"/>
 </p>
 <p align = "center"><b>Create Drafts and Articles</b></p>
 <br>
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/63466463/163675165-c3cf9593-5ae5-41a0-9213-249b94417f2a.png">
+  <img src = "https://user-images.githubusercontent.com/63466463/163675367-08b4fa31-835c-4d81-812c-fca24e2a7943.png">
 </p>
 <p align = "center"><b>Explore Articles</b></p>
 
 <br>
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/63466463/163675167-2fccc976-0969-4e0d-831a-4db700789b8d.png">
+  <img src = "https://user-images.githubusercontent.com/63466463/163675369-a0dbbf6b-31c4-4928-9941-5a4ff8530311.png">
 </p>
 <p align = "center"><b>Customize your profile</b></p>
 
