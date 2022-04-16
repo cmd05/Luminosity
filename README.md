@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/63466463/129299558-e1e7acff-644b-484c-959a-c10dec7fde79.png" alt="UI" width='300'>
+  <img src="https://user-images.githubusercontent.com/63466463/163665819-61a014b6-9520-4143-bef9-5be50caa0a95.png" alt="UI" width='300'>
 </p>
 
 # Luminosity
