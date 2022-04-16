@@ -61,6 +61,13 @@ class User extends GuestController {
 		$data['complete_err'] = '';
 		$data['profile_img_err'] = '';
 
+		if(!ALLOW_SIGNUP) {
+			$data['about_err'] = 'Sign up has been disabled';
+			$data['status'] = 500;
+			echo json_encode($data);
+			return;
+		}
+
 		if(empty($display_name)) 
 			$data['display_name_err'] = "Enter display name";
 		else if(!Str::isValidDisplayName($display_name))
