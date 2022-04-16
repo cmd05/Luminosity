@@ -35,6 +35,12 @@ class User extends GuestController {
 			'password' => ''
 		];
 		
+		if(!ALLOW_LOGIN) {
+			$data['password_err'] = "Login has been disabled";
+			$this->view('user/login', $data);
+			return;
+		}
+
 		if(Server::checkPostReq(["email_or_username", "password"])) {
 			$data['email_or_username'] = $_POST['email_or_username'];
 			$data['password'] = $_POST['password'];
