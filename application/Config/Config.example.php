@@ -42,7 +42,7 @@ define('ADMIN_EMAIL', ''); // set an admin with user.email in users table
 /**
  * App Image Directories
  */
-define("LOGO_PATH", URLROOT."/assets/logo.png");
+define("LOGO_PATH", URLROOT."/assets/logo/logo_w.png");
 define('UPLOAD_PATH', dirname(dirname(dirname(__FILE__))).'/public/uploads/');
 define('PROFILE_IMG_DIR', URLROOT.'/uploads');
 define("DEFAULT_PROFILE_NAME", 'default-profile.png');

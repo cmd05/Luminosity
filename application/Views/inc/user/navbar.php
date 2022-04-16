@@ -12,7 +12,7 @@
 			</button>
 			<!-- Nav Brand -->
 			<a class="navbar-brand pe-3" href="<?=URLROOT?>">
-			<img src="<?=URLROOT?>/assets/logo.png" class='navbar-logo mb-1'>
+			<img src="<?=URLROOT?>/assets/logo/logo_w.png" class='navbar-logo mb-1' style='width: 40px; margin-top: -6px; margin-right: 7px;'>
 			<span class='nav-brand-title'><?=SITENAME?></span>
 			</a>
 			<!-- Nav Items -->

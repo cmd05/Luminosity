@@ -4,9 +4,8 @@
 		<div class="row">
 			<div class="col-12 col-md">
 				<a href="#">
-				<img class="mb-3 ms-4" src="<?=URLROOT?>/assets/logo.png" alt="" width="45">
+				<img class="mb-3 ms-4" src="<?=URLROOT?>/assets/logo/logo_b.png" alt="" width="60">
 				</a>
-				<small class="d-block mb-3 text-muted">© 2020-2021</small>
 			</div>
 			<div class="col-6 col-md">
 				<h5>Resources</h5>

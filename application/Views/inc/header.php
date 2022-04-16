@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="shortcut icon" type="image/x-icon" href="<?=URLROOT?>/assets/logo.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="<?=URLROOT?>/assets/logo/logo_w.png" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= $title ?></title>
