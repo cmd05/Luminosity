@@ -25,19 +25,19 @@
 	</p>
 
 	<p align="center">
-		<img src="https://user-images.githubusercontent.com/63466463/129299606-2a4d8560-e534-4a89-9184-7aa1facc0240.png" class='w-75' />
+		<img src="https://user-images.githubusercontent.com/63466463/163675168-bebbe574-b4f2-42dd-ad4c-12dfdfbd5824.png" class='w-75' />
 	</p>
 	<p align="center" class=''><b>Create Drafts and Articles</b></p>
 	<p><br></p>
 
 	<p align="center">
-		<img src="https://user-images.githubusercontent.com/63466463/129299632-5d4d2f56-4b1e-4d7c-8805-ea14d05b78a0.png" class='w-75' />
+		<img src="https://user-images.githubusercontent.com/63466463/163675165-c3cf9593-5ae5-41a0-9213-249b94417f2a.png" class='w-75' />
 	</p>
 	<p align="center"><b>Explore Articles</b></p>
 	<p><br></p>
 
 	<p align="center">
-		<img src="https://user-images.githubusercontent.com/63466463/129299670-54689033-ccc6-4183-b925-2b68ab8992b4.png" class='w-75' />
+		<img src="https://user-images.githubusercontent.com/63466463/163675167-2fccc976-0969-4e0d-831a-4db700789b8d.png" class='w-75' />
 	</p>
 	<p align="center"><b>Customize your profile</b></p>
 </div>
