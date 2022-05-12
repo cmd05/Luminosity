@@ -28,6 +28,7 @@ class CommentModel extends Model {
 	 * Show user comments first
 	 */
 	public function getParentComments(string $articleId, int $userId, int $limit, int $page = 1) {
+		if($page <= 0) return [];
 		$page = ($page - 1) * $limit;
 
 		$this->db->query("SELECT article_comments.id, article_comments.is_edited,
