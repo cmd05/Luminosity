@@ -74,3 +74,9 @@
   - Remove account and stats link
   - Improve UI
   - Add view by IP
+  - Create admin, sign up and login configs
+
+  **Fixes**
+  - Token deletion on email verification
+  - Comments page for article
+  - Password regex
