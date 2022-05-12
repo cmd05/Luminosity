@@ -267,13 +267,13 @@ class User extends GuestController {
 						$ipDetails = $this->userModel->ipDetails($ip);
 
 					$body = "
-						Password was recently reset for your Luminosity account using email address $email. 
-						<br> 
+						Password was recently reset for your ".SITENAME." account using email address $email.
+						<br>
 						<h2>Activity Details</h2>
 						<b>$userDetails</b>
 						<pre>$ipDetails</pre>
-						If you dont recognize this: Please 
-						<a href='".URLROOT."/user/forgot-password'>Reset Password</a>
+						If you dont recognize this activity, please
+						<a href='".URLROOT."/user/forgot-password'>reset your password</a>
 					";
 
 
