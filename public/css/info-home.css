@@ -1,0 +1,13 @@
+#homeCarousel .carousel-item {
+    max-height: 500px!important;
+}
+
+.carousel-static-box {
+    margin-bottom: 300px;
+}
+
+@media screen and (max-width: 850px) {
+    .carousel-static-box {
+        display: none;
+    }
+}

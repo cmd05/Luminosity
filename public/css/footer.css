@@ -1,0 +1,15 @@
+#page-footer li a {
+    text-decoration: none;
+    line-height: 28px;
+}
+
+#page-footer li a:hover {
+    text-decoration: underline;
+    color: #0d6efd;
+}
+
+#page-footer {
+    display: block;
+    margin-top: 100px!important;
+    margin-bottom: 5px!important;
+}

@@ -1,0 +1,66 @@
+.user-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    display: inline-block;
+}
+
+#comment-area {
+    resize: none;
+    min-height: 200px!important;
+    overflow: hidden;
+}
+
+.reaction-img {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+
+.reaction-btn {
+    background-color: #fcfcfc;
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    outline: none;
+    margin-right: 3.9px;
+    float: left;
+    user-select: none;
+}
+
+.reacted {
+    background-color: rgba(131, 154, 235, 0.1) !important;
+    color: #1357BE !important;
+}
+
+.comment-dropdown {
+    left:-162px!important;
+}
+
+@media screen and (max-width: 810px) {
+    .comment-dropdown {
+        left:0!important;
+    }   
+}
+
+#comments-box p {
+    word-wrap: break-word;
+}
+
+
+.none {
+    display: none;
+}

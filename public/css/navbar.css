@@ -1,0 +1,171 @@
+input,
+.btn {
+    box-shadow: none!important;
+}
+
+.navbar-logo {
+    width: 30px;
+}
+
+#nav-search-input {
+    height: 35px;
+    width: 240px;
+    background: rgb(56, 56, 56);
+    color: white;
+    border: none;
+    font-size: 14px;
+}
+
+.search-results-1 {
+    position: absolute;
+    top: 35px;
+    background-color: white;
+    width: 100%;
+    display: none;
+}
+
+.search-results-2 {
+    display: none;
+    z-index: 100;
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    width: 75%;
+}
+
+#nav-search-input::placeholder {
+    font-size: 14px;
+}
+
+.nav-item {
+    margin-right: 3px;
+}
+
+#nav-search-btn {
+    background-color: #303030;
+    font-size: 15px;
+    padding-left: 12px;
+    outline: none;
+    box-shadow: none;
+    height: 35px;
+}
+
+.nav-toggler {
+    font-size: 24px;
+    font-weight: normal;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    display: none;
+    z-index: 1060;
+}
+
+#navbar-dropdown .dropdown-item:hover {
+    background-color: #0d6efd!important;
+    color: white;
+}
+
+#nav-items-3 {
+    display: none;
+}
+
+#search-box {
+    margin-left: 4%;
+    position: relative;
+}
+
+.results-header {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.user-result {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    display: inline-block;
+}
+
+.search-combo {
+    position: absolute;
+    font-size: 12px;
+    padding: 2px;
+    border: 1px solid #727579;
+    z-index: 5;
+    left: 5px;
+    top: 6px;
+    border-radius: 4px;
+    user-select: none;
+    color: #727579;
+    padding-right: 5px;
+}
+
+#toggle-nav-2 {
+    display: none;
+}
+
+.mobile-search-input {
+    width: 85%;
+}
+
+#mobile-search-form {
+    display: none;
+}
+
+
+/*
+ Hide nav items 
+    Show 
+    Show Sidebar Toggle 
+*/
+
+#main-nav-2 {
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    #nav-items-1,
+    #nav-items-2 {
+        display: none!important;
+    }
+    #search-box {
+        margin-left: auto;
+    }
+    .nav-toggler {
+        display: inline;
+    }
+    #nav-items-3 {
+        display: inline;
+    }
+    #main-nav-2 {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #nav-search-input {
+        display: none;
+    }
+    #nav-search-btn {
+        display: none;
+    }
+    #nav-items-3 {
+        display: inline;
+    }
+    .search-combo {
+        display: none!important;
+    }
+    .search-results-1 {
+        display: none!important;
+    }
+    #mobile-search-form {
+        display: block;
+    }
+}

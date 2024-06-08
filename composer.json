@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ext-exif":"*",
+        "ext-mbstring": "*"
+    }
+}

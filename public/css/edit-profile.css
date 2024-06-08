@@ -1,0 +1,19 @@
+.profile-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    border: none;
+    height: 200px;
+    width: 200px;
+    padding: 0;
+    display: block;
+}
+
+@media only screen and (max-width: 800px) {
+    .profile-img {
+        width: 130px;
+        height: 130px;
+    }
+}

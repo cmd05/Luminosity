@@ -1,0 +1,31 @@
+.tagline {
+    border: none;
+    border-left: 4px solid grey;
+    outline: none;
+    display: block;
+    font-size: 15px;
+    padding: 4px;
+    line-height: 22px;
+    padding-left: 12px;
+    letter-spacing: 0.2px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    min-height: 20px;
+}
+
+.draft-name:hover {
+    text-decoration: underline;
+}
+
+
+.user-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    display: inline-block;
+}

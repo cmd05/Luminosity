@@ -1,0 +1,13 @@
+DELETE from article_bookmarks;
+DELETE from article_comment_likes;
+DELETE from article_comments;
+DELETE from article_reactions;
+DELETE from article_tags;
+DELETE from article_views;
+DELETE from articles;
+DELETE from drafts;
+DELETE from email_verification_tokens;
+DELETE from followers;
+DELETE from forgot_password_tokens;
+DELETE from login_tokens;
+DELETE from users;

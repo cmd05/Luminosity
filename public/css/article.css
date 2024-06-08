@@ -1,0 +1,145 @@
+.preview-img {
+    max-height: 1000px; width: auto; display: block; margin: auto;
+    max-width: 100%;
+}
+
+.tagline {
+    border: none;
+    border-left: 4px solid grey;
+    outline: none;
+    display: block;
+    font-size: 15px;
+    padding: 4px;
+    line-height: 22px;
+    padding-left: 12px;
+    letter-spacing: 0.2px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    min-height: 20px;
+}
+
+.user-img {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left top;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    display: inline-block;
+}
+
+.content-area img {
+    width: auto;
+    max-width: 100%;
+    max-height: 500px;
+    height: auto;
+    padding: 20px;
+    display: block; 
+    margin: auto;
+}
+
+.main-page {
+    padding: 100px;
+    padding-top: 0;
+}
+
+.content-area br {
+    display: none;
+}
+
+.content-area h1, .content-area h2  {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.content-area pre {
+    padding: 15px;
+    width: 100%;
+}
+
+.content-area code {
+    background-color: #272822;
+    color: #fff;
+    border-radius: 0.3rem;
+    padding: 4px 4px 4px;
+    font-size: 12px;
+}
+
+.content-area iframe {
+    width: 755px;
+    height: 424px;
+    max-width: 100%;
+    max-height: calc((100vw - 40px) / (16/9));
+    display: block;
+    margin: auto;
+}
+
+.content-area {
+    word-wrap: break-word;
+}
+.content-area blockquote {
+    border: none;
+    border-left: 4px solid #ebebeb;
+    outline: none;
+    display: block;
+    font-size: 15px;
+    padding: 4px;
+    line-height: 22px;
+    padding-left: 12px;
+    letter-spacing: 0.2px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    min-height: 20px;
+}
+
+#comment-area {
+    resize: none;
+    min-height: 200px!important;
+    overflow: hidden;
+}
+
+.reaction-img {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+
+.reaction-btn {
+    background-color: #fcfcfc;
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    outline: none;
+    margin-right: 3.9px;
+    float: left;
+    user-select: none;
+}
+
+.reacted {
+    background-color: rgba(131, 154, 235, 0.1) !important;
+    color: #1357BE !important;
+}
+
+.comment-dropdown {
+    left:-162px!important;
+}
+
+@media screen and (max-width: 810px) {
+    .comment-dropdown {
+        left:0!important;
+    }   
+}
+
+.none {
+    display: none;
+}
